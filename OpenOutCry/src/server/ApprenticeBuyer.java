@@ -69,7 +69,7 @@ public class ApprenticeBuyer extends Everyone{
      */       
     void bid(int price, int quantity, int magicalItemNumber)
     {
-        
+        MagicalItem m=Main.getMagicalItem(magicalItemNumber);
     }
     
     /**

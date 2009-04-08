@@ -14,14 +14,14 @@ import java.io.*;
  */
 public class Main extends Thread implements java.rmi.Remote{
      Date startTime;
-     MagicalItem[] magicalItems;
+     static MagicalItem[] magicalItems;
      public static final int MAX_COMMODITY = 20;
      ArrayList<WizardSeller> wizards;
      ArrayList<ApprenticeBuyer> apprentices;
      ArrayList<MagicalItemInfo> magicalItemInfo;
      volatile int numberOfUsers=0;
      
-     MagicalItem getMagicalItem(int magicalItemNumber)
+     static MagicalItem getMagicalItem(int magicalItemNumber)
      {
          return magicalItems[magicalItemNumber];
      }
