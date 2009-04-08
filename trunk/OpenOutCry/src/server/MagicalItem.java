@@ -5,6 +5,7 @@
 
 package server;
 import java.util.ArrayList;
+import java.io.*;
 
 /**
  *
@@ -18,13 +19,6 @@ public class MagicalItem implements java.rmi.Remote{
     
     MagicalItem()
     {
-    }
-    
-    /* Logic to Populate some magical items 
-     */
-    void populateMagicalItemInfo()
-    {
-        //TODO: Read from file
     }
     
      /**
