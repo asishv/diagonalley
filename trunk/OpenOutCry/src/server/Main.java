@@ -45,6 +45,8 @@ public class Main extends Thread implements java.rmi.Remote{
        CurrentInventoryList ci=new CurrentInventoryList(cost, quantity, magicalItems[commodity].magicalItemInfo);
        ws.currentInventoryList.add(ci);
        wizards.add(ws);
+       DiagonAlleySellerAccount dasa=new DiagonAlleySellerAccount(ws);
+       magicalItems[commodity].wizards.add(dasa);
     }
     
      /**
@@ -110,6 +112,8 @@ public class Main extends Thread implements java.rmi.Remote{
        FutureInventoryList fi=new FutureInventoryList(cost, quantity, magicalItems[commodity].magicalItemInfo);
        ab.futureInventoryList.add(fi);
        apprentices.add(ab);        
+       DiagonAlleyBuyerAccount daba=new DiagonAlleyBuyerAccount(ab);
+       magicalItems[commodity].apprentice.add(daba);
     }
    
     /**

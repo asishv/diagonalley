@@ -11,4 +11,8 @@ package server;
  */
 public class DiagonAlleySellerAccount  extends DiagonAlleyAccount{
     WizardSeller wizard;
+    DiagonAlleySellerAccount(WizardSeller ws)
+    {
+        wizard=ws;
+    }
 }
