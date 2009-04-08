@@ -16,6 +16,11 @@ public class MagicalItem implements java.rmi.Remote{
     ArrayList<WizardSeller> wizards;
     ArrayList<ApprenticeBuyer> apprentice;
     
+    void populateMagicalItemInfo()
+    {
+        
+    }
+    
      /**
      * Checks if a bid for a magical item meets the expectation of the seller.
      */       

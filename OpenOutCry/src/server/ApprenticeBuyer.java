@@ -10,9 +10,10 @@ package server;
  * @author Asish
  */
 public class ApprenticeBuyer extends Everyone{
-    ApprenticeBuyer()
+    ApprenticeBuyer(String name)
     {
         wizardOrNot = false;
+        this.name=name;
     }
     
     /**
