@@ -180,4 +180,9 @@ public class Main extends Thread implements java.rmi.Remote{
     {
         createMagicalWorld();
     }
+    
+    public static void main(String args[])
+    {
+        
+    }
 }
