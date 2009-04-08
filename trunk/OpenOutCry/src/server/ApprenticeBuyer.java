@@ -15,8 +15,11 @@ public class ApprenticeBuyer extends Everyone{
         wizardOrNot = false;
         this.name=name;
     }
-    
-       int getTargetQuantity()
+
+    /**
+     * Gets the target quantity to buy for the apprentice.
+     */    
+      int getTargetQuantity()
     {        
         for(int i=0; i<futureInventoryList.size(); i++)
         {
@@ -28,7 +31,10 @@ public class ApprenticeBuyer extends Everyone{
         }
         return -1;
     }
-    
+
+      /**
+     * Gets the target cost for the magical item to buy for the apprentice.
+     */    
     int getTargetCost()
     {
         for(int i=0; i<futureInventoryList.size(); i++)
@@ -41,7 +47,10 @@ public class ApprenticeBuyer extends Everyone{
         }
         return -1;        
     }
-    
+
+    /**
+     * Gets the target magical item to buy for the apprentice.
+     */    
     MagicalItemInfo getTargetCommodityInfo()
     {
         for(int i=0; i<futureInventoryList.size(); i++)

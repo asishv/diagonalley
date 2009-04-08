@@ -16,9 +16,15 @@ public class MagicalItem implements java.rmi.Remote{
     ArrayList<WizardSeller> wizards;
     ArrayList<ApprenticeBuyer> apprentice;
     
+    MagicalItem()
+    {
+    }
+    
+    /* Logic to Populate some magical items 
+     */
     void populateMagicalItemInfo()
     {
-        
+        //TODO: Read from file
     }
     
      /**

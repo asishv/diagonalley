@@ -14,10 +14,11 @@ import java.util.Random;
 public class Main extends Thread implements java.rmi.Remote{
      Date startTime;
      MagicalItem[] magicalItems;
-     final int MAX_COMMODITY = 20;
+     public static final int MAX_COMMODITY = 20;
      ArrayList<WizardSeller> wizards;
      ArrayList<ApprenticeBuyer> apprentices;
      volatile int numberOfUsers=0;
+
      /**
      * Creates the Diagon Alley Wizards Sellers.
      */    
@@ -44,6 +45,9 @@ public class Main extends Thread implements java.rmi.Remote{
        wizards.add(ws);
     }
     
+     /**
+     * Finds the wizard selling a particular magical item.
+     */    
     int findWizard(MagicalItemInfo m)
     {
         for(int i=0; i<wizards.size(); i++)
@@ -54,7 +58,10 @@ public class Main extends Thread implements java.rmi.Remote{
         }
         return -1;
     }
-    
+
+    /**
+     * Finds the apprentice buying a particular magical item.
+     */    
     int findApprentice(MagicalItemInfo m)
     {
         for(int i=0; i<apprentices.size(); i++)
@@ -66,6 +73,9 @@ public class Main extends Thread implements java.rmi.Remote{
         return -1;
     }
 
+     /**
+     * Register a user in Diagon Alley.
+     */    
     synchronized void register(String name)
     {
         numberOfUsers++;
@@ -115,14 +125,20 @@ public class Main extends Thread implements java.rmi.Remote{
         
     }
     
+     /**
+     * Creates a virtual wizard.
+     */    
     void createVirtualWizards()
     {
-        
+     //TODO: Complete this code.   
     }
-    
+
+     /**
+     * Creates a virtual apprentice.
+     */    
     void createVirtualApprentices()
     {
-        
+     //TODO: Complete this code.   
     }
 
     /**
@@ -143,6 +159,6 @@ public class Main extends Thread implements java.rmi.Remote{
     
     Main()
     {
-        
+        createMagicalWorld();
     }
 }
