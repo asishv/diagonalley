@@ -172,7 +172,7 @@ public class Main extends Thread implements java.rmi.Remote{
     
     public void run()
     {
-        //Check if all apprentice and wizards have met their goals
+        //TODO:Check if all apprentice and wizards have met their goals
         //if (true) stop the server
     }
     
