@@ -15,7 +15,10 @@ public class WizardSeller extends Everyone{
         wizardOrNot=true;
         this.name=name;
     }
-  
+
+     /**
+     * Gets the target quantity for the magical item to sell.
+     */    
     int getTargetQuantity()
     {        
         for(int i=0; i<currentInventoryList.size(); i++)
@@ -28,7 +31,10 @@ public class WizardSeller extends Everyone{
         }
         return -1;
     }
-    
+
+    /**
+     * Gets the target cost for the magical item to sell.
+     */    
     int getTargetCost()
     {
         for(int i=0; i<currentInventoryList.size(); i++)
@@ -41,8 +47,11 @@ public class WizardSeller extends Everyone{
         }
         return -1;        
     }
-    
-    MagicalItemInfo getTargetCommodityInfo()
+
+      /**
+     * Gets the target magical item to sell for the wizard.
+     */    
+      MagicalItemInfo getTargetCommodityInfo()
     {
         for(int i=0; i<currentInventoryList.size(); i++)
         {
