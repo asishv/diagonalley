@@ -14,14 +14,14 @@ import java.io.*;
  */
 public class Main extends Thread implements java.rmi.Remote{
      Date startTime;
-     static MagicalItem[] magicalItems;
+     MagicalItem[] magicalItems;
      public static final int MAX_COMMODITY = 20;
      ArrayList<WizardSeller> wizards;
      ArrayList<ApprenticeBuyer> apprentices;
      ArrayList<MagicalItemInfo> magicalItemInfo;
      volatile int numberOfUsers=0;
      
-     static MagicalItem getMagicalItem(int magicalItemNumber)
+     MagicalItem getMagicalItem(int magicalItemNumber)
      {
          return magicalItems[magicalItemNumber];
      }
@@ -47,8 +47,22 @@ public class Main extends Thread implements java.rmi.Remote{
            cost=ab.getTargetCost()-(random.nextInt())%10;
            quantity=ab.getTargetQuantity();           
        }
-       CurrentInventoryList ci=new CurrentInventoryList(cost, quantity, magicalItems[commodity].magicalItemInfo);
+       for(int i=0; i<MAX_COMMODITY; i++)
+       {
+           CurrentInventoryList ci=new CurrentInventoryList(0, 0, magicalItems[i]);
+           ws.currentInventoryList.add(ci);
+       }
+       for(int i=0; i<MAX_COMMODITY; i++)
+       {
+           FutureInventoryList fi=new FutureInventoryList(0, 0, magicalItems[i]);
+           ws.futureInventoryList.add(fi);
+       }
+
+       CurrentInventoryList ci=ws.currentInventoryList.get(commodity);
+       ci.quantity=quantity;
+       ci.sellingPriceTarget=cost;
        ws.currentInventoryList.add(ci);
+
        wizards.add(ws);
        DiagonAlleySellerAccount dasa=new DiagonAlleySellerAccount(ws);
        magicalItems[commodity].wizards.add(dasa);
@@ -114,7 +128,20 @@ public class Main extends Thread implements java.rmi.Remote{
            cost=ws.getTargetCost()+(random.nextInt())%10;
            quantity=ws.getTargetQuantity();
        }
-       FutureInventoryList fi=new FutureInventoryList(cost, quantity, magicalItems[commodity].magicalItemInfo);
+       for(int i=0; i<MAX_COMMODITY; i++)
+       {
+           CurrentInventoryList ci=new CurrentInventoryList(0, 0, magicalItems[i]);
+           ab.currentInventoryList.add(ci);
+       }
+       for(int i=0; i<MAX_COMMODITY; i++)
+       {
+           FutureInventoryList fi=new FutureInventoryList(0, 0, magicalItems[i]);
+           ab.futureInventoryList.add(fi);
+       }
+
+       FutureInventoryList fi=ab.futureInventoryList.get(commodity);
+       fi.quantity=quantity;
+       fi.buyingTargetPrice=cost;
        ab.futureInventoryList.add(fi);
        apprentices.add(ab);        
        DiagonAlleyBuyerAccount daba=new DiagonAlleyBuyerAccount(ab);
