@@ -10,4 +10,8 @@ package server;
  */
 public class DiagonAlleyBuyerAccount extends DiagonAlleyAccount{
     ApprenticeBuyer apprentice;
+    DiagonAlleyBuyerAccount(ApprenticeBuyer ab)
+    {
+        apprentice=ab;
+    }
 }

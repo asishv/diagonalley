@@ -14,8 +14,8 @@ import java.io.*;
 public class MagicalItem implements java.rmi.Remote{
     MagicalItemInfo magicalItemInfo;
     int averageSellingPrice;
-    ArrayList<WizardSeller> wizards;
-    ArrayList<ApprenticeBuyer> apprentice;
+    ArrayList<DiagonAlleySellerAccount> wizards;
+    ArrayList<DiagonAlleyBuyerAccount> apprentice;
     
     MagicalItem()
     {
