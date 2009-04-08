@@ -12,10 +12,10 @@ package server;
 public class FutureInventoryList extends Inventory{
     int buyingTargetPrice;
     DiagonAlleyBuyerAccount diagonAlleyBuyerAccount;
-    FutureInventoryList(int cost, int quantity, MagicalItemInfo magicalItemInfo)
+    FutureInventoryList(int cost, int quantity, MagicalItem magicalItem)
     {
         this.buyingTargetPrice=cost;
         this.quantity=quantity;
-        this.magicalItem=magicalItemInfo;
+        this.magicalItem=magicalItem;
     }
 }

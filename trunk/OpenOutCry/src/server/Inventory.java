@@ -10,7 +10,7 @@ package server;
  * @author Asish
  */
 public class Inventory {
-    MagicalItemInfo magicalItem;
+    MagicalItem magicalItem;
     int quantity;
     int quantityLocked;
 }

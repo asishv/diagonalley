@@ -58,7 +58,7 @@ public class ApprenticeBuyer extends Everyone{
             FutureInventoryList fil=futureInventoryList.get(i);
             if (fil.buyingTargetPrice != 0)
             {
-                return fil.magicalItem;
+                return fil.magicalItem.magicalItemInfo;
             }
         }
         return null;        
@@ -69,7 +69,7 @@ public class ApprenticeBuyer extends Everyone{
      */       
     void bid(int price, int quantity, int magicalItemNumber)
     {
-        MagicalItem m=Main.getMagicalItem(magicalItemNumber);
+       
     }
     
     /**
