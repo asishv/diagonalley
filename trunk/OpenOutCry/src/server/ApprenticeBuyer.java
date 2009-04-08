@@ -16,6 +16,45 @@ public class ApprenticeBuyer extends Everyone{
         this.name=name;
     }
     
+       int getTargetQuantity()
+    {        
+        for(int i=0; i<futureInventoryList.size(); i++)
+        {
+            FutureInventoryList fil=futureInventoryList.get(i);
+            if (fil.buyingTargetPrice != 0)
+            {
+                return fil.quantity;
+            }
+        }
+        return -1;
+    }
+    
+    int getTargetCost()
+    {
+        for(int i=0; i<futureInventoryList.size(); i++)
+        {
+            FutureInventoryList fil=futureInventoryList.get(i);
+            if (fil.buyingTargetPrice != 0)
+            {
+                return fil.buyingTargetPrice;
+            }
+        }
+        return -1;        
+    }
+    
+    MagicalItemInfo getTargetCommodityInfo()
+    {
+        for(int i=0; i<futureInventoryList.size(); i++)
+        {
+            FutureInventoryList fil=futureInventoryList.get(i);
+            if (fil.buyingTargetPrice != 0)
+            {
+                return fil.magicalItem;
+            }
+        }
+        return null;        
+    }
+ 
     /**
      * Diagon Alley Apprentice Buyers place a bid to buy a magical item.
      */       

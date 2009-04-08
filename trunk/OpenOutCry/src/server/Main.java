@@ -17,6 +17,7 @@ public class Main extends Thread implements java.rmi.Remote{
      final int MAX_COMMODITY = 20;
      ArrayList<WizardSeller> wizards;
      ArrayList<ApprenticeBuyer> apprentices;
+     volatile int numberOfUsers=0;
      /**
      * Creates the Diagon Alley Wizards Sellers.
      */    
@@ -24,11 +25,20 @@ public class Main extends Thread implements java.rmi.Remote{
     {
        WizardSeller ws=new WizardSeller(name);
        Random random = new Random();
-       int commodity=(random.nextInt()+1)%20, quantity, cost;
+       int commodity=(random.nextInt())%20, quantity, cost;
   
        int apprenticeNo=findApprentice(magicalItems[commodity].magicalItemInfo);
-       quantity=(random.nextInt()+1)%1000;
-       cost=(random.nextInt()+1)%1000;
+       if(apprenticeNo == -1)
+       {
+           quantity=(random.nextInt()+100)%1000;
+           cost=(random.nextInt()+100)%1000;
+       }
+       else
+       {
+           ApprenticeBuyer ab=apprentices.get(apprenticeNo);
+           cost=ab.getTargetCost()-(random.nextInt())%10;
+           quantity=ab.getTargetQuantity();           
+       }
        CurrentInventoryList ci=new CurrentInventoryList(cost, quantity, magicalItems[commodity].magicalItemInfo);
        ws.currentInventoryList.add(ci);
        wizards.add(ws);
@@ -56,6 +66,14 @@ public class Main extends Thread implements java.rmi.Remote{
         return -1;
     }
 
+    synchronized void register(String name)
+    {
+        numberOfUsers++;
+        if(numberOfUsers%2 == 0)
+            createWizards(name);
+        else
+            createApprentices(name);
+    }
     
      /**
      * Creates the Diagon Alley Apprentice Buyers.
@@ -64,17 +82,17 @@ public class Main extends Thread implements java.rmi.Remote{
     {
        ApprenticeBuyer ab=new ApprenticeBuyer(name);
        Random random = new Random();
-       int commodity=(random.nextInt()+1)%20, quantity, cost;
+       int commodity=(random.nextInt())%20, quantity, cost;
        int wizardNo=findWizard(magicalItems[commodity].magicalItemInfo);
        if(wizardNo == -1)
        {
-           quantity=(random.nextInt()+1)%1000;
-           cost=(random.nextInt()+1)%1000;
+           quantity=(random.nextInt()+100)%1000;
+           cost=(random.nextInt()+100)%1000;
        }
        else
        {
            WizardSeller ws=wizards.get(wizardNo);
-           cost=ws.getTargetCost()+random.nextInt()+1;
+           cost=ws.getTargetCost()+(random.nextInt())%10;
            quantity=ws.getTargetQuantity();
        }
        FutureInventoryList fi=new FutureInventoryList(cost, quantity, magicalItems[commodity].magicalItemInfo);
