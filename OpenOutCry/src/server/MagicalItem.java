@@ -6,6 +6,7 @@
 package server;
 import java.util.ArrayList;
 import java.io.*;
+import java.util.concurrent.locks.*;
 
 /**
  *
@@ -16,9 +17,11 @@ public class MagicalItem implements java.rmi.Remote{
     int averageSellingPrice;
     ArrayList<DiagonAlleySellerAccount> wizards;
     ArrayList<DiagonAlleyBuyerAccount> apprentice;
+    Lock l;
     
     MagicalItem()
     {
+        l=new ReentrantLock();
     }
     
      /**
@@ -34,7 +37,7 @@ public class MagicalItem implements java.rmi.Remote{
      */       
     public void lock()
     {
-        
+        l.lock();
     }
 
     /**
@@ -42,6 +45,6 @@ public class MagicalItem implements java.rmi.Remote{
      */       
     public void unlock()
     {
-        
+        l.unlock();
     }
 }
