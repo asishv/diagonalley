@@ -20,6 +20,11 @@ public class Main extends Thread implements java.rmi.Remote{
      ArrayList<ApprenticeBuyer> apprentices;
      ArrayList<MagicalItemInfo> magicalItemInfo;
      volatile int numberOfUsers=0;
+     
+     MagicalItem getMagicalItem(int magicalItemNumber)
+     {
+         return magicalItems[magicalItemNumber];
+     }
 
      /**
      * Creates the Diagon Alley Wizards Sellers.
