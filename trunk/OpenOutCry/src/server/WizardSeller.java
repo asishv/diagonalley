@@ -58,7 +58,7 @@ public class WizardSeller extends Everyone{
             CurrentInventoryList cil=currentInventoryList.get(i);
             if (cil.sellingPriceTarget != 0)
             {
-                return cil.magicalItem;
+                return cil.magicalItem.magicalItemInfo;
             }
         }
         return null;        

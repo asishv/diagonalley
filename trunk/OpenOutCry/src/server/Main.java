@@ -66,6 +66,7 @@ public class Main extends Thread implements java.rmi.Remote{
        wizards.add(ws);
        DiagonAlleySellerAccount dasa=new DiagonAlleySellerAccount(ws);
        magicalItems[commodity].wizards.add(dasa);
+       ci.diagonAlleySellerAccount=dasa;
     }
     
      /**
@@ -146,6 +147,7 @@ public class Main extends Thread implements java.rmi.Remote{
        apprentices.add(ab);        
        DiagonAlleyBuyerAccount daba=new DiagonAlleyBuyerAccount(ab);
        magicalItems[commodity].apprentice.add(daba);
+       fi.diagonAlleyBuyerAccount=daba;
     }
    
     /**
