@@ -6,6 +6,7 @@ package server;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.Random;
+import java.io.*;
 
 /**
  *
@@ -17,6 +18,7 @@ public class Main extends Thread implements java.rmi.Remote{
      public static final int MAX_COMMODITY = 20;
      ArrayList<WizardSeller> wizards;
      ArrayList<ApprenticeBuyer> apprentices;
+     ArrayList<MagicalItemInfo> magicalItemInfo;
      volatile int numberOfUsers=0;
 
      /**
@@ -116,13 +118,26 @@ public class Main extends Thread implements java.rmi.Remote{
     void createMagicalItems()
     {
         magicalItems=new MagicalItem[MAX_COMMODITY];
-        for(int i=0; i<MAX_COMMODITY; i++)
+         try{
+            InputStream instream = getClass().getResourceAsStream("DiagonAlleyMagicalItems.csv");
+            InputStreamReader infile = new InputStreamReader(instream);
+            BufferedReader br = new BufferedReader(infile);
+            for(int i=0; i<MAX_COMMODITY; i++)
+            {
+                magicalItems[i]=new MagicalItem();
+                if(br.ready())
+                {
+                    String line=br.readLine();
+                    String elem[]=line.split(",");
+                    magicalItems[i].magicalItemInfo= new MagicalItemInfo(elem[0], elem[1], elem[2]);
+                }
+
+            }
+        }catch(IOException e)
         {
-            magicalItems[i]=new MagicalItem();
-            magicalItems[i].magicalItemInfo=new MagicalItemInfo();
-            magicalItems[i].populateMagicalItemInfo();
-        }
-        
+            e.printStackTrace();
+            System.exit(0);
+        }        
     }
     
      /**

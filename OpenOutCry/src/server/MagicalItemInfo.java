@@ -13,5 +13,10 @@ public class MagicalItemInfo {
     String name;
     String symbol;
     String picture;
-
+    MagicalItemInfo(String name, String symbol, String picture)
+    {
+        this.name=name;
+        this.symbol=symbol;
+        this.picture=picture;
+    }
 }
