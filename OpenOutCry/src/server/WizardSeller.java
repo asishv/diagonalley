@@ -4,8 +4,7 @@
  */
 
 package server;
-import java.lang.Math;
-import java.util.Calendar;
+
 /**
  *
  * @author Asish
@@ -49,10 +48,10 @@ public class WizardSeller extends Everyone{
         return -1;        
     }
 
-      /**
+    /**
      * Gets the target magical item to sell for the wizard.
      */    
-      MagicalItemInfo getTargetCommodityInfo()
+    MagicalItemInfo getTargetCommodityInfo()
     {
         for(int i=0; i<currentInventoryList.size(); i++)
         {
@@ -64,21 +63,42 @@ public class WizardSeller extends Everyone{
         }
         return null;        
     }
-    
-     /**
+
+    /**
+     * Gets the current price for the magical item present on CIL
+     */
+    int getCurrentPrice(int magicalItemNumber)
+    {
+        CurrentInventoryList cil = this.currentInventoryList.get(magicalItemNumber);
+        return cil.diagonAlleySellerAccount.price;
+    }
+
+    /**
+     * Gets the current price for the magical item present on CIL
+     */
+    int getCurrentQuantity(int magicalItemNumber)
+    {
+        CurrentInventoryList cil = this.currentInventoryList.get(magicalItemNumber);
+        return cil.diagonAlleySellerAccount.quantity;
+    }
+
+    /**
      * Diagon Alley Wizard Sellers trade a magical item.
-     */       
-    void trade(int price, int quantity, int magicalItemNumber, long m)
+     */
+    boolean trade(int price, int quantity, int magicalItemNumber, long m)
     {
         CurrentInventoryList cil = this.currentInventoryList.get(magicalItemNumber);
         if(cil == null) {
             //ERROR: Node doesnt exist.
             System.out.println("Error setting up trade");
-            return;
+            return false;
         }
         /* Quantity of item decreases by 'x' in CIL
          * QuantityLocked will be incremented by 'x'
          */
+        if(quantity > cil.quantity) {
+            return false;
+        }
         cil.quantity = cil.quantity - quantity;
         cil.quantityLocked = cil.quantityLocked + quantity;
 
@@ -93,18 +113,24 @@ public class WizardSeller extends Everyone{
         cil.diagonAlleySellerAccount.time.setTimeInMillis(cil.diagonAlleySellerAccount.time.getTimeInMillis()+m);
         cil.magicalItem.unlock();
         cil.magicalItem.executeTrade();
+        return true;
     }
 
      /**
      * Diagon Alley Wizard Sellers modify existing trade for a magical item.
      */       
-    void modifyTrade(int price, int quantity, int magicalItemNumber)
+    boolean modifyTrade(int price, int quantity, int magicalItemNumber, long m)
     {
         CurrentInventoryList cil = this.currentInventoryList.get(magicalItemNumber);
-        //int oldPrice = cil.diagonAlleySellerAccount.price;
+        if(cil == null) {
+            return false;
+        }
         int oldQuantity = cil.diagonAlleySellerAccount.quantity;
 
         /* Modify the quantity and the quantity locked values in CIL */
+        if(quantity > cil.quantity + oldQuantity) {
+            return false;
+        }
         cil.quantity = cil.quantity + oldQuantity - quantity;
         cil.quantityLocked = cil.quantityLocked - oldQuantity + quantity;
 
@@ -115,7 +141,9 @@ public class WizardSeller extends Everyone{
         cil.magicalItem.averageSellingPrice = Math.min(cil.magicalItem.averageSellingPrice, price);
         cil.diagonAlleySellerAccount.price = price;
         cil.diagonAlleySellerAccount.quantity = quantity;
+        cil.diagonAlleySellerAccount.time.setTimeInMillis(cil.diagonAlleySellerAccount.time.getTimeInMillis()+m);
         cil.magicalItem.unlock();
         cil.magicalItem.executeTrade();
+        return true;
     }
 }
