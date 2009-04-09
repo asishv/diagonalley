@@ -67,9 +67,13 @@ public class ApprenticeBuyer extends Everyone{
     /**
      * Diagon Alley Apprentice Buyers place a bid to buy a magical item.
      */       
-    void bid(int price, int quantity, int magicalItemNumber,long msec)
+    boolean bid(int price, int quantity, int magicalItemNumber,long msec)
     {
         FutureInventoryList fil=futureInventoryList.get(magicalItemNumber);
+        if(quantity>fil.quantity)
+           return false; 
+        if(price>fil.buyingTargetPrice)
+            return false;
         fil.quantity-=quantity;
         fil.quantityLocked+=quantity;
         fil.magicalItem.lock();
@@ -78,14 +82,19 @@ public class ApprenticeBuyer extends Everyone{
         fil.diagonAlleyBuyerAccount.time.setTimeInMillis(fil.diagonAlleyBuyerAccount.time.getTimeInMillis()+msec);
         fil.magicalItem.unlock();
         fil.magicalItem.executeTrade();
+        return true;
     }
     
     /**
      * Diagon Alley Apprentice Buyers modify an existing bid for a magical item.
      */       
-    void modifyBid(int price, int quantity, int magicalItemNumber, long msec)
+    boolean modifyBid(int price, int quantity, int magicalItemNumber, long msec)
     {
         FutureInventoryList fil=futureInventoryList.get(magicalItemNumber);
+        if(quantity>fil.quantity)
+           return false; 
+        if(price>fil.buyingTargetPrice)
+           return false;
         fil.quantity-=quantity+fil.diagonAlleyBuyerAccount.quantity;
         fil.quantityLocked+=quantity-fil.diagonAlleyBuyerAccount.quantity;
         fil.magicalItem.lock();
@@ -94,5 +103,6 @@ public class ApprenticeBuyer extends Everyone{
         fil.diagonAlleyBuyerAccount.time.setTimeInMillis(fil.diagonAlleyBuyerAccount.time.getTimeInMillis()+msec);
         fil.magicalItem.unlock();
         fil.magicalItem.executeTrade(); 
+        return true;
     }
 }

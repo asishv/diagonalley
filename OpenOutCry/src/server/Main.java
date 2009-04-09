@@ -208,6 +208,17 @@ public class Main extends Thread implements java.rmi.Remote{
     {
         //TODO:Check if all apprentice and wizards have met their goals
         //if (true) stop the server
+        try{
+           while(true)
+           {
+                Thread.sleep(5000);
+                
+           }
+        }
+        catch(InterruptedException ie)
+        {
+
+        }
     }
     
     Main()
