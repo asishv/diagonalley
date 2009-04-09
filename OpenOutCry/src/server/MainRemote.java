@@ -11,5 +11,5 @@ import java.rmi.*;
  * @author Asish
  */
 public interface MainRemote extends java.rmi.Remote{
-    int register(String name) throws RemoteException;
+    Everyone register(String name) throws RemoteException;
 }
