@@ -33,7 +33,7 @@ public class Main extends Thread implements MainRemote{
      /**
      * Creates the Diagon Alley Wizards Sellers.
      */    
-    void createWizards(String name)
+    WizardSeller createWizards(String name)
     {
        WizardSeller ws=new WizardSeller(name);
        Random random = new Random();
@@ -71,6 +71,7 @@ public class Main extends Thread implements MainRemote{
        DiagonAlleySellerAccount dasa=new DiagonAlleySellerAccount(ws);
        magicalItems[commodity].wizards.add(dasa);
        ci.diagonAlleySellerAccount=dasa;
+       return ws;
     }
     
      /**
@@ -104,23 +105,21 @@ public class Main extends Thread implements MainRemote{
      /**
      * Register a user in Diagon Alley.
      */    
-    synchronized public int register(String name)
+    synchronized public Everyone register(String name)
     {
         numberOfUsers++;
         if(numberOfUsers%2 == 0) {
-            createWizards(name);
-            return numberOfUsers;
+            return (Everyone)createWizards(name);
         }
         else {
-            createApprentices(name);
-            return(numberOfUsers);
+            return (Everyone)createApprentices(name);
         }
     }
     
      /**
      * Creates the Diagon Alley Apprentice Buyers.
      */    
-    void createApprentices(String name)
+    ApprenticeBuyer createApprentices(String name)
     {
        ApprenticeBuyer ab=new ApprenticeBuyer(name);
        Random random = new Random();
@@ -156,6 +155,7 @@ public class Main extends Thread implements MainRemote{
        DiagonAlleyBuyerAccount daba=new DiagonAlleyBuyerAccount(ab);
        magicalItems[commodity].apprentice.add(daba);
        fi.diagonAlleyBuyerAccount=daba;
+       return ab;
     }
    
     /**
