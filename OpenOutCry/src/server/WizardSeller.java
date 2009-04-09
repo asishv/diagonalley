@@ -5,7 +5,7 @@
 
 package server;
 import java.lang.Math;
-import java.util.Date;
+import java.util.Calendar;
 /**
  *
  * @author Asish
@@ -68,7 +68,7 @@ public class WizardSeller extends Everyone{
      /**
      * Diagon Alley Wizard Sellers trade a magical item.
      */       
-    void trade(int price, int quantity, int magicalItemNumber, Date time)
+    void trade(int price, int quantity, int magicalItemNumber, long m)
     {
         CurrentInventoryList cil = this.currentInventoryList.get(magicalItemNumber);
         if(cil == null) {
@@ -82,6 +82,7 @@ public class WizardSeller extends Everyone{
         cil.quantity = cil.quantity - quantity;
         cil.quantityLocked = cil.quantityLocked + quantity;
 
+
         /* Obtain Lock, update the DiagonAlleySellerAccount values in Q,
          * update avg. price in Magical Item, unlock and execute trade.
          */
@@ -89,6 +90,7 @@ public class WizardSeller extends Everyone{
         cil.magicalItem.averageSellingPrice = Math.min(cil.magicalItem.averageSellingPrice, price);
         cil.diagonAlleySellerAccount.price = price;
         cil.diagonAlleySellerAccount.quantity = quantity;
+        cil.diagonAlleySellerAccount.time.setTimeInMillis(cil.diagonAlleySellerAccount.time.getTimeInMillis()+m);
         cil.magicalItem.unlock();
         cil.magicalItem.executeTrade();
     }
