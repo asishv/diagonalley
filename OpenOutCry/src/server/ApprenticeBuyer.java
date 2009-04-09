@@ -4,7 +4,7 @@
  */
 
 package server;
-
+import java.util.Date;
 /**
  *
  * @author Asish
@@ -67,16 +67,32 @@ public class ApprenticeBuyer extends Everyone{
     /**
      * Diagon Alley Apprentice Buyers place a bid to buy a magical item.
      */       
-    void bid(int price, int quantity, int magicalItemNumber)
+    void bid(int price, int quantity, int magicalItemNumber,Date time)
     {
-       
+        FutureInventoryList fil=futureInventoryList.get(magicalItemNumber);
+        fil.quantity-=quantity;
+        fil.quantityLocked+=quantity;
+        fil.magicalItem.lock();
+        fil.diagonAlleyBuyerAccount.price=price;
+        fil.diagonAlleyBuyerAccount.quantity=quantity;
+        fil.diagonAlleyBuyerAccount.time = time;
+        fil.magicalItem.unlock();
+        fil.magicalItem.executeTrade();
     }
     
     /**
      * Diagon Alley Apprentice Buyers modify an existing bid for a magical item.
      */       
-    void modifyBid(int price, int quantity, int magicalItemNumber)
+    void modifyBid(int price, int quantity, int magicalItemNumber, Date time)
     {
-        
+        FutureInventoryList fil=futureInventoryList.get(magicalItemNumber);
+        fil.quantity-=quantity;
+        fil.quantityLocked+=quantity;
+        fil.magicalItem.lock();
+        fil.diagonAlleyBuyerAccount.price=price;
+        fil.diagonAlleyBuyerAccount.quantity=quantity;
+        fil.diagonAlleyBuyerAccount.time = time;
+        fil.magicalItem.unlock();
+        fil.magicalItem.executeTrade(); 
     }
 }
