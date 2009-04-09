@@ -74,12 +74,12 @@ public class ApprenticeBuyer extends Everyone{
            return false; 
         if(price>fil.buyingTargetPrice)
             return false;
-        fil.quantity-=quantity;
-        fil.quantityLocked+=quantity;
         fil.magicalItem.lock();
         fil.diagonAlleyBuyerAccount.price=price;
         fil.diagonAlleyBuyerAccount.quantity=quantity;
         fil.diagonAlleyBuyerAccount.time.setTimeInMillis(fil.diagonAlleyBuyerAccount.time.getTimeInMillis()+msec);
+        fil.quantity-=quantity;
+        fil.quantityLocked+=quantity;
         fil.magicalItem.unlock();
         fil.magicalItem.executeTrade();
         return true;
