@@ -15,18 +15,43 @@ public class WizardSeller extends Everyone implements WizardSellerRemote{
         wizardOrNot=true;
         this.name=name;
     }
+    
+    public int getScore()
+    {
+        int score;
+        lock();
+        score=this.score;
+        unlock();
+        return score;
+    }
 
      /**
      * Gets the target quantity for the magical item to sell.
      */    
-    int getTargetQuantity()
+    public int getTargetQuantity()
     {        
         for(int i=0; i<currentInventoryList.size(); i++)
         {
             CurrentInventoryList cil=currentInventoryList.get(i);
             if (cil.sellingPriceTarget != 0)
             {
-                return cil.quantity;
+                return cil.quantity+cil.quantityLocked;
+            }
+        }
+        return -1;
+    }
+    
+         /**
+     * Gets the target quantity locked to buy for the apprentice.
+     */    
+    public int getTargetQuantityLocked()
+    {        
+        for(int i=0; i<futureInventoryList.size(); i++)
+        {
+            FutureInventoryList fil=futureInventoryList.get(i);
+            if (fil.buyingTargetPrice != 0)
+            {
+                return fil.quantityLocked;
             }
         }
         return -1;
@@ -35,7 +60,7 @@ public class WizardSeller extends Everyone implements WizardSellerRemote{
     /**
      * Gets the target cost for the magical item to sell.
      */    
-    int getTargetCost()
+    public int getTargetCost()
     {
         for(int i=0; i<currentInventoryList.size(); i++)
         {
@@ -51,7 +76,7 @@ public class WizardSeller extends Everyone implements WizardSellerRemote{
     /**
      * Gets the target magical item to sell for the wizard.
      */    
-    MagicalItemInfo getTargetCommodityInfo()
+    public MagicalItemInfo getTargetCommodityInfo()
     {
         for(int i=0; i<currentInventoryList.size(); i++)
         {
