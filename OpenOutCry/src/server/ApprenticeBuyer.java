@@ -4,7 +4,7 @@
  */
 
 package server;
-import java.util.Date;
+import java.util.Calendar;
 /**
  *
  * @author Asish
@@ -67,7 +67,7 @@ public class ApprenticeBuyer extends Everyone{
     /**
      * Diagon Alley Apprentice Buyers place a bid to buy a magical item.
      */       
-    void bid(int price, int quantity, int magicalItemNumber,Date time)
+    void bid(int price, int quantity, int magicalItemNumber,int sec)
     {
         FutureInventoryList fil=futureInventoryList.get(magicalItemNumber);
         fil.quantity-=quantity;
