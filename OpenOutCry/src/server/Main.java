@@ -7,12 +7,16 @@ import java.util.Date;
 import java.util.ArrayList;
 import java.util.Random;
 import java.io.*;
+import java.rmi.server.UnicastRemoteObject;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+
 
 /**
  *
  * @author Asish
  */
-public class Main extends Thread implements java.rmi.Remote{
+public class Main extends Thread implements MainRemote{
      Date startTime;
      MagicalItem[] magicalItems;
      public static final int MAX_COMMODITY = 20;
@@ -100,7 +104,7 @@ public class Main extends Thread implements java.rmi.Remote{
      /**
      * Register a user in Diagon Alley.
      */    
-    synchronized void register(String name)
+    synchronized public void register(String name)
     {
         numberOfUsers++;
         if(numberOfUsers%2 == 0)
@@ -228,7 +232,17 @@ public class Main extends Thread implements java.rmi.Remote{
     
     public static void main(String args[])
     {
-        Main m=new Main();
-        m.start();
+       	try {
+	    Main obj = new Main();
+	    MainRemote stub = (MainRemote) UnicastRemoteObject.exportObject(obj, 0);
+	    // Bind the remote object's stub in the registry
+	    Registry registry = LocateRegistry.getRegistry();
+	    registry.bind("Main", stub);
+	    System.err.println("Server ready");
+	} catch (Exception e) {
+	    System.err.println("Server exception: " + e.toString());
+	    e.printStackTrace();
+	}
+//        m.start();
     }
 }
