@@ -14,10 +14,10 @@ import java.util.concurrent.locks.*;
  */
 public class MagicalItem implements java.rmi.Remote{
     MagicalItemInfo magicalItemInfo;
-    int averageSellingPrice;
+    volatile int averageSellingPrice;
     ArrayList<DiagonAlleySellerAccount> wizards;
     ArrayList<DiagonAlleyBuyerAccount> apprentice;
-    Lock l;
+    private Lock l;
     
     MagicalItem()
     {
@@ -29,7 +29,43 @@ public class MagicalItem implements java.rmi.Remote{
      */       
     void executeTrade()
     {
-        
+        lock();
+        for(int i=0; i<apprentice.size(); i++)
+        {
+            DiagonAlleyBuyerAccount daba=apprentice.get(i);
+            if(daba.time.before(new java.util.Date()))
+            {
+                for(int j=0; j<wizards.size(); j++)
+                {
+                    DiagonAlleySellerAccount dasa=wizards.get(i);
+                    if(daba.price<=dasa.price)
+                    {
+                        //Execute trade
+                        if(daba.quantity<dasa.quantity)
+                        {
+                            dasa.quantity-=daba.quantity;
+                            CurrentInventoryList cil=daba.apprentice.currentInventoryList.get(i);
+                            cil.cost=(daba.price+dasa.price)/2;
+                            cil.quantity+=daba.quantity;
+                            FutureInventoryList fil=daba.apprentice.futureInventoryList.get(i);
+                            fil.quantity-=daba.quantity;
+                            daba.quantity=0;
+                        }
+                        else
+                        {
+                            daba.quantity-=dasa.quantity;
+                            CurrentInventoryList cil=daba.apprentice.currentInventoryList.get(i);
+                            cil.cost=(daba.price+dasa.price)/2;
+                            cil.quantity+=dasa.quantity;
+                            FutureInventoryList fil=daba.apprentice.futureInventoryList.get(i);
+                            fil.quantity-=dasa.quantity;
+                            dasa.quantity=0;
+                        }
+                    }
+                }
+            }
+        }
+        unlock();
     }
 
     /**
