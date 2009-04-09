@@ -104,13 +104,17 @@ public class Main extends Thread implements MainRemote{
      /**
      * Register a user in Diagon Alley.
      */    
-    synchronized public void register(String name)
+    synchronized public int register(String name)
     {
         numberOfUsers++;
-        if(numberOfUsers%2 == 0)
+        if(numberOfUsers%2 == 0) {
             createWizards(name);
-        else
+            return numberOfUsers;
+        }
+        else {
             createApprentices(name);
+            return(numberOfUsers);
+        }
     }
     
      /**
