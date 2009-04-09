@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class Everyone implements java.rmi.Remote{
     String name;
     boolean wizardOrNot;
-    int score;
+    volatile int score;
     Everyone()
     {
     }
