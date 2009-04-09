@@ -64,6 +64,12 @@ public class MagicalItem implements java.rmi.Remote{
                     }
                 }
             }
+            else
+            {
+                  FutureInventoryList fil=daba.apprentice.futureInventoryList.get(i);
+                  fil.quantity+=daba.quantity;
+                  daba.quantity=0;
+            }
         }
         unlock();
     }

@@ -12,5 +12,5 @@ import java.util.Date;
 public class DiagonAlleyAccount {
     int price;
     int quantity;
-    Date time;
+    Calendar time;
 }

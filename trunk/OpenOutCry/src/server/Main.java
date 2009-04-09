@@ -217,6 +217,7 @@ public class Main extends Thread implements java.rmi.Remote{
     
     public static void main(String args[])
     {
-        
+        Main m=new Main();
+        m.start();
     }
 }
