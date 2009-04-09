@@ -29,6 +29,11 @@ public class Main extends Thread implements MainRemote{
      {
          return magicalItems[magicalItemNumber];
      }
+     
+     public MagicalItemInfo[] getAllMagicalItems()
+     {
+         return (MagicalItemInfo[])magicalItemInfo.toArray();
+     }
 
      /**
      * Creates the Diagon Alley Wizards Sellers.
@@ -176,6 +181,7 @@ public class Main extends Thread implements MainRemote{
                     String line=br.readLine();
                     String elem[]=line.split(",");
                     magicalItems[i].magicalItemInfo= new MagicalItemInfo(elem[0], elem[1], elem[2]);
+                    magicalItemInfo.add(magicalItems[i].magicalItemInfo);
                 }
 
             }
