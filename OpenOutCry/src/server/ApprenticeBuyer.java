@@ -4,7 +4,6 @@
  */
 
 package server;
-import java.util.Calendar;
 /**
  *
  * @author Asish
@@ -19,7 +18,7 @@ public class ApprenticeBuyer extends Everyone implements ApprenticeBuyerRemote{
     /**
      * Gets the target quantity to buy for the apprentice.
      */    
-    int getTargetQuantity()
+    public int getTargetQuantity()
     {        
         for(int i=0; i<futureInventoryList.size(); i++)
         {
@@ -32,10 +31,27 @@ public class ApprenticeBuyer extends Everyone implements ApprenticeBuyerRemote{
         return -1;
     }
 
+     /**
+     * Gets the target quantity locked to buy for the apprentice.
+     */    
+    public int getTargetQuantityLocked()
+    {        
+        for(int i=0; i<futureInventoryList.size(); i++)
+        {
+            FutureInventoryList fil=futureInventoryList.get(i);
+            if (fil.buyingTargetPrice != 0)
+            {
+                return fil.quantityLocked;
+            }
+        }
+        return -1;
+    }
+
+    
     /**
      * Gets the target cost for the magical item to buy for the apprentice.
      */    
-    int getTargetCost()
+    public int getTargetCost()
     {
         for(int i=0; i<futureInventoryList.size(); i++)
         {
@@ -47,11 +63,20 @@ public class ApprenticeBuyer extends Everyone implements ApprenticeBuyerRemote{
         }
         return -1;        
     }
+    
+    public int getScore()
+    {
+        int score;
+        lock();
+        score=this.score;
+        unlock();
+        return score;
+    }
 
     /**
      * Gets the target magical item to buy for the apprentice.
      */    
-    MagicalItemInfo getTargetCommodityInfo()
+    public MagicalItemInfo getTargetCommodityInfo()
     {
         for(int i=0; i<futureInventoryList.size(); i++)
         {
