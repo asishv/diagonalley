@@ -169,6 +169,7 @@ public class Main extends Thread implements MainRemote{
     void createMagicalItems()
     {
         magicalItems=new MagicalItem[MAX_COMMODITY];
+        magicalItemInfo = new ArrayList();
          try{
             InputStream instream = getClass().getResourceAsStream("DiagonAlleyMagicalItems.csv");
             InputStreamReader infile = new InputStreamReader(instream);
