@@ -9,7 +9,7 @@ import java.util.Calendar;
  *
  * @author Asish
  */
-public class ApprenticeBuyer extends Everyone{
+public class ApprenticeBuyer extends Everyone implements ApprenticeBuyerRemote{
     ApprenticeBuyer(String name)
     {
         wizardOrNot = false;
@@ -67,7 +67,7 @@ public class ApprenticeBuyer extends Everyone{
     /**
      * Diagon Alley Apprentice Buyers place a bid to buy a magical item.
      */       
-    boolean bid(int price, int quantity, int magicalItemNumber,long msec)
+    public boolean bid(int price, int quantity, int magicalItemNumber,long msec)
     {
         FutureInventoryList fil=futureInventoryList.get(magicalItemNumber);
         if(quantity>fil.quantity)
@@ -90,7 +90,7 @@ public class ApprenticeBuyer extends Everyone{
     /**
      * Diagon Alley Apprentice Buyers modify an existing bid for a magical item.
      */       
-    boolean modifyBid(int price, int quantity, int magicalItemNumber, long msec)
+    public boolean modifyBid(int price, int quantity, int magicalItemNumber, long msec)
     {
         FutureInventoryList fil=futureInventoryList.get(magicalItemNumber);
         if(quantity>fil.quantity)

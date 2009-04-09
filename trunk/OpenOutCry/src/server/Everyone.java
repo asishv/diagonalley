@@ -10,11 +10,17 @@ import java.util.concurrent.locks.*;
  *
  * @author Asish
  */
-public class Everyone implements java.rmi.Remote{
+public class Everyone implements EveryoneRemote{
     String name;
     boolean wizardOrNot;
     private Lock l;
     volatile int score;
+    
+    public boolean isWizard()
+    {
+        return wizardOrNot;
+    }
+    
     Everyone()
     {
         l=new ReentrantLock();
