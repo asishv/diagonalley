@@ -19,7 +19,7 @@ public class ApprenticeBuyer extends Everyone implements ApprenticeBuyerRemote{
     /**
      * Gets the target quantity to buy for the apprentice.
      */    
-      int getTargetQuantity()
+    int getTargetQuantity()
     {        
         for(int i=0; i<futureInventoryList.size(); i++)
         {
@@ -32,7 +32,7 @@ public class ApprenticeBuyer extends Everyone implements ApprenticeBuyerRemote{
         return -1;
     }
 
-      /**
+    /**
      * Gets the target cost for the magical item to buy for the apprentice.
      */    
     int getTargetCost()
@@ -106,7 +106,6 @@ public class ApprenticeBuyer extends Everyone implements ApprenticeBuyerRemote{
         fil.quantityLocked+=quantity-fil.diagonAlleyBuyerAccount.quantity;
         fil.unlock();
         fil.magicalItem.unlock();
-        fil.unlock();
         fil.magicalItem.executeTrade(); 
         return true;
     }
