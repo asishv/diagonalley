@@ -93,21 +93,18 @@ public class WizardSeller extends Everyone{
             System.out.println("Error setting up trade");
             return false;
         }
-        /* Quantity of item decreases by 'x' in CIL
-         * QuantityLocked will be incremented by 'x'
-         */
+        
         if(quantity > cil.quantity) {
             return false;
         }
-        cil.quantity = cil.quantity - quantity;
-        cil.quantityLocked = cil.quantityLocked + quantity;
-
-
+        
         /* Obtain Lock, update the DiagonAlleySellerAccount values in Q,
-         * update avg. price in Magical Item, unlock and execute trade.
-         */
+         * update avg. price in Magical Item, unlock and execute trade.  */
         cil.magicalItem.lock();
         cil.magicalItem.averageSellingPrice = Math.min(cil.magicalItem.averageSellingPrice, price);
+        /* Quantity of item decreases by 'x' in CIL, QuantityLocked will be incremented by 'x' */
+        cil.quantity = cil.quantity - quantity;
+        cil.quantityLocked = cil.quantityLocked + quantity;
         cil.diagonAlleySellerAccount.price = price;
         cil.diagonAlleySellerAccount.quantity = quantity;
         cil.diagonAlleySellerAccount.time.setTimeInMillis(cil.diagonAlleySellerAccount.time.getTimeInMillis()+m);
@@ -126,19 +123,19 @@ public class WizardSeller extends Everyone{
             return false;
         }
         int oldQuantity = cil.diagonAlleySellerAccount.quantity;
-
-        /* Modify the quantity and the quantity locked values in CIL */
         if(quantity > cil.quantity + oldQuantity) {
             return false;
         }
+
+        /* Obtain Lock, update the DiagonAlleySellerAccount values in Q,
+         * update avg. price in Magical Item, unlock and execute trade. */
+        cil.magicalItem.lock();
+        cil.magicalItem.averageSellingPrice = Math.min(cil.magicalItem.averageSellingPrice, price);
+
+        /* Modify the quantity and the quantity locked values in CIL */
         cil.quantity = cil.quantity + oldQuantity - quantity;
         cil.quantityLocked = cil.quantityLocked - oldQuantity + quantity;
 
-        /* Obtain Lock, update the DiagonAlleySellerAccount values in Q,
-         * update avg. price in Magical Item, unlock and execute trade.
-         */
-        cil.magicalItem.lock();
-        cil.magicalItem.averageSellingPrice = Math.min(cil.magicalItem.averageSellingPrice, price);
         cil.diagonAlleySellerAccount.price = price;
         cil.diagonAlleySellerAccount.quantity = quantity;
         cil.diagonAlleySellerAccount.time.setTimeInMillis(cil.diagonAlleySellerAccount.time.getTimeInMillis()+m);
