@@ -52,10 +52,14 @@ public class MagicalItem implements java.rmi.Remote{
                                 cil.quantity+=daba.quantity; //Update the quantity bought for the buyer
                                 FutureInventoryList fil=daba.apprentice.futureInventoryList.get(i);
                                 fil.quantity-=daba.quantity; //Update the goal for the buyer
+                                daba.apprentice.lock();
                                 daba.apprentice.score+=(fil.buyingTargetPrice-cost)*daba.quantity;//Update score for buyer
+                                daba.apprentice.unlock();
                                 cil=dasa.wizard.currentInventoryList.get(i);
                                 cil.quantityLocked-=daba.quantity; //Update the quantity locked for the seller
+                                dasa.wizard.lock();
                                 dasa.wizard.score+=(cost-cil.sellingPriceTarget)*daba.quantity; //Update score for seller
+                                dasa.wizard.unlock();
                                 daba.quantity=0; //Update the bid quantity
                             }
                             else
@@ -66,10 +70,14 @@ public class MagicalItem implements java.rmi.Remote{
                                 cil.quantity+=dasa.quantity; //Update the quantity bought for the buyer
                                 FutureInventoryList fil=daba.apprentice.futureInventoryList.get(i);
                                 fil.quantity-=dasa.quantity; //Update the goal for the buyer
+                                daba.apprentice.lock();
                                 daba.apprentice.score+=(fil.buyingTargetPrice-cost)*daba.quantity;//Update score for buyer
+                                daba.apprentice.unlock();
                                 cil=dasa.wizard.currentInventoryList.get(i);
                                 cil.quantityLocked-=daba.quantity; //Update the quantity locked for the seller
+                                dasa.wizard.lock();
                                 dasa.wizard.score+=(cost-cil.sellingPriceTarget)*daba.quantity; //Update score for seller
+                                dasa.wizard.unlock();
                                 dasa.quantity=0; //Update the sale quantity
                             }
                         }
