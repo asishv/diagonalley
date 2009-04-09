@@ -38,34 +38,42 @@ public class MagicalItem implements java.rmi.Remote{
                 for(int j=0; j<wizards.size(); j++)
                 {
                     DiagonAlleySellerAccount dasa=wizards.get(i);
-                    if(daba.price<=dasa.price)
+                    if(dasa.time.before(new java.util.Date()))
                     {
-                        //Execute trade
-                        if(daba.quantity<dasa.quantity)
+                        if(daba.price<=dasa.price)
                         {
-                            dasa.quantity-=daba.quantity;
-                            
-                            CurrentInventoryList cil=daba.apprentice.currentInventoryList.get(i);
-                            cil.cost=(daba.price+dasa.price)/2;
-                            cil.quantity+=daba.quantity;
-                            FutureInventoryList fil=daba.apprentice.futureInventoryList.get(i);
-                            fil.quantity-=daba.quantity;
-                            cil=dasa.wizard.currentInventoryList.get(i);
-                            cil.quantityLocked-=daba.quantity;
-                            daba.quantity=0;
+                            //Execute trade
+                            if(daba.quantity<dasa.quantity)
+                            {
+                                dasa.quantity-=daba.quantity;                            
+                                CurrentInventoryList cil=daba.apprentice.currentInventoryList.get(i);
+                                cil.cost=(daba.price+dasa.price)/2;
+                                cil.quantity+=daba.quantity;
+                                FutureInventoryList fil=daba.apprentice.futureInventoryList.get(i);
+                                fil.quantity-=daba.quantity;
+                                cil=dasa.wizard.currentInventoryList.get(i);
+                                cil.quantityLocked-=daba.quantity;
+                                daba.quantity=0;
+                            }
+                            else
+                            {
+                                daba.quantity-=dasa.quantity;
+                                CurrentInventoryList cil=daba.apprentice.currentInventoryList.get(i);
+                                cil.cost=(daba.price+dasa.price)/2;
+                                cil.quantity+=dasa.quantity;
+                                FutureInventoryList fil=daba.apprentice.futureInventoryList.get(i);
+                                fil.quantity-=dasa.quantity;
+                                cil=dasa.wizard.currentInventoryList.get(i);
+                                cil.quantityLocked-=dasa.quantity;
+                                dasa.quantity=0;
+                            }
                         }
-                        else
-                        {
-                            daba.quantity-=dasa.quantity;
-                            CurrentInventoryList cil=daba.apprentice.currentInventoryList.get(i);
-                            cil.cost=(daba.price+dasa.price)/2;
-                            cil.quantity+=dasa.quantity;
-                            FutureInventoryList fil=daba.apprentice.futureInventoryList.get(i);
-                            fil.quantity-=dasa.quantity;
-                            cil=dasa.wizard.currentInventoryList.get(i);
-                            cil.quantityLocked-=dasa.quantity;
-                            dasa.quantity=0;
-                        }
+                    }
+                    else
+                    {
+                        CurrentInventoryList cil=dasa.wizard.currentInventoryList.get(i);
+                        cil.quantity+=dasa.quantity;
+                        dasa.quantity=0;
                     }
                 }
             }
