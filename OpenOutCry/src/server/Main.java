@@ -249,6 +249,16 @@ public class Main extends Thread implements MainRemote{
 	    Registry registry = LocateRegistry.getRegistry();
 	    registry.bind("Main", stub);
 	    System.err.println("Server ready");
+            System.err.println("<Press ENTER to quit>");
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            try {
+                br.readLine();
+            } catch (IOException ioe) {                
+            }finally
+            {
+                registry.unbind("Main");
+                System.exit(0);
+            }
 	} catch (Exception e) {
 	    System.err.println("Server exception: " + e.toString());
 	    e.printStackTrace();
