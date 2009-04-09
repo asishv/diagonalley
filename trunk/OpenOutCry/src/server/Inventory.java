@@ -11,6 +11,6 @@ package server;
  */
 public class Inventory {
     MagicalItem magicalItem;
-    int quantity;
-    int quantityLocked;
+    volatile int quantity;
+    volatile int quantityLocked;
 }

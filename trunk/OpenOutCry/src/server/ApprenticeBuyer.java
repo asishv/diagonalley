@@ -86,8 +86,8 @@ public class ApprenticeBuyer extends Everyone{
     void modifyBid(int price, int quantity, int magicalItemNumber, Date time)
     {
         FutureInventoryList fil=futureInventoryList.get(magicalItemNumber);
-        fil.quantity-=quantity;
-        fil.quantityLocked+=quantity;
+        fil.quantity-=quantity+fil.diagonAlleyBuyerAccount.quantity;
+        fil.quantityLocked+=quantity-fil.diagonAlleyBuyerAccount.quantity;
         fil.magicalItem.lock();
         fil.diagonAlleyBuyerAccount.price=price;
         fil.diagonAlleyBuyerAccount.quantity=quantity;
