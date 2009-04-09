@@ -9,7 +9,7 @@ package server;
  *
  * @author Asish
  */
-public class WizardSeller extends Everyone{
+public class WizardSeller extends Everyone implements WizardSellerRemote{
     public WizardSeller(String name)
     {
         wizardOrNot=true;
@@ -85,7 +85,7 @@ public class WizardSeller extends Everyone{
     /**
      * Diagon Alley Wizard Sellers trade a magical item.
      */
-    boolean trade(int price, int quantity, int magicalItemNumber, long m)
+    public boolean trade(int price, int quantity, int magicalItemNumber, long m)
     {
         CurrentInventoryList cil = this.currentInventoryList.get(magicalItemNumber);
         if(cil == null) {
@@ -116,7 +116,7 @@ public class WizardSeller extends Everyone{
      /**
      * Diagon Alley Wizard Sellers modify existing trade for a magical item.
      */       
-    boolean modifyTrade(int price, int quantity, int magicalItemNumber, long m)
+    public boolean modifyTrade(int price, int quantity, int magicalItemNumber, long m)
     {
         CurrentInventoryList cil = this.currentInventoryList.get(magicalItemNumber);
         if(cil == null) {
