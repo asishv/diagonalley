@@ -4,11 +4,12 @@
  */
 
 package library;
+import java.rmi.*;
 
 /**
  *
  * @author Asish
  */
-public interface EventReaderRemote {
-    String get(int clientID);
+public interface EventReaderRemote extends Remote{
+    String get(int nbOfChars) throws RemoteException;
 }
