@@ -252,17 +252,6 @@ public class Main extends Thread implements MainRemote{
 	    // Bind the remote object's stub in the registry
 	    registry = LocateRegistry.getRegistry();
 	    registry.bind("Main", stub);
-            System.err.println("Test: register()");
-            if(obj.register("Asish")!=null)
-                System.err.println("Pass");
-            else
-                System.err.println("Fail");
-            System.err.println("Test: register()");
-            if(obj.register("Karthik")!=null)
-                System.err.println("Pass");
-            else
-                System.err.println("Fail");
-
 	    System.err.println("Server ready");
             System.err.println("<Press ENTER to quit>");
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
