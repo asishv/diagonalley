@@ -22,6 +22,8 @@ public class MagicalItem implements java.rmi.Remote{
     MagicalItem()
     {
         l=new ReentrantLock();
+        wizards=new ArrayList();
+        apprentice=new ArrayList();
     }
     
      /**
