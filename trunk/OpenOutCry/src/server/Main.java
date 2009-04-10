@@ -42,18 +42,18 @@ public class Main extends Thread implements MainRemote{
     {
        WizardSeller ws=new WizardSeller(name);
        Random random = new Random();
-       int commodity=(random.nextInt())%20, quantity, cost;
+       int commodity=random.nextInt(20), quantity, cost;
   
        int apprenticeNo=findApprentice(magicalItems[commodity].magicalItemInfo);
        if(apprenticeNo == -1)
        {
-           quantity=(random.nextInt()+100)%1000;
-           cost=(random.nextInt()+100)%1000;
+           quantity=random.nextInt(1000)+100;
+           cost=random.nextInt(1000)+100;
        }
        else
        {
            ApprenticeBuyer ab=apprentices.get(apprenticeNo);
-           cost=ab.getTargetCost()-(random.nextInt())%10;
+           cost=ab.getTargetCost()-random.nextInt(10);
            quantity=ab.getTargetQuantity();           
        }
        for(int i=0; i<MAX_COMMODITY; i++)
@@ -128,17 +128,17 @@ public class Main extends Thread implements MainRemote{
     {
        ApprenticeBuyer ab=new ApprenticeBuyer(name);
        Random random = new Random();
-       int commodity=(random.nextInt())%20, quantity, cost;
+       int commodity=random.nextInt(20), quantity, cost;
        int wizardNo=findWizard(magicalItems[commodity].magicalItemInfo);
        if(wizardNo == -1)
        {
-           quantity=(random.nextInt()+100)%1000;
-           cost=(random.nextInt()+100)%1000;
+           quantity=random.nextInt(1000)+100;
+           cost=random.nextInt(1000)+100;
        }
        else
        {
            WizardSeller ws=wizards.get(wizardNo);
-           cost=ws.getTargetCost()+(random.nextInt())%10;
+           cost=ws.getTargetCost()+random.nextInt(10);
            quantity=ws.getTargetQuantity();
        }
        for(int i=0; i<MAX_COMMODITY; i++)
@@ -239,31 +239,50 @@ public class Main extends Thread implements MainRemote{
     Main()
     {
         createMagicalWorld();
+        wizards=new ArrayList();
+        apprentices=new ArrayList();
     }
     
     public static void main(String args[])
     {
+        Registry registry=null;
        	try {
 	    Main obj = new Main();
 	    MainRemote stub = (MainRemote) UnicastRemoteObject.exportObject(obj, 0);
 	    // Bind the remote object's stub in the registry
-	    Registry registry = LocateRegistry.getRegistry();
+	    registry = LocateRegistry.getRegistry();
 	    registry.bind("Main", stub);
+            System.err.println("Test: register()");
+            if(obj.register("Asish")!=null)
+                System.err.println("Pass");
+            else
+                System.err.println("Fail");
+            System.err.println("Test: register()");
+            if(obj.register("Karthik")!=null)
+                System.err.println("Pass");
+            else
+                System.err.println("Fail");
+
 	    System.err.println("Server ready");
             System.err.println("<Press ENTER to quit>");
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-            try {
                 br.readLine();
-            } catch (IOException ioe) {                
-            }finally
-            {
-                registry.unbind("Main");
-                System.exit(0);
-            }
-	} catch (Exception e) {
+        } 
+        catch (IOException ioe) {}
+	catch (Exception e) {
 	    System.err.println("Server exception: " + e.toString());
 	    e.printStackTrace();
-	}
+        }
+        finally
+        {
+            try{
+            registry.unbind("Main");
+            }catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+            System.exit(0);
+        }
 //        m.start();
     }
 }

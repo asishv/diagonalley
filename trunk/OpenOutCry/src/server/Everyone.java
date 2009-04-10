@@ -24,6 +24,8 @@ public class Everyone implements EveryoneRemote{
     Everyone()
     {
         l=new ReentrantLock();
+        currentInventoryList=new ArrayList();
+        futureInventoryList=new ArrayList();
     }
     
     void lock()
