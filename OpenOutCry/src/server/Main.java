@@ -116,10 +116,11 @@ public class Main extends Thread implements MainRemote{
     {
         numberOfUsers++;
         if(numberOfUsers%2 == 0) {
-            out.write(name+" joined the game!\n"+name+" is a Wizard (Seller)");
+            out.write(name+" joined the game!\r\n"+name+" is a Wizard (Seller)\r\n");
             return (Everyone)createWizards(name);
         }
         else {
+            out.write(name+" joined the game!\r\n"+name+" is a Apprentice (Buyer)\r\n");
             return (Everyone)createApprentices(name);
         }
     }
