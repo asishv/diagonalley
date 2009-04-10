@@ -18,7 +18,7 @@ import java.rmi.registry.Registry;
  */
 public class Main extends Thread implements MainRemote{
      public static final String LOG_FILE="DiagonAlleyLog.txt";
-     public DailyProphet.EventLogger el;
+     public DailyProphet.EventLogger out;
      Date startTime;
      MagicalItem[] magicalItems;
      public static final int MAX_COMMODITY = 20;
@@ -116,6 +116,7 @@ public class Main extends Thread implements MainRemote{
     {
         numberOfUsers++;
         if(numberOfUsers%2 == 0) {
+            out.write(name+" joined the game!\n"+name+" is a Wizard (Seller)");
             return (Everyone)createWizards(name);
         }
         else {
@@ -245,7 +246,7 @@ public class Main extends Thread implements MainRemote{
         apprentices=new ArrayList();
         try{
             FileWriter fw=new FileWriter(LOG_FILE);
-            el=new DailyProphet.EventLogger(fw, 1000);
+            out=new DailyProphet.EventLogger(fw, 1000);
         }catch(IOException ioe)
         {
             ioe.printStackTrace();
@@ -262,7 +263,7 @@ public class Main extends Thread implements MainRemote{
 	    // Bind the remote object's stub in the registry
 	    registry = LocateRegistry.getRegistry();
 	    registry.bind("Main", stub);
-            obj.el.add("Server Started!");
+            obj.out.write("Auction Game Begins!");
 	    System.err.println("Server ready");
             System.err.println("<Press ENTER to quit>");
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

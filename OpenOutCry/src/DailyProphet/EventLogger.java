@@ -66,7 +66,7 @@ public class EventLogger {
         *    LogClosedException is thrown.  This method is also responsible for lazily instantiating a writer thread *    to, at low priority, write the contents of the Log buffer to the writer passed into the constructor.
         */
 
-        synchronized public void add(String msg) throws ClosedLogException
+        synchronized private void add(String msg) throws ClosedLogException
         {
             if(lw==null) //Start the lazy writer, if no lazy writer thread exists. It is started first for better performance.
             {
@@ -85,6 +85,15 @@ public class EventLogger {
             notifyAll(); //Wake up all waiting threads
         }
 	
+        public void write (String msg)
+        {
+            try{
+                add(msg);
+            }catch (ClosedLogException cle)
+            {
+                cle.printStackTrace();
+            }
+        }
 
         /*  close the Log.  After the log has been closed, no additional message may be added to the log. */
          public synchronized void close()
@@ -109,7 +118,7 @@ public class EventLogger {
                         do{
                             msg=get(); //Get the next message from the buffer
                             if(msg != null)                         
-                                writer.write(msg+"\r\n");
+                                writer.write(msg);
                         }while(msg != null); //Get messages till msg == null
                         writer.flush(); //Flush the writer
                         writer.close(); //Close the writer
