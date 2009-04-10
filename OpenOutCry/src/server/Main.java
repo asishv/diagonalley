@@ -10,7 +10,7 @@ import java.io.*;
 import java.rmi.server.UnicastRemoteObject;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-
+import library.*;
 
 /**
  *
@@ -19,6 +19,7 @@ import java.rmi.registry.Registry;
 public class Main extends Thread implements MainRemote{
      public static final String LOG_FILE="DiagonAlleyLog.txt";
      public DailyProphet.EventLogger out;
+     DailyProphet.EventReader in;
      Date startTime;
      MagicalItem[] magicalItems;
      public static final int MAX_COMMODITY = 20;
@@ -248,6 +249,7 @@ public class Main extends Thread implements MainRemote{
         try{
             FileWriter fw=new FileWriter(LOG_FILE);
             out=new DailyProphet.EventLogger(fw, 1000);
+            in=new DailyProphet.EventReader();
         }catch(IOException ioe)
         {
             ioe.printStackTrace();
@@ -260,10 +262,12 @@ public class Main extends Thread implements MainRemote{
         Registry registry=null;
        	try {
 	    Main obj = new Main();
-	    MainRemote stub = (MainRemote) UnicastRemoteObject.exportObject(obj, 0);
-	    // Bind the remote object's stub in the registry
+            EventReaderRemote stub1 = (EventReaderRemote) UnicastRemoteObject.exportObject(obj.in, 0);
+	    MainRemote stub2 = (MainRemote) UnicastRemoteObject.exportObject(obj, 0);
+	    // Bind the remote object's stub2 in the registry
 	    registry = LocateRegistry.getRegistry();
-	    registry.bind("Main", stub);
+            registry.bind("Read", stub1);
+	    registry.bind("Main", stub2);
             obj.out.write("Auction Game Begins!");
 	    System.err.println("Server ready");
             System.err.println("<Press ENTER to quit>");
@@ -278,7 +282,8 @@ public class Main extends Thread implements MainRemote{
         finally
         {
             try{
-            registry.unbind("Main");
+                registry.unbind("Read");
+                registry.unbind("Main");
             }catch(Exception e)
             {
                 e.printStackTrace();
