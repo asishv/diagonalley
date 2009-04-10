@@ -9,6 +9,9 @@ package DailyProphet;
  *
  * @author Asish
  */
-public class EventReader {
-
+public class EventReader implements library.EventReaderRemote{
+    public String get(int clientID)
+    {
+        return null;
+    }
 }
