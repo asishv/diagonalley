@@ -17,6 +17,8 @@ import java.rmi.registry.Registry;
  * @author Asish
  */
 public class Main extends Thread implements MainRemote{
+     public static final String LOG_FILE="DiagonAlleyLog.txt";
+     public DailyProphet.EventLogger el;
      Date startTime;
      MagicalItem[] magicalItems;
      public static final int MAX_COMMODITY = 20;
@@ -241,6 +243,14 @@ public class Main extends Thread implements MainRemote{
         createMagicalWorld();
         wizards=new ArrayList();
         apprentices=new ArrayList();
+        try{
+            FileWriter fw=new FileWriter(LOG_FILE);
+            el=new DailyProphet.EventLogger(fw, 1000);
+        }catch(IOException ioe)
+        {
+            ioe.printStackTrace();
+            System.exit(0);
+        }
     }
     
     public static void main(String args[])
@@ -252,6 +262,7 @@ public class Main extends Thread implements MainRemote{
 	    // Bind the remote object's stub in the registry
 	    registry = LocateRegistry.getRegistry();
 	    registry.bind("Main", stub);
+            obj.el.add("Server Started!");
 	    System.err.println("Server ready");
             System.err.println("<Press ENTER to quit>");
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
