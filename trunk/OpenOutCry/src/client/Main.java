@@ -100,27 +100,19 @@ public class Main {
     /**
     * Obtain current goal to be displayed
     */
-    void currentGoal() {
+    static MagicalItemInfo currentGoal(EveryoneRemote er) {
         //TODO: Obtain my current goal from server
+        try {
+            MagicalItemInfo magicalItemInfo = ((WizardSellerRemote)er).getTargetCommodityInfo();
+            return magicalItemInfo;
+         } catch (Exception e) {
+            System.out.println("Error getting list of magical items: " + e.toString());
+            e.printStackTrace();
+        }
+        return null;
     }
 
-    /**
-    * Obtain all current bids to be displayed on UI.
-    */
-    void currentBids() {
-        //TODO: Obtain all current bids on the market
-        // This is to be displayed for open out cry purposes
-    }
-
-    /**
-    * Obtain all current trades to be displayed on UI.
-    */
-    void currentTrades() {
-        //TODO: Obtain all the current trades on the market
-        // This is to be displayed for open out cry purposes
-    }
-
-    /**
+   /**
     * Obtain all current trades to be displayed on UI.
     */
     static void listAllMagicalItems(MainRemote mr) {
@@ -178,6 +170,7 @@ public class Main {
             System.out.println("2: Place trade");
             System.out.println("3: View score");
             System.out.println("4: View Magical Items");
+            System.out.println("5: View my Goal/Target");
             System.out.println("0: Exit");
             try {
             choice = Integer.parseInt(br.readLine());
@@ -218,6 +211,9 @@ public class Main {
                 case 3: System.out.println("Score: " + currentScore(er));
                         break;
                 case 4: listAllMagicalItems((MainRemote)er);
+                        break;
+                case 5: //MagicalItemInfo magicalItemInfo = currentGoal(er);
+                        //TODO: Display magical item
                         break;
                 case 0: choice = 0;
                         break;
