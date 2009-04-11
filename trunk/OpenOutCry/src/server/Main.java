@@ -50,7 +50,7 @@ public class Main extends Thread implements MainRemote{
      */    
     WizardSeller createWizards(String name)
     {
-       WizardSeller ws=new WizardSeller(name, numberOfUsers);
+       WizardSeller ws=new WizardSeller(name, numberOfUsers-1);
        Random random = new Random();
        int commodity=random.nextInt(20), quantity, cost;
   
@@ -147,7 +147,7 @@ public class Main extends Thread implements MainRemote{
      */    
     ApprenticeBuyer createApprentices(String name)
     {
-       ApprenticeBuyer ab=new ApprenticeBuyer(name, numberOfUsers);
+       ApprenticeBuyer ab=new ApprenticeBuyer(name, numberOfUsers-1);
        Random random = new Random();
        int commodity=random.nextInt(20), quantity, cost;
        int wizardNo=findWizard(magicalItems[commodity].magicalItemInfo);
