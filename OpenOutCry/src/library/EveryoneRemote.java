@@ -4,12 +4,13 @@
  */
 
 package library;
+import java.io.Serializable;
 import java.rmi.*;
 
 /**
  *
  * @author Asish
  */
-public interface EveryoneRemote  extends java.rmi.Remote{
+public interface EveryoneRemote  extends java.rmi.Remote,Serializable{
     boolean isWizard() throws RemoteException;
 }

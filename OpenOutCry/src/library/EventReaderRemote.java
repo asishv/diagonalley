@@ -4,12 +4,13 @@
  */
 
 package library;
+import java.io.Serializable;
 import java.rmi.*;
 
 /**
  *
  * @author Asish
  */
-public interface EventReaderRemote extends Remote{
+public interface EventReaderRemote extends Remote,Serializable{
     String get(int nbOfChars) throws RemoteException;
 }

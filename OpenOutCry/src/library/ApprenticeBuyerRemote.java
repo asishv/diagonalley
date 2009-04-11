@@ -4,12 +4,13 @@
  */
 
 package library;
+import java.io.Serializable;
 import java.rmi.*;
 /**
  *
  * @author Asish
  */
-public interface ApprenticeBuyerRemote extends java.rmi.Remote {
+public interface ApprenticeBuyerRemote extends java.rmi.Remote,Serializable {
     boolean bid(int price, int quantity, int magicalItemNumber,long msec) throws RemoteException;
     boolean modifyBid(int price, int quantity, int magicalItemNumber, long msec) throws RemoteException;
     int getScore() throws RemoteException;
