@@ -8,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import library.MagicalItemInfoRemote;
 import server.ApprenticeBuyerRemote;
 import server.EveryoneRemote;
 import server.MagicalItemInfo;
@@ -100,11 +101,11 @@ public class Main {
     /**
     * Obtain current goal to be displayed
     */
-    static MagicalItemInfo currentGoal(EveryoneRemote er) {
+    static MagicalItemInfoRemote currentGoal(EveryoneRemote er) {
         //TODO: Obtain my current goal from server
         try {
-            MagicalItemInfo magicalItemInfo = ((WizardSellerRemote)er).getTargetCommodityInfo();
-            return magicalItemInfo;
+            MagicalItemInfoRemote miir = ((WizardSellerRemote)er).getTargetCommodityInfo();
+            return miir;
          } catch (Exception e) {
             System.out.println("Error getting list of magical items: " + e.toString());
             e.printStackTrace();
@@ -151,7 +152,7 @@ public class Main {
         boolean isWizard = false;
         EveryoneRemote er= null;
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int price, quantity, magicalItem = 0;
+        int price, quantity, magicalItemNumber = 0;
         long msec;
         String host = (args.length < 1) ? null : args[0];
         try {
@@ -178,11 +179,11 @@ public class Main {
                 case 1: if(!isWizard)
                         {
                             System.out.println("Place bid: Enter Magical Item, price, quantity & time for bid to last(ms)");
-                            magicalItem = Integer.parseInt(br.readLine());
+                            magicalItemNumber = Integer.parseInt(br.readLine());
                             price = Integer.parseInt(br.readLine());
                             quantity = Integer.parseInt(br.readLine());
                             msec = Integer.parseInt(br.readLine());;
-                            if(placeBid((ApprenticeBuyerRemote)er, magicalItem, price, quantity, msec)) {
+                            if(placeBid((ApprenticeBuyerRemote)er, magicalItemNumber, price, quantity, msec)) {
                                 System.out.println("Bid placed successfully");
                             } else {
                                 System.out.println("Bid could not be placed");
@@ -194,11 +195,11 @@ public class Main {
                         break;
                 case 2: if(isWizard) {
                             System.out.println("Place Trade: Enter Magical Item, price, quantity & time for bid to last(ms)");
-                            magicalItem = Integer.parseInt(br.readLine());
+                            magicalItemNumber = Integer.parseInt(br.readLine());
                             price = Integer.parseInt(br.readLine());
                             quantity = Integer.parseInt(br.readLine());
                             msec = Integer.parseInt(br.readLine());;
-                            if(placeTrade((WizardSellerRemote)er, magicalItem, price, quantity, msec)) {
+                            if(placeTrade((WizardSellerRemote)er, magicalItemNumber, price, quantity, msec)) {
                                 System.out.println("Trade placed successfully");
                             } else {
                                 System.out.println("Trade could not be placed");
@@ -212,8 +213,10 @@ public class Main {
                         break;
                 case 4: listAllMagicalItems((MainRemote)er);
                         break;
-                case 5: //MagicalItemInfo magicalItemInfo = currentGoal(er);
-                        //TODO: Display magical item
+                case 5: MagicalItemInfoRemote miir = currentGoal(er);
+                        System.out.println(miir.getName());
+                        System.out.println(miir.getSymbol());
+                        System.out.println(miir.getPicture());
                         break;
                 case 0: choice = 0;
                         break;
