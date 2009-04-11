@@ -9,9 +9,9 @@ package server;
  * @author Asish
  */
 public class DiagonAlleyBuyerAccount extends DiagonAlleyAccount{
-    ApprenticeBuyer apprentice;
-    DiagonAlleyBuyerAccount(ApprenticeBuyer ab)
+    Everyone e;
+    DiagonAlleyBuyerAccount(Everyone e)
     {
-        apprentice=ab;
+        this.e=e;
     }
 }

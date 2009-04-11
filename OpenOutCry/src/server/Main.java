@@ -50,7 +50,7 @@ public class Main extends Thread implements MainRemote{
      */    
     WizardSeller createWizards(String name)
     {
-       WizardSeller ws=new WizardSeller(name);
+       WizardSeller ws=new WizardSeller(name, numberOfUsers);
        Random random = new Random();
        int commodity=random.nextInt(20), quantity, cost;
   
@@ -66,14 +66,23 @@ public class Main extends Thread implements MainRemote{
            cost=ab.getTargetCost()-random.nextInt(10);
            quantity=ab.getTargetQuantity();           
        }
+       
        for(int i=0; i<MAX_COMMODITY; i++)
        {
-           CurrentInventoryList ci=new CurrentInventoryList(0, 0, magicalItems[i]);
+           DiagonAlleyBuyerAccount daba=new DiagonAlleyBuyerAccount(ws);
+           magicalItems[i].buyerAccount.add(daba);
+           DiagonAlleySellerAccount dasa=new DiagonAlleySellerAccount(ws);
+           magicalItems[i].sellerAccount.add(dasa);
+       }
+       
+       for(int i=0; i<MAX_COMMODITY; i++)
+       {
+           CurrentInventoryList ci=new CurrentInventoryList(0, 0, ws.index, magicalItems[i]);
            ws.currentInventoryList.add(ci);
        }
        for(int i=0; i<MAX_COMMODITY; i++)
        {
-           FutureInventoryList fi=new FutureInventoryList(0, 0, magicalItems[i]);
+           FutureInventoryList fi=new FutureInventoryList(0, 0, ws.index, magicalItems[i]);
            ws.futureInventoryList.add(fi);
        }
 
@@ -84,7 +93,7 @@ public class Main extends Thread implements MainRemote{
 
        wizards.add(ws);
        DiagonAlleySellerAccount dasa=new DiagonAlleySellerAccount(ws);
-       magicalItems[commodity].wizards.add(dasa);
+       magicalItems[commodity].sellerAccount.add(dasa);
        ci.diagonAlleySellerAccount=dasa;
        return ws;
     }
@@ -104,7 +113,7 @@ public class Main extends Thread implements MainRemote{
     }
 
     /**
-     * Finds the apprentice buying a particular magical item.
+     * Finds the buyerAccount buying a particular magical item.
      */    
     int findApprentice(MagicalItemInfo m)
     {
@@ -122,7 +131,7 @@ public class Main extends Thread implements MainRemote{
      */    
     synchronized public Everyone register(String name)
     {
-        numberOfUsers++;
+        numberOfUsers++; //Handle Concurrency
         if(numberOfUsers%2 == 0) {
             out.write(name+" joined the game!\r\n"+name+" is a Wizard (Seller)\r\n");
             return (Everyone)createWizards(name);
@@ -138,7 +147,7 @@ public class Main extends Thread implements MainRemote{
      */    
     ApprenticeBuyer createApprentices(String name)
     {
-       ApprenticeBuyer ab=new ApprenticeBuyer(name);
+       ApprenticeBuyer ab=new ApprenticeBuyer(name, numberOfUsers);
        Random random = new Random();
        int commodity=random.nextInt(20), quantity, cost;
        int wizardNo=findWizard(magicalItems[commodity].magicalItemInfo);
@@ -153,14 +162,23 @@ public class Main extends Thread implements MainRemote{
            cost=ws.getTargetCost()+random.nextInt(10);
            quantity=ws.getTargetQuantity();
        }
+       
        for(int i=0; i<MAX_COMMODITY; i++)
        {
-           CurrentInventoryList ci=new CurrentInventoryList(0, 0, magicalItems[i]);
+           DiagonAlleyBuyerAccount daba=new DiagonAlleyBuyerAccount(ab);
+           magicalItems[i].buyerAccount.add(daba);
+           DiagonAlleySellerAccount dasa=new DiagonAlleySellerAccount(ab);
+           magicalItems[i].sellerAccount.add(dasa);
+       }
+
+       for(int i=0; i<MAX_COMMODITY; i++)
+       {
+           CurrentInventoryList ci=new CurrentInventoryList(0, ab.index, 0, magicalItems[i]);
            ab.currentInventoryList.add(ci);
        }
        for(int i=0; i<MAX_COMMODITY; i++)
        {
-           FutureInventoryList fi=new FutureInventoryList(0, 0, magicalItems[i]);
+           FutureInventoryList fi=new FutureInventoryList(0, 0, ab.index, magicalItems[i]);
            ab.futureInventoryList.add(fi);
        }
 
@@ -170,7 +188,7 @@ public class Main extends Thread implements MainRemote{
        ab.futureInventoryList.add(fi);
        apprentices.add(ab);        
        DiagonAlleyBuyerAccount daba=new DiagonAlleyBuyerAccount(ab);
-       magicalItems[commodity].apprentice.add(daba);
+       magicalItems[commodity].buyerAccount.add(daba);
        fi.diagonAlleyBuyerAccount=daba;
        return ab;
     }
@@ -188,7 +206,7 @@ public class Main extends Thread implements MainRemote{
             BufferedReader br = new BufferedReader(infile);
             for(int i=0; i<MAX_COMMODITY; i++)
             {
-                magicalItems[i]=new MagicalItem();
+                magicalItems[i]=new MagicalItem(i);
                 if(br.ready())
                 {
                     String line=br.readLine();
@@ -196,7 +214,6 @@ public class Main extends Thread implements MainRemote{
                     magicalItems[i].magicalItemInfo= new MagicalItemInfo(elem[0], elem[1], elem[2]);
                     magicalItemInfo.add(magicalItems[i].magicalItemInfo);
                 }
-
             }
         }catch(IOException e)
         {
@@ -214,7 +231,7 @@ public class Main extends Thread implements MainRemote{
     }
 
      /**
-     * Creates a virtual apprentice.
+     * Creates a virtual buyerAccount.
      */    
     void createVirtualApprentices()
     {
@@ -233,7 +250,7 @@ public class Main extends Thread implements MainRemote{
     
     public void run()
     {
-        //TODO:Check if all apprentice and wizards have met their goals
+        //TODO:Check if all buyerAccount and sellerAccount have met their goals
         //if (true) stop the server
         try{
            while(true)
