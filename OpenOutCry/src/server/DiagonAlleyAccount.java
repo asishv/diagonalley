@@ -4,12 +4,13 @@
  */
 
 package server;
+import java.io.Serializable;
 import java.util.Calendar;
 /**
  *
  * @author Asish
  */
-public class DiagonAlleyAccount {
+public class DiagonAlleyAccount implements Serializable{
     int price;
     int quantity;
     Calendar time;

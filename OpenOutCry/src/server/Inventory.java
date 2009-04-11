@@ -4,13 +4,14 @@
  */
 
 package server;
+import java.io.Serializable;
 import java.util.concurrent.locks.*;
 
 /**
  *
  * @author Asish
  */
-public class Inventory {
+public class Inventory implements Serializable{
     private Lock l;
     Inventory()
     {
