@@ -27,14 +27,14 @@ public class Main {
     /**
     * To register a user. Get the user details and create his account on server.
     */
-    static EveryoneRemote registerUser(String host) {
+    static EveryoneRemote registerUser(String host, int portNumber) {
         Registry registry = null;
         MainRemote mr = null;
         EveryoneRemote er = null;
         
         //TODO: Make server call to register().
         try {
-            registry = LocateRegistry.getRegistry(host);
+            registry = LocateRegistry.getRegistry(portNumber);
             mr = (MainRemote) registry.lookup("Main");
             er = mr.register(host);
         } catch (Exception e) {
@@ -156,7 +156,7 @@ public class Main {
         long msec;
         String host = (args.length < 1) ? null : args[0];
         try {
-            er = registerUser(host);
+            er = registerUser(host,3600);
             isWizard = er.isWizard();
             
         } catch (Exception e) {
