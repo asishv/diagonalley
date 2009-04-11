@@ -42,7 +42,6 @@ public class Main extends Thread implements MainRemote{
          {
             m[i]=magicalItemInfo.get(i);
          }
-         System.out.println("Number of magical Items="+m.length);
          return m;
      }
 
