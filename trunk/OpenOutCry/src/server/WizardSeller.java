@@ -13,10 +13,12 @@ import library.MagicalItemInfoRemote;
  * @author Asish
  */
 public class WizardSeller extends Everyone implements WizardSellerRemote{
-    public WizardSeller(String name)
+    int index;
+    public WizardSeller(String name, int index)
     {
         wizardOrNot=true;
         this.name=name;
+        this.index=index;
     }
     
     public int getScore()
@@ -45,7 +47,7 @@ public class WizardSeller extends Everyone implements WizardSellerRemote{
     }
     
          /**
-     * Gets the target quantity locked to buy for the apprentice.
+     * Gets the target quantity locked to buy for the buyerAccount.
      */    
     public int getTargetQuantityLocked()
     {        

@@ -13,10 +13,11 @@ public class CurrentInventoryList extends Inventory{
     int sellingPriceTarget;
     int cost;
     DiagonAlleySellerAccount diagonAlleySellerAccount;
-    CurrentInventoryList(int cost, int quantity, MagicalItem magicalItem)
+    CurrentInventoryList(int cost, int quantity, int index, MagicalItem magicalItem)
     {
         this.sellingPriceTarget=cost;
         this.quantity=quantity;
         this.magicalItem=magicalItem;
+        diagonAlleySellerAccount=magicalItem.sellerAccount.get(index);
     }
 }

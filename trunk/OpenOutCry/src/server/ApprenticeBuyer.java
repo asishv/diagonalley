@@ -12,14 +12,16 @@ import library.ApprenticeBuyerRemote;
  * @author Asish
  */
 public class ApprenticeBuyer extends Everyone implements ApprenticeBuyerRemote{
-    ApprenticeBuyer(String name)
+    int index;
+    ApprenticeBuyer(String name, int index)
     {
         wizardOrNot = false;
         this.name=name;
+        this.index=index;
     }
 
     /**
-     * Gets the target quantity to buy for the apprentice.
+     * Gets the target quantity to buy for the buyerAccount.
      */    
     public int getTargetQuantity()
     {        
@@ -35,7 +37,7 @@ public class ApprenticeBuyer extends Everyone implements ApprenticeBuyerRemote{
     }
 
      /**
-     * Gets the target quantity locked to buy for the apprentice.
+     * Gets the target quantity locked to buy for the buyerAccount.
      */    
     public int getTargetQuantityLocked()
     {        
@@ -52,7 +54,7 @@ public class ApprenticeBuyer extends Everyone implements ApprenticeBuyerRemote{
 
     
     /**
-     * Gets the target cost for the magical item to buy for the apprentice.
+     * Gets the target cost for the magical item to buy for the buyerAccount.
      */    
     public int getTargetCost()
     {
@@ -77,7 +79,7 @@ public class ApprenticeBuyer extends Everyone implements ApprenticeBuyerRemote{
     }
 
     /**
-     * Gets the target magical item to buy for the apprentice.
+     * Gets the target magical item to buy for the buyerAccount.
      */    
     public MagicalItemInfo getTargetCommodityInfo()
     {
