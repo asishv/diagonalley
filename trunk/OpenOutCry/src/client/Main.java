@@ -103,8 +103,12 @@ public class Main {
     */
     static MagicalItemInfoRemote currentGoal(EveryoneRemote er) {
         //TODO: Obtain my current goal from server
+        MagicalItemInfoRemote miir;
         try {
-            MagicalItemInfoRemote miir = ((WizardSellerRemote)er).getTargetCommodityInfo();
+            if(er.isWizard())
+                miir = ((WizardSellerRemote)er).getTargetCommodityInfo();
+            else
+                miir = ((ApprenticeBuyerRemote)er).getTargetCommodityInfo();                
             return miir;
          } catch (Exception e) {
             System.out.println("Error getting list of magical items: " + e.toString());
