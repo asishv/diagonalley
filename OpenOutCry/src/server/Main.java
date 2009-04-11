@@ -37,7 +37,11 @@ public class Main extends Thread implements MainRemote{
      
      public MagicalItemInfo[] getAllMagicalItems()
      {
-         MagicalItemInfo[] m=(MagicalItemInfo[])magicalItemInfo.toArray();
+         MagicalItemInfo[] m=new MagicalItemInfo[magicalItemInfo.size()];
+         for(int i=0; i<magicalItemInfo.size(); i++)
+         {
+            m[i]=magicalItemInfo.get(i);
+         }
          System.out.println("Number of magical Items="+m.length);
          return m;
      }
