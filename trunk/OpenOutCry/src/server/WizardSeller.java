@@ -5,6 +5,7 @@
 
 package server;
 
+import java.util.GregorianCalendar;
 import library.WizardSellerRemote;
 import library.MagicalItemInfoRemote;
 
@@ -140,6 +141,7 @@ public class WizardSeller extends Everyone implements WizardSellerRemote{
         cil.quantityLocked = cil.quantityLocked + quantity;
         cil.diagonAlleySellerAccount.price = price;
         cil.diagonAlleySellerAccount.quantity = quantity;
+        cil.diagonAlleySellerAccount.time=new GregorianCalendar();
         cil.diagonAlleySellerAccount.time.setTimeInMillis(cil.diagonAlleySellerAccount.time.getTimeInMillis()+m);
         cil.magicalItem.unlock();
         cil.magicalItem.executeTrade();
