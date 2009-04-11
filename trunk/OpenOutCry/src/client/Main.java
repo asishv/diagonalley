@@ -19,6 +19,8 @@ import library.WizardSellerRemote;
  * @author karthik
  */
 public class Main {
+    static MainRemote mr = null;
+
     String[] userNames = {"Harry", "Ron"};
     int costValue = 0; // Indicates Cost C for seller or Value V for buyer
     int quantity = 0; // Indicates the quantity QS for seller or QB for buyer
@@ -28,7 +30,6 @@ public class Main {
     */
     static EveryoneRemote registerUser(String host, int portNumber) {
         Registry registry = null;
-        MainRemote mr = null;
         EveryoneRemote er = null;
         
         //TODO: Make server call to register().
@@ -215,7 +216,7 @@ public class Main {
                         break;
                 case 3: System.out.println("Score: " + currentScore(er));
                         break;
-                case 4: listAllMagicalItems((MainRemote)er);
+                case 4: listAllMagicalItems(mr);
                         break;
                 case 5: MagicalItemInfoRemote miir = currentGoal(er);
                         System.out.println(miir.getName());
