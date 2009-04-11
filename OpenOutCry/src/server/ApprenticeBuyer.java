@@ -4,6 +4,9 @@
  */
 
 package server;
+
+import library.ApprenticeBuyerRemote;
+
 /**
  *
  * @author Asish

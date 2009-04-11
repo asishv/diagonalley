@@ -3,7 +3,8 @@
  * and open the template in the editor.
  */
 
-package server;
+package library;
+import server.*;
 import java.rmi.*;
 
 /**

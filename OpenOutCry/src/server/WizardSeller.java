@@ -5,6 +5,7 @@
 
 package server;
 
+import library.WizardSellerRemote;
 import library.MagicalItemInfoRemote;
 
 /**

@@ -4,6 +4,7 @@
  */
 
 package server;
+import library.EveryoneRemote;
 import java.util.ArrayList;
 import java.util.concurrent.locks.*;
 /**

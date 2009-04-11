@@ -9,11 +9,11 @@ import java.io.InputStreamReader;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import library.MagicalItemInfoRemote;
-import server.ApprenticeBuyerRemote;
-import server.EveryoneRemote;
+import library.ApprenticeBuyerRemote;
+import library.EveryoneRemote;
 import server.MagicalItemInfo;
-import server.MainRemote;
-import server.WizardSellerRemote;
+import library.MainRemote;
+import library.WizardSellerRemote;
 
 /**
  *

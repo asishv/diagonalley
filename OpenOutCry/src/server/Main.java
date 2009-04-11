@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 package server;
+import library.MainRemote;
 import DailyProphet.EventReader;
 import java.util.Date;
 import java.util.ArrayList;
@@ -274,8 +275,8 @@ public class Main extends Thread implements MainRemote{
               	    registry = LocateRegistry.getRegistry();
                     break;
                 case 1:
-                    System.err.println("Hostname: "+args[0]);
-                    registry = LocateRegistry.getRegistry(args[0]);
+                    System.err.println("Port: "+args[0]);
+                    registry = LocateRegistry.getRegistry(Integer.parseInt(args[0]));
                     break;
                 case 2:
                     System.err.println("Hostname:"+args[0]+" Port:"+args[1]);
