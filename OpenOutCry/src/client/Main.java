@@ -33,6 +33,7 @@ public class Main {
         
         //TODO: Make server call to register().
         try {
+            System.err.println("Port Number:"+portNumber);
             registry = LocateRegistry.getRegistry(portNumber);
             mr = (MainRemote) registry.lookup("Main");
             er = mr.register(host);
