@@ -12,7 +12,7 @@ import java.util.concurrent.locks.*;
  *
  * @author Asish
  */
-public class MagicalItem implements java.rmi.Remote{
+public class MagicalItem implements Serializable{
     MagicalItemInfo magicalItemInfo;
     volatile int averageSellingPrice;
     ArrayList<DiagonAlleySellerAccount> wizards;
