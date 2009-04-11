@@ -5,11 +5,13 @@
 
 package server;
 
+import library.MagicalItemInfoRemote;
+
 /**
  *
  * @author Asish
  */
-public class MagicalItemInfo {
+public class MagicalItemInfo implements MagicalItemInfoRemote{
     String name;
     String symbol;
     String picture;
@@ -18,5 +20,14 @@ public class MagicalItemInfo {
         this.name=name;
         this.symbol=symbol;
         this.picture=picture;
+    }
+    public String getName() {
+        return this.name;
+    }
+    public String getSymbol() {
+        return this.symbol;
+    }
+    public String getPicture() {
+        return this.picture;
     }
 }

@@ -5,6 +5,8 @@
 
 package server;
 
+import library.MagicalItemInfoRemote;
+
 /**
  *
  * @author Asish
@@ -76,14 +78,14 @@ public class WizardSeller extends Everyone implements WizardSellerRemote{
     /**
      * Gets the target magical item to sell for the wizard.
      */    
-    public MagicalItemInfo getTargetCommodityInfo()
+    public MagicalItemInfoRemote getTargetCommodityInfo()
     {
         for(int i=0; i<currentInventoryList.size(); i++)
         {
             CurrentInventoryList cil=currentInventoryList.get(i);
             if (cil.sellingPriceTarget != 0)
             {
-                return cil.magicalItem.magicalItemInfo;
+                return (MagicalItemInfoRemote)cil.magicalItem.magicalItemInfo;
             }
         }
         return null;        

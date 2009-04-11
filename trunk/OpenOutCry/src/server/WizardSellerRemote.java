@@ -5,6 +5,8 @@
 
 package server;
 import java.rmi.*;
+import library.MagicalItemInfoRemote;
+
 
 /**
  *
@@ -17,5 +19,5 @@ public interface WizardSellerRemote extends java.rmi.Remote{
     int getTargetQuantity() throws RemoteException;
     int getTargetCost() throws RemoteException;
     int getTargetQuantityLocked() throws RemoteException;
-    MagicalItemInfo getTargetCommodityInfo() throws RemoteException;
+    MagicalItemInfoRemote getTargetCommodityInfo() throws RemoteException;
 }
