@@ -100,9 +100,9 @@ public class Main {
     }
 
     /**
-    * Obtain current goal to be displayed
+    * Obtain current commodity which the buyer or seller is dealing with
     */
-    static MagicalItemInfoRemote currentGoal(EveryoneRemote er) {
+    static MagicalItemInfoRemote currentCommodity(EveryoneRemote er) {
         //TODO: Obtain my current goal from server
         MagicalItemInfoRemote miir;
         try {
@@ -118,6 +118,39 @@ public class Main {
         return null;
     }
 
+    static int targetCost(EveryoneRemote er) {
+        //TODO: Obtain my current goal from server
+        int cost;
+        try {
+            if(er.isWizard())
+                cost = ((WizardSellerRemote)er).getTargetCost();
+            else
+                cost = ((ApprenticeBuyerRemote)er).getTargetCost();                
+            return cost;
+         } catch (Exception e) {
+            System.out.println("Error getting list of magical items: " + e.toString());
+            e.printStackTrace();
+        }
+        return -1;
+    }
+
+    static int targetQuantity(EveryoneRemote er) {
+        //TODO: Obtain my current goal from server
+        int qty;
+        try {
+            if(er.isWizard())
+                qty = ((WizardSellerRemote)er).getTargetQuantity();
+            else
+                qty = ((ApprenticeBuyerRemote)er).getTargetQuantity();                
+            return qty;
+         } catch (Exception e) {
+            System.out.println("Error getting list of magical items: " + e.toString());
+            e.printStackTrace();
+        }
+        return -1;
+    }
+
+    
    /**
     * Obtain all current trades to be displayed on UI.
     */
@@ -127,7 +160,7 @@ public class Main {
             MagicalItemInfoRemote[] magicalItemInfo;
             magicalItemInfo = mr.getAllMagicalItems();
             for(int i= 0; i < magicalItemInfo.length; i++){
-                System.out.println("" + magicalItemInfo[i]);
+                System.out.println("Name:" + magicalItemInfo[i].getName()+ " Symbol:"+magicalItemInfo[i].getSymbol());
             }
         } catch (Exception e) {
             System.out.println("Error getting list of magical items: " + e.toString());
@@ -218,8 +251,12 @@ public class Main {
                         break;
                 case 4: listAllMagicalItems(mr);
                         break;
-                case 5: MagicalItemInfoRemote miir = currentGoal(er);
-                        System.out.println(miir.getName());
+                case 5: MagicalItemInfoRemote miir = currentCommodity(er);
+                        int tcost=targetCost(er), tquantity=targetQuantity(er);
+                        if(er.isWizard())
+                            System.out.println("You have a goal of selling "+tquantity+" "+miir.getName()+" and your target selling price is"+tcost);
+                        else
+                            System.out.println("You have a goal of buying "+tquantity+" "+miir.getName()+" and your buying price target is"+tcost);
                         System.out.println(miir.getSymbol());
                         System.out.println(miir.getPicture());
                         break;
