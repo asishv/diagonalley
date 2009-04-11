@@ -5,6 +5,7 @@
 
 package server;
 
+import java.util.GregorianCalendar;
 import library.ApprenticeBuyerRemote;
 
 /**
@@ -108,6 +109,7 @@ public class ApprenticeBuyer extends Everyone implements ApprenticeBuyerRemote{
         fil.magicalItem.lock();
         fil.diagonAlleyBuyerAccount.price=price;
         fil.diagonAlleyBuyerAccount.quantity=quantity;
+        fil.diagonAlleyBuyerAccount.time=new GregorianCalendar();
         fil.diagonAlleyBuyerAccount.time.setTimeInMillis(fil.diagonAlleyBuyerAccount.time.getTimeInMillis()+msec);
         fil.lock();
         fil.quantity-=quantity;
