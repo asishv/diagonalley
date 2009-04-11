@@ -11,7 +11,6 @@ import java.rmi.registry.Registry;
 import library.MagicalItemInfoRemote;
 import library.ApprenticeBuyerRemote;
 import library.EveryoneRemote;
-import server.MagicalItemInfo;
 import library.MainRemote;
 import library.WizardSellerRemote;
 
@@ -119,7 +118,7 @@ public class Main {
     static void listAllMagicalItems(MainRemote mr) {
         //TODO: Obtain a list of all magical items
         try {
-            MagicalItemInfo[] magicalItemInfo;
+            MagicalItemInfoRemote[] magicalItemInfo;
             magicalItemInfo = mr.getAllMagicalItems();
             for(int i= 0; i < magicalItemInfo.length; i++){
                 System.out.println("" + magicalItemInfo[i]);
