@@ -98,6 +98,7 @@ public class ApprenticeBuyer extends Everyone implements ApprenticeBuyerRemote{
     public boolean bid(int price, int quantity, int magicalItemNumber,long msec)
     {
         FutureInventoryList fil=futureInventoryList.get(magicalItemNumber);
+        System.out.println("Quantity: "+quantity+" Price: "+price+" Goal Quantity:"+fil.quantity+" Goal Price: "+fil.buyingTargetPrice);
         if(quantity>fil.quantity)
            return false; 
         if(price>fil.buyingTargetPrice)
