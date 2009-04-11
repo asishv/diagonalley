@@ -10,12 +10,13 @@ import java.io.*;
  * @author Asish
  */
 public class EventReader implements library.EventReaderRemote{
+    public static final String LOG_FILE="DiagonAlleyLog.txt";
     public String get(int nbOfChars)
     {
         String message=null;
         char cbuf[]=new char[1000];
         try{
-            FileReader fr=new FileReader(server.Main.LOG_FILE);
+            FileReader fr=new FileReader(LOG_FILE);
             fr.skip(nbOfChars);
             if(fr.ready())
             {
