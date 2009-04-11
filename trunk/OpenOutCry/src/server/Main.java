@@ -265,7 +265,18 @@ public class Main extends Thread implements MainRemote{
             EventReaderRemote stub1 = (EventReaderRemote) UnicastRemoteObject.exportObject(obj.in, 0);
 	    MainRemote stub2 = (MainRemote) UnicastRemoteObject.exportObject(obj, 0);
 	    // Bind the remote object's stub2 in the registry
-	    registry = LocateRegistry.getRegistry();
+            switch(args.length)
+            {
+                case 0:
+              	    registry = LocateRegistry.getRegistry();
+                    break;
+                case 1:
+                    registry = LocateRegistry.getRegistry(args[0]);
+                    break;
+                case 2:
+                    registry = LocateRegistry.getRegistry(args[1], Integer.parseInt(args[2]));
+                    break;
+            }
             registry.bind("Read", stub1);
 	    registry.bind("Main", stub2);
             obj.out.write("Auction Game Begins!");
