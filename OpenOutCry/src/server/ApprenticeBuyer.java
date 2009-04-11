@@ -99,9 +99,9 @@ public class ApprenticeBuyer extends Everyone implements ApprenticeBuyerRemote{
     {
         FutureInventoryList fil=futureInventoryList.get(magicalItemNumber);
         System.out.println("Quantity: "+quantity+" Price: "+price+" Goal Quantity:"+fil.quantity+" Goal Price: "+fil.buyingTargetPrice);
-        if(quantity>fil.quantity)
-           return false; 
-        if(price>fil.buyingTargetPrice)
+        if(fil.quantity>0)
+           quantity=(quantity>fil.quantity)?fil.quantity:quantity; 
+        if(fil.buyingTargetPrice!=0&&price>fil.buyingTargetPrice)
             return false;
         fil.magicalItem.lock();
         fil.diagonAlleyBuyerAccount.price=price;

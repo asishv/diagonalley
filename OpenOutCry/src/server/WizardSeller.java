@@ -126,6 +126,9 @@ public class WizardSeller extends Everyone implements WizardSellerRemote{
             return false;
         }
         
+        if(cil.sellingPriceTarget != 0 && price<cil.sellingPriceTarget)
+            return false;
+        
         /* Obtain Lock, update the DiagonAlleySellerAccount values in Q,
          * update avg. price in Magical Item, unlock and execute trade.  */
         cil.magicalItem.lock();
