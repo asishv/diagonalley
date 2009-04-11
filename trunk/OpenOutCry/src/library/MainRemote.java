@@ -4,7 +4,6 @@
  */
 
 package library;
-import server.*;
 import java.rmi.*;
 
 /**
@@ -12,6 +11,6 @@ import java.rmi.*;
  * @author Asish
  */
 public interface MainRemote extends java.rmi.Remote{
-    Everyone register(String name) throws RemoteException;
-    MagicalItemInfo[] getAllMagicalItems() throws RemoteException;
+    EveryoneRemote register(String name) throws RemoteException;
+    MagicalItemInfoRemote[] getAllMagicalItems() throws RemoteException;
 }
