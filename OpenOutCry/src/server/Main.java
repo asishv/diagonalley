@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 package server;
+import DailyProphet.EventReader;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.Random;
@@ -262,19 +263,23 @@ public class Main extends Thread implements MainRemote{
         Registry registry=null;
        	try {
 	    Main obj = new Main();
+            obj.in = new EventReader();
             EventReaderRemote stub1 = (EventReaderRemote) UnicastRemoteObject.exportObject(obj.in, 0);
 	    MainRemote stub2 = (MainRemote) UnicastRemoteObject.exportObject(obj, 0);
 	    // Bind the remote object's stub2 in the registry
             switch(args.length)
             {
                 case 0:
+                    System.err.println("No arguments supplied");
               	    registry = LocateRegistry.getRegistry();
                     break;
                 case 1:
+                    System.err.println("Hostname: "+args[0]);
                     registry = LocateRegistry.getRegistry(args[0]);
                     break;
                 case 2:
-                    registry = LocateRegistry.getRegistry(args[1], Integer.parseInt(args[2]));
+                    System.err.println("Hostname:"+args[0]+" Port:"+args[1]);
+                    registry = LocateRegistry.getRegistry(args[0], Integer.parseInt(args[0]));
                     break;
             }
             registry.bind("Read", stub1);
@@ -285,7 +290,7 @@ public class Main extends Thread implements MainRemote{
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
                 br.readLine();
         } 
-        catch (IOException ioe) {}
+        catch (IOException ioe) {ioe.printStackTrace();}
 	catch (Exception e) {
 	    System.err.println("Server exception: " + e.toString());
 	    e.printStackTrace();
