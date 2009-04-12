@@ -211,7 +211,7 @@ public class Main extends Thread implements MainRemote{
                 {
                     String line=br.readLine();
                     String elem[]=line.split(",");
-                    magicalItems[i].magicalItemInfo= new MagicalItemInfo(elem[0], elem[1], elem[2]);
+                    magicalItems[i].magicalItemInfo= new MagicalItemInfo(elem[0], elem[1], elem[2], magicalItems[i].index);
                     magicalItemInfo.add(magicalItems[i].magicalItemInfo);
                 }
             }

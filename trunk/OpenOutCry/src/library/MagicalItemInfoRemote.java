@@ -17,4 +17,5 @@ public interface MagicalItemInfoRemote extends Remote,Serializable{
     String getName() throws RemoteException;
     String getSymbol() throws RemoteException;
     String getPicture() throws RemoteException;
+    int getIndex() throws RemoteException;
 }
