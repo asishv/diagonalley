@@ -720,7 +720,7 @@ public class DiagonAlleyUI extends javax.swing.JFrame {
     */
     public static void main(String args[]) {
         //org.jvnet.substance.watermark.SubstanceCrosshatchWatermark;
-
+        /*
         javax.swing.JFrame.setDefaultLookAndFeelDecorated(true);
         try {
             javax.swing.UIManager.setLookAndFeel(new SubstanceBusinessLookAndFeel());
@@ -728,7 +728,7 @@ public class DiagonAlleyUI extends javax.swing.JFrame {
             
         } catch (Exception e) {
             System.out.println("Substance Raven Graphite failed to initialize");
-        }
+        }*/
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new DiagonAlleyUI().setVisible(true);
