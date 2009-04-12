@@ -11,10 +11,9 @@
 
 package client;
 
-import javax.swing.plaf.metal.DefaultMetalTheme;
-import org.jvnet.substance.skin.SubstanceBusinessBlackSteelLookAndFeel;
+
 import org.jvnet.substance.skin.SubstanceBusinessLookAndFeel;
-import org.jvnet.substance.watermark.*;
+
 
 /**
  *
