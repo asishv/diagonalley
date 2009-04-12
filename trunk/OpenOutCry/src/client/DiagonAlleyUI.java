@@ -12,7 +12,8 @@
 package client;
 
 
-//import org.jvnet.substance.skin.SubstanceBusinessLookAndFeel;
+import org.jvnet.substance.skin.SubstanceBusinessBlackSteelLookAndFeel;
+import org.jvnet.substance.skin.SubstanceBusinessLookAndFeel;
 
 
 /**
@@ -720,15 +721,15 @@ public class DiagonAlleyUI extends javax.swing.JFrame {
     */
     public static void main(String args[]) {
         //org.jvnet.substance.watermark.SubstanceCrosshatchWatermark;
-        /*
+        
         javax.swing.JFrame.setDefaultLookAndFeelDecorated(true);
         try {
-            javax.swing.UIManager.setLookAndFeel(new SubstanceBusinessLookAndFeel());
+            javax.swing.UIManager.setLookAndFeel(new SubstanceBusinessBlackSteelLookAndFeel());
             
             
         } catch (Exception e) {
             System.out.println("Substance Raven Graphite failed to initialize");
-        }*/
+        }
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new DiagonAlleyUI().setVisible(true);
