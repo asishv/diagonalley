@@ -19,13 +19,15 @@ public class MagicalItem implements Serializable{
     ArrayList<DiagonAlleySellerAccount> sellerAccount;
     ArrayList<DiagonAlleyBuyerAccount> buyerAccount;
     private Lock l;
+    private DailyProphet.EventLogger out;
     
-    MagicalItem(int index)
+    MagicalItem(int index, DailyProphet.EventLogger out)
     {
         l=new ReentrantLock();
         sellerAccount=new ArrayList();
         buyerAccount=new ArrayList();
         this.index=index;
+        this.out=out;
     }
     
      /**
@@ -70,7 +72,7 @@ public class MagicalItem implements Serializable{
                                 dasa.e.lock();
                                 dasa.e.score+=(cost-cil.sellingPriceTarget)*daba.quantity; //Update score for seller
                                 dasa.e.unlock();
-                                Main.out.writeln("Sold "+daba.quantity+" of "+cil.magicalItem.magicalItemInfo.name+" for "+cost);
+                                out.writeln("Sold "+daba.quantity+" of "+cil.magicalItem.magicalItemInfo.name+" for "+cost);
                                 daba.quantity=0; //Update the bid quantity
                             }
                             else
@@ -95,7 +97,7 @@ public class MagicalItem implements Serializable{
                                 dasa.e.lock();
                                 dasa.e.score+=(cost-cil.sellingPriceTarget)*daba.quantity; //Update score for seller
                                 dasa.e.unlock();
-                                Main.out.writeln("Sold "+dasa.quantity+" of "+cil.magicalItem.magicalItemInfo.name+" for "+cost);
+                                out.writeln("Sold "+dasa.quantity+" of "+cil.magicalItem.magicalItemInfo.name+" for "+cost);
                                 dasa.quantity=0; //Update the sale quantity
                             }
                         }
