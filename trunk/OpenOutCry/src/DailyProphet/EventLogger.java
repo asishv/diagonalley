@@ -116,6 +116,10 @@ public class EventLogger implements Serializable{
         
         public static void debug (String msg)
         {
+            if(obj==null)
+            {
+                obj=new EventLogger();
+            }
             try{
                 obj.add("DEBUG: "+msg+"\r\n");
             }catch (ClosedLogException cle)
