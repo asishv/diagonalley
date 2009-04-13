@@ -119,18 +119,17 @@ public class WizardSeller extends Everyone implements WizardSellerRemote{
     public boolean trade(int price, int quantity, int magicalItemNumber, long m)
     {
         CurrentInventoryList cil = this.currentInventoryList.get(magicalItemNumber);
-        if(cil == null) {
-            //ERROR: Node doesnt exist.
-            System.out.println("Error setting up trade");
-            return false;
-        }
         
         if(quantity > cil.quantity) {
+            Main.out.debug("Trade cannot be placed because the quantity is more than the user holds.");
             return false;
         }
         
         if(cil.sellingPriceTarget != 0 && price<cil.sellingPriceTarget)
+        {
+            Main.out.debug("Trade cannot be placed because the selling price is less than the target price.");
             return false;
+        }
         
         /* Obtain Lock, update the DiagonAlleySellerAccount values in Q,
          * update avg. price in Magical Item, unlock and execute trade.  */
@@ -144,6 +143,7 @@ public class WizardSeller extends Everyone implements WizardSellerRemote{
         cil.diagonAlleySellerAccount.time=new GregorianCalendar();
         cil.diagonAlleySellerAccount.time.setTimeInMillis(cil.diagonAlleySellerAccount.time.getTimeInMillis()+m);
         cil.magicalItem.unlock();
+        Main.out.writeln(this.name+" is trying to sell "+quantity+" nos of "+cil.magicalItem.magicalItemInfo.name+" @"+price);
         cil.magicalItem.executeTrade();
         return true;
     }
@@ -154,11 +154,16 @@ public class WizardSeller extends Everyone implements WizardSellerRemote{
     public boolean modifyTrade(int price, int quantity, int magicalItemNumber, long m)
     {
         CurrentInventoryList cil = this.currentInventoryList.get(magicalItemNumber);
-        if(cil == null) {
-            return false;
-        }
+
         int oldQuantity = cil.diagonAlleySellerAccount.quantity;
         if(quantity > cil.quantity + oldQuantity) {
+            Main.out.debug("Trade cannot be placed because the quantity is more than the user holds.");
+            return false;
+        }
+        
+        if(cil.sellingPriceTarget != 0 && price<cil.sellingPriceTarget)
+        {
+            Main.out.debug("Trade cannot be placed because the selling price is less than the target price.");
             return false;
         }
 
@@ -175,6 +180,7 @@ public class WizardSeller extends Everyone implements WizardSellerRemote{
         cil.diagonAlleySellerAccount.quantity = quantity;
         cil.diagonAlleySellerAccount.time.setTimeInMillis(cil.diagonAlleySellerAccount.time.getTimeInMillis()+m);
         cil.magicalItem.unlock();
+        Main.out.writeln(this.name+" is trying to sell "+quantity+" nos of "+cil.magicalItem.magicalItemInfo.name+" @"+price);
         cil.magicalItem.executeTrade();
         return true;
     }

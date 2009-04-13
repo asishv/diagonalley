@@ -101,11 +101,13 @@ public class ApprenticeBuyer extends Everyone implements ApprenticeBuyerRemote{
     public boolean bid(int price, int quantity, int magicalItemNumber,long msec)
     {
         FutureInventoryList fil=futureInventoryList.get(magicalItemNumber);
-        System.out.println("Quantity: "+quantity+" Price: "+price+" Goal Quantity:"+fil.quantity+" Goal Price: "+fil.buyingTargetPrice);
-        if(fil.quantity>0)
-           quantity=(quantity>fil.quantity)?fil.quantity:quantity; 
+
         if(fil.buyingTargetPrice!=0&&price>fil.buyingTargetPrice)
+        {
+            Main.out.debug("Trade cannot be placed because the buying price is more than the target price.");
             return false;
+        }
+        
         fil.magicalItem.lock();
         fil.diagonAlleyBuyerAccount.price=price;
         fil.diagonAlleyBuyerAccount.quantity=quantity;
@@ -116,6 +118,7 @@ public class ApprenticeBuyer extends Everyone implements ApprenticeBuyerRemote{
         fil.quantityLocked+=quantity;
         fil.unlock();
         fil.magicalItem.unlock();
+        Main.out.writeln(this.name+" is trying to buy "+quantity+" nos of "+fil.magicalItem.magicalItemInfo.name+" @"+price);
         fil.magicalItem.executeTrade();
         return true;
     }
@@ -126,10 +129,12 @@ public class ApprenticeBuyer extends Everyone implements ApprenticeBuyerRemote{
     public boolean modifyBid(int price, int quantity, int magicalItemNumber, long msec)
     {
         FutureInventoryList fil=futureInventoryList.get(magicalItemNumber);
-        if(quantity>fil.quantity)
-           return false; 
-        if(price>fil.buyingTargetPrice)
-           return false;
+
+        if(fil.buyingTargetPrice!=0&&price>fil.buyingTargetPrice)
+        {
+            Main.out.debug("Trade cannot be placed because the buying price is more than the target price.");
+            return false;
+        }
         fil.magicalItem.lock();
         fil.diagonAlleyBuyerAccount.price=price;
         fil.diagonAlleyBuyerAccount.quantity=quantity;
@@ -139,6 +144,7 @@ public class ApprenticeBuyer extends Everyone implements ApprenticeBuyerRemote{
         fil.quantityLocked+=quantity-fil.diagonAlleyBuyerAccount.quantity;
         fil.unlock();
         fil.magicalItem.unlock();
+        Main.out.writeln(this.name+" is trying to buy "+quantity+" nos of "+fil.magicalItem.magicalItemInfo.name+" @"+price);
         fil.magicalItem.executeTrade(); 
         return true;
     }

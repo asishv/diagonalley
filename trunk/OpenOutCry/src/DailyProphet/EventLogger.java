@@ -94,6 +94,26 @@ public class EventLogger {
                 cle.printStackTrace();
             }
         }
+        
+        public void writeln (String msg)
+        {
+            try{
+                add(msg+"\r\n");
+            }catch (ClosedLogException cle)
+            {
+                cle.printStackTrace();
+            }
+        }
+        
+        public void debug (String msg)
+        {
+            try{
+                add("DEBUG: "+msg+"\r\n");
+            }catch (ClosedLogException cle)
+            {
+                cle.printStackTrace();
+            }
+        }
 
         /*  close the Log.  After the log has been closed, no additional message may be added to the log. */
          public synchronized void close()
