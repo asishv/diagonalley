@@ -143,7 +143,7 @@ public class WizardSeller extends Everyone implements WizardSellerRemote{
         cil.diagonAlleySellerAccount.time=new GregorianCalendar();
         cil.diagonAlleySellerAccount.time.setTimeInMillis(cil.diagonAlleySellerAccount.time.getTimeInMillis()+m);
         cil.magicalItem.unlock();
-        Main.out.writeln(this.name+" is trying to sell "+quantity+" nos of "+cil.magicalItem.magicalItemInfo.name+" @"+price);
+        Main.out.writeln(this.name+" is trying to sell "+quantity+" nos of item number "+magicalItemNumber+" @"+price);
         cil.magicalItem.executeTrade();
         return true;
     }
@@ -180,7 +180,7 @@ public class WizardSeller extends Everyone implements WizardSellerRemote{
         cil.diagonAlleySellerAccount.quantity = quantity;
         cil.diagonAlleySellerAccount.time.setTimeInMillis(cil.diagonAlleySellerAccount.time.getTimeInMillis()+m);
         cil.magicalItem.unlock();
-        Main.out.writeln(this.name+" is trying to sell "+quantity+" nos of "+cil.magicalItem.magicalItemInfo.name+" @"+price);
+        Main.out.writeln(this.name+" is trying to sell "+quantity+" nos of item number "+magicalItemNumber+" @"+price);
         cil.magicalItem.executeTrade();
         return true;
     }
