@@ -7,6 +7,7 @@ package server;
 import java.util.ArrayList;
 import java.io.*;
 import java.util.concurrent.locks.*;
+import library.EventLoggerRemote;
 
 /**
  *
@@ -19,9 +20,9 @@ public class MagicalItem implements Serializable{
     ArrayList<DiagonAlleySellerAccount> sellerAccount;
     ArrayList<DiagonAlleyBuyerAccount> buyerAccount;
     private Lock l;
-    private DailyProphet.EventLogger out;
+    private EventLoggerRemote out;
     
-    MagicalItem(int index, DailyProphet.EventLogger out)
+    MagicalItem(int index, EventLoggerRemote out)
     {
         l=new ReentrantLock();
         sellerAccount=new ArrayList();

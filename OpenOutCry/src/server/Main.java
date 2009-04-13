@@ -12,7 +12,8 @@ import java.io.*;
 import java.rmi.server.UnicastRemoteObject;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import library.*;
+import library.EventLoggerRemote;
+import library.EventReaderRemote;
 
 /**
  *
@@ -20,7 +21,7 @@ import library.*;
  */
 public class Main extends Thread implements MainRemote{
      public static final String LOG_FILE="DiagonAlleyLog.txt";
-     private DailyProphet.EventLogger out;
+     public EventLoggerRemote out;
      DailyProphet.EventReader in;
      Date startTime;
      MagicalItem[] magicalItems;
