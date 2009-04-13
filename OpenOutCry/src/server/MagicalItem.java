@@ -70,6 +70,7 @@ public class MagicalItem implements Serializable{
                                 dasa.e.lock();
                                 dasa.e.score+=(cost-cil.sellingPriceTarget)*daba.quantity; //Update score for seller
                                 dasa.e.unlock();
+                                Main.out.writeln("Sold "+daba.quantity+" of "+cil.magicalItem.magicalItemInfo.name+" for "+cost);
                                 daba.quantity=0; //Update the bid quantity
                             }
                             else
@@ -94,6 +95,7 @@ public class MagicalItem implements Serializable{
                                 dasa.e.lock();
                                 dasa.e.score+=(cost-cil.sellingPriceTarget)*daba.quantity; //Update score for seller
                                 dasa.e.unlock();
+                                Main.out.writeln("Sold "+dasa.quantity+" of "+cil.magicalItem.magicalItemInfo.name+" for "+cost);
                                 dasa.quantity=0; //Update the sale quantity
                             }
                         }

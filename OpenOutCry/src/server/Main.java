@@ -20,7 +20,7 @@ import library.*;
  */
 public class Main extends Thread implements MainRemote{
      public static final String LOG_FILE="DiagonAlleyLog.txt";
-     public DailyProphet.EventLogger out;
+     public static DailyProphet.EventLogger out;
      DailyProphet.EventReader in;
      Date startTime;
      MagicalItem[] magicalItems;
@@ -95,6 +95,7 @@ public class Main extends Thread implements MainRemote{
        DiagonAlleySellerAccount dasa=new DiagonAlleySellerAccount(ws);
        magicalItems[commodity].sellerAccount.add(dasa);
        ci.diagonAlleySellerAccount=dasa;
+       out.debug("Wizard Seller: "+name+" created!");
        return ws;
     }
     
@@ -109,6 +110,7 @@ public class Main extends Thread implements MainRemote{
             if(ws.getTargetCommodityInfo() == m)
                 return i;
         }
+        out.debug("No previous wizard for the commodity "+m.name+" exists!");
         return -1;
     }
 
@@ -123,6 +125,7 @@ public class Main extends Thread implements MainRemote{
             if(ab.getTargetCommodityInfo() == m)
                 return i;
         }
+        out.debug("No previous apprentice for the commodity "+m.name+" exists!");
         return -1;
     }
 
@@ -190,6 +193,7 @@ public class Main extends Thread implements MainRemote{
        DiagonAlleyBuyerAccount daba=new DiagonAlleyBuyerAccount(ab);
        magicalItems[commodity].buyerAccount.add(daba);
        fi.diagonAlleyBuyerAccount=daba;
+       out.debug("Apprentice Buyer: "+name+" created!");
        return ab;
     }
    
@@ -220,6 +224,7 @@ public class Main extends Thread implements MainRemote{
             e.printStackTrace();
             System.exit(0);
         }        
+        out.debug("Magical items successfully created");
     }
     
      /**
@@ -227,7 +232,8 @@ public class Main extends Thread implements MainRemote{
      */    
     void createVirtualWizards()
     {
-     //TODO: Complete this code.   
+     //TODO: Complete this code.  
+        out.debug("Created virtual wizards");
     }
 
      /**
@@ -236,6 +242,7 @@ public class Main extends Thread implements MainRemote{
     void createVirtualApprentices()
     {
      //TODO: Complete this code.   
+        out.debug("Created virtual apprentices");
     }
 
     /**
@@ -273,6 +280,7 @@ public class Main extends Thread implements MainRemote{
         try{
             FileWriter fw=new FileWriter(LOG_FILE);
             out=new DailyProphet.EventLogger(fw, 1000);
+            out.writeln("Welcome to Diagon Alley Open Outcry Auction!");
             in=new DailyProphet.EventReader();
         }catch(IOException ioe)
         {
@@ -307,8 +315,8 @@ public class Main extends Thread implements MainRemote{
             }
             registry.bind("Read", stub1);
 	    registry.bind("Main", stub2);
-            obj.out.write("Auction Game Begins!");
 	    System.err.println("Server ready");
+            out.debug("Server started successfully\r\n");
             System.err.println("<Press ENTER to quit>");
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
                 br.readLine();
