@@ -7,7 +7,7 @@ package server;
 
 import java.util.GregorianCalendar;
 import library.ApprenticeBuyerRemote;
-import library.EventLoggerRemote;
+
 
 /**
  *
@@ -15,13 +15,11 @@ import library.EventLoggerRemote;
  */
 public class ApprenticeBuyer extends Everyone implements ApprenticeBuyerRemote{
     int index;
-    private EventLoggerRemote out;
-    ApprenticeBuyer(String name, int index, EventLoggerRemote out)
+    ApprenticeBuyer(String name, int index)
     {
         wizardOrNot = false;
         this.name=name;
         this.index=index;
-        this.out=out;
     }
 
     /**
@@ -107,7 +105,7 @@ public class ApprenticeBuyer extends Everyone implements ApprenticeBuyerRemote{
 
         if(fil.buyingTargetPrice!=0&&price>fil.buyingTargetPrice)
         {
-            out.debug("Trade cannot be placed because the buying price is more than the target price.");
+            Main.out.debug("Trade cannot be placed because the buying price is more than the target price.");
             return false;
         }
         
@@ -121,7 +119,7 @@ public class ApprenticeBuyer extends Everyone implements ApprenticeBuyerRemote{
         fil.quantityLocked+=quantity;
         fil.unlock();
         fil.magicalItem.unlock();
-        out.writeln(this.name+" is trying to buy "+quantity+" nos of item number "+magicalItemNumber+" @"+price);
+        Main.out.writeln(this.name+" is trying to buy "+quantity+" nos of item number "+magicalItemNumber+" @"+price);
         fil.magicalItem.executeTrade();
         return true;
     }
@@ -135,7 +133,7 @@ public class ApprenticeBuyer extends Everyone implements ApprenticeBuyerRemote{
 
         if(fil.buyingTargetPrice!=0&&price>fil.buyingTargetPrice)
         {
-            out.debug("Trade cannot be placed because the buying price is more than the target price.");
+            Main.out.debug("Trade cannot be placed because the buying price is more than the target price.");
             return false;
         }
         fil.magicalItem.lock();
@@ -147,7 +145,7 @@ public class ApprenticeBuyer extends Everyone implements ApprenticeBuyerRemote{
         fil.quantityLocked+=quantity-fil.diagonAlleyBuyerAccount.quantity;
         fil.unlock();
         fil.magicalItem.unlock();
-        out.writeln(this.name+" is trying to buy "+quantity+" nos of item number "+magicalItemNumber+" @"+price);
+        Main.out.writeln(this.name+" is trying to buy "+quantity+" nos of item number "+magicalItemNumber+" @"+price);
         fil.magicalItem.executeTrade(); 
         return true;
     }
