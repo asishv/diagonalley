@@ -38,12 +38,12 @@ public class MagicalItem implements Serializable{
         {
             //Get the buyer account
             DiagonAlleyBuyerAccount daba=buyerAccount.get(i);
-            if(daba!=null && daba.time.before(new java.util.Date())) //Check if the bid is valid
+            if(daba.time!=null && daba.time.before(new java.util.Date())) //Check if the bid is valid
             {
                 for(int j=0; j<sellerAccount.size(); j++)
                 {
                     DiagonAlleySellerAccount dasa=sellerAccount.get(i);
-                    if(dasa!=null&&dasa.time.before(new java.util.Date())) //Check if the sale is valid
+                    if(dasa.time!=null&&dasa.time.before(new java.util.Date())) //Check if the sale is valid
                     {
                         if(daba.price<=dasa.price) //Matching criterion
                         {
