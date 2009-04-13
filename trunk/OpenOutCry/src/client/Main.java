@@ -256,7 +256,7 @@ public class Main {
                         if(er.isWizard())
                             System.out.println("You have a goal of selling "+tquantity+" "+miir.getName()+"["+miir.getIndex()+"]"+" and your target selling price is "+tcost);
                         else
-                            System.out.println("You have a goal of buying "+tquantity+" "+miir.getName()+" and your buying price target is "+tcost);
+                            System.out.println("You have a goal of buying "+tquantity+" "+miir.getName()+"["+miir.getIndex()+"]"+" and your buying price target is "+tcost);
                         System.out.println(miir.getSymbol());
                         System.out.println(miir.getPicture());
                         break;
