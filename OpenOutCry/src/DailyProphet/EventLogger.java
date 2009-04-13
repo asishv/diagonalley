@@ -20,31 +20,23 @@ import java.net.MulticastSocket;
 public class EventLogger implements Serializable{	
 	@SuppressWarnings("serial")
 	class ClosedLogException extends Exception implements Serializable{}
-        private final int maxBuffSize; //The maximum size of the buffer, declared as final to prevent extending(child) classes from modifying the Buffer Size 
-        private boolean closeFlag; //If log is closed then closeFlag=true else closeFlag=false
-        private String buffer[]; //buffer that contains messages which needs to be written into Writer 
-	private int size; //size of the buffer
-        private int in; //index where new messages are placed 
-        private int out; //index where messages are read
-        LazyWriter lw; //Object of LazyWriter
-        public static final String LOG_FILE="DiagonAlleyLog.txt";
-        MulticastSocket socket;
-      
+        private final int maxBuffSize=1000; //The maximum size of the buffer, declared as final to prevent extending(child) classes from modifying the Buffer Size 
+        private boolean closeFlag=false; //If log is closed then closeFlag=true else closeFlag=false
+        private String buffer[] = new String[maxBuffSize]; //buffer that contains messages which needs to be written into Writer 
+	private int size=0; //size of the buffer
+        private int in=0; //index where new messages are placed 
+        private int out=0; //index where messages are read
+        private LazyWriter lw=null; //Object of LazyWriter
+        private MulticastSocket socket;
+        private static EventLogger obj=null;
         //Constructor
-	public EventLogger() {            
+	private EventLogger() {            
                 try{
                 socket=new MulticastSocket();
                 }catch(IOException ioe)
                 {
                     ioe.printStackTrace();
                 }
-		this.maxBuffSize = 1000;
-                closeFlag=false;
-                buffer = new String[maxBuffSize];
-                size=0; //Initially buffer is empty
-                in=0;
-                out=0;
-                lw=null; //Lazy Writer thread not started here to prevent data races.
 	}
 	
         /*
@@ -94,30 +86,38 @@ public class EventLogger implements Serializable{
             notifyAll(); //Wake up all waiting threads
         }
 	
-        public void write (String msg)
+        public static void write (String msg)
         {
+            if(obj==null)
+            {
+                obj=new EventLogger();
+            }
             try{
-                add(msg);
+                obj.add(msg);
             }catch (ClosedLogException cle)
             {
                 cle.printStackTrace();
             }
         }
         
-        public void writeln (String msg)
+        public static void writeln (String msg)
         {
+            if(obj==null)
+            {
+                obj=new EventLogger();
+            }
             try{
-                add(msg+"\r\n");
+                obj.add(msg+"\r\n");
             }catch (ClosedLogException cle)
             {
                 cle.printStackTrace();
             }
         }
         
-        public void debug (String msg)
+        public static void debug (String msg)
         {
             try{
-                add("DEBUG: "+msg+"\r\n");
+                obj.add("DEBUG: "+msg+"\r\n");
             }catch (ClosedLogException cle)
             {
                 cle.printStackTrace();
