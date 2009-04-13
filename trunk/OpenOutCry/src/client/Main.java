@@ -20,8 +20,7 @@ import library.WizardSellerRemote;
  */
 public class Main {
     static MainRemote mr = null;
-
-    String[] userNames = {"Harry", "Ron"};
+    static int count = 0;
     int costValue = 0; // Indicates Cost C for seller or Value V for buyer
     int quantity = 0; // Indicates the quantity QS for seller or QB for buyer
 
@@ -37,7 +36,8 @@ public class Main {
             System.err.println("Port Number:"+portNumber);
             registry = LocateRegistry.getRegistry(portNumber);
             mr = (MainRemote) registry.lookup("Main");
-            er = mr.register(host);
+            er = mr.register("User-"+count);
+            count++;
         } catch (Exception e) {
             System.out.println("Error registering user: " + e.toString());
             e.printStackTrace();

@@ -25,7 +25,7 @@ public class MulticastClient {
         String received="";
     
             // get a few quotes
-	while(received.equalsIgnoreCase("END")) {
+	while(!received.equalsIgnoreCase("END")) {
 
 	    byte[] buf = new byte[256];
             packet = new DatagramPacket(buf, buf.length);
