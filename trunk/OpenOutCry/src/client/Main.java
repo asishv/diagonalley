@@ -196,7 +196,7 @@ public class Main {
         long msec;
         String host = (args.length < 1) ? null : args[0];
         try {
-            er = registerUser(host,Integer.parseInt(args[0]));
+            er = registerUser(host,Integer.parseInt(args[1]));
             isWizard = er.isWizard();
             
         } catch (Exception e) {

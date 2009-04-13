@@ -114,7 +114,9 @@ public class ApprenticeBuyer extends Everyone implements ApprenticeBuyerRemote{
         fil.diagonAlleyBuyerAccount.price=price;
         fil.diagonAlleyBuyerAccount.quantity=quantity;
         fil.diagonAlleyBuyerAccount.time=new GregorianCalendar();
+        EventLogger.debug("Old Time in millis = "+fil.diagonAlleyBuyerAccount.time.getTimeInMillis());
         fil.diagonAlleyBuyerAccount.time.setTimeInMillis(fil.diagonAlleyBuyerAccount.time.getTimeInMillis()+msec);
+        EventLogger.debug("New Time in millis = "+fil.diagonAlleyBuyerAccount.time.getTimeInMillis());
         fil.lock();
         fil.quantity-=quantity;
         fil.quantityLocked+=quantity;
