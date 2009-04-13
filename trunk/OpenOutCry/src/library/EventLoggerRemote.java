@@ -4,12 +4,13 @@
  */
 
 package library;
+import java.io.Serializable;
 
 /**
  *
  * @author Asish
  */
-public interface EventLoggerRemote {
+public interface EventLoggerRemote extends Serializable{
         public void write (String msg);
         
         public void writeln (String msg);
