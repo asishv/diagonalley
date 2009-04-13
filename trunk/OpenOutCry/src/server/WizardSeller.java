@@ -6,6 +6,7 @@
 package server;
 
 import java.util.GregorianCalendar;
+import library.EventLoggerRemote;
 import library.WizardSellerRemote;
 import library.MagicalItemInfoRemote;
 
@@ -15,8 +16,8 @@ import library.MagicalItemInfoRemote;
  */
 public class WizardSeller extends Everyone implements WizardSellerRemote{
     int index;
-    private DailyProphet.EventLogger out;
-    public WizardSeller(String name, int index, DailyProphet.EventLogger out)
+    private EventLoggerRemote out;
+    public WizardSeller(String name, int index, EventLoggerRemote out)
     {
         wizardOrNot=true;
         this.name=name;
