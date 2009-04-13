@@ -7,6 +7,9 @@ package server;
 import DailyProphet.EventLogger;
 import java.util.ArrayList;
 import java.io.*;
+
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.concurrent.locks.*;
 import library.EventLoggerRemote;
 
@@ -41,16 +44,17 @@ public class MagicalItem implements Serializable{
         {
             //Get the buyer account
             DiagonAlleyBuyerAccount daba=buyerAccount.get(i);
+            Calendar d=new GregorianCalendar();
             if(daba.time!=null)
             {
-                if(daba.time.before(new java.util.Date())) //Check if the bid is valid
+                if(daba.time.before(d)) //Check if the bid is valid
                 {
                     for(int j=0; j<sellerAccount.size(); j++)
                     {
                         DiagonAlleySellerAccount dasa=sellerAccount.get(i);
                         if(dasa.time!=null)
                         {
-                            if(dasa.time.before(new java.util.Date())) //Check if the sale is valid
+                            if(dasa.time.before(d)) //Check if the sale is valid
                             {
                                 if(daba.price<=dasa.price) //Matching criterion
                                 {
@@ -109,7 +113,7 @@ public class MagicalItem implements Serializable{
                             }
                             else
                             {
-                                EventLogger.debug("Trade Time in millis"+dasa.time.getTimeInMillis());
+                                EventLogger.debug("Trade Time in millis "+dasa.time.getTimeInMillis());
                                 EventLogger.writeln("Trade that "+ dasa.e.name+ " placed has expired!");
                                 CurrentInventoryList cil=dasa.e.currentInventoryList.get(i);
                                 cil.quantity+=dasa.quantity; //Update the quantity because the sale was invalid
@@ -121,7 +125,7 @@ public class MagicalItem implements Serializable{
                 }
                 else
                 {
-                      EventLogger.debug("Bid Time in millis"+daba.time.getTimeInMillis());
+                      EventLogger.debug("Bid Time in millis is "+daba.time.getTimeInMillis()+" current time in millis is "+d.getTimeInMillis());
                       EventLogger.writeln("Bid that "+ daba.e.name+ " placed has expired!");
                       FutureInventoryList fil=daba.e.futureInventoryList.get(i);
                       fil.quantity+=daba.quantity; //Update the target quantity for the seller because the bid was invalid.
