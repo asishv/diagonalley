@@ -22,23 +22,8 @@ import library.EventReaderRemote;
  */
 public class Main extends Thread implements MainRemote{
      public static final String LOG_FILE="DiagonAlleyLog.txt";
-     static EventLogger out;
+     EventLogger out;
      
-     private class SFileWriter extends FileWriter implements Serializable
-     {        
-         public SFileWriter() throws IOException
-         {
-             super(LOG_FILE);
-         }
-     };
-     
-     private class SerialFileWriter extends SFileWriter implements Serializable
-     {
-         public SerialFileWriter() throws IOException
-         {
-             super();
-         }
-     };
      DailyProphet.EventReader in;
      Date startTime;
      MagicalItem[] magicalItems;
@@ -293,7 +278,7 @@ public class Main extends Thread implements MainRemote{
     Main()
     {
         try{
-            SerialFileWriter fw=new SerialFileWriter();
+            FileWriter fw=new FileWriter(LOG_FILE);
             out=new DailyProphet.EventLogger(fw, 1000);
             out.writeln("Welcome to Diagon Alley Open Outcry Auction!");
             in=new DailyProphet.EventReader();
