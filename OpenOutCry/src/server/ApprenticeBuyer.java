@@ -122,7 +122,7 @@ public class ApprenticeBuyer extends Everyone implements ApprenticeBuyerRemote{
         fil.quantityLocked+=quantity;
         fil.unlock();
         fil.magicalItem.unlock();
-        EventLogger.writeln(this.name+" is trying to buy "+quantity+" nos of item number "+magicalItemNumber+" @"+price);
+        EventLogger.writeln(this.name+" is trying to buy "+quantity+" nos of "+fil.magicalItem.magicalItemInfo.name+" @$"+price);
         fil.magicalItem.executeTrade();
         return true;
     }
@@ -148,7 +148,7 @@ public class ApprenticeBuyer extends Everyone implements ApprenticeBuyerRemote{
         fil.quantityLocked+=quantity-fil.diagonAlleyBuyerAccount.quantity;
         fil.unlock();
         fil.magicalItem.unlock();
-        EventLogger.writeln(this.name+" is trying to buy "+quantity+" nos of item number "+magicalItemNumber+" @"+price);
+        EventLogger.writeln(this.name+" is trying to buy "+quantity+" nos of "+fil.magicalItem.magicalItemInfo.name+" @$"+price);
         fil.magicalItem.executeTrade(); 
         return true;
     }
