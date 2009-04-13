@@ -20,8 +20,8 @@ import library.*;
  */
 public class Main extends Thread implements MainRemote{
      public static final String LOG_FILE="DiagonAlleyLog.txt";
-     public static FileWriter fw;
-     public static DailyProphet.EventLogger out;
+     private FileWriter fw;
+     private DailyProphet.EventLogger out;
      DailyProphet.EventReader in;
      Date startTime;
      MagicalItem[] magicalItems;
@@ -51,7 +51,7 @@ public class Main extends Thread implements MainRemote{
      */    
     WizardSeller createWizards(String name)
     {
-       WizardSeller ws=new WizardSeller(name, numberOfUsers-1);
+       WizardSeller ws=new WizardSeller(name, numberOfUsers-1, out);
        Random random = new Random();
        int commodity=random.nextInt(20), quantity, cost;
   
@@ -151,7 +151,7 @@ public class Main extends Thread implements MainRemote{
      */    
     ApprenticeBuyer createApprentices(String name)
     {
-       ApprenticeBuyer ab=new ApprenticeBuyer(name, numberOfUsers-1);
+       ApprenticeBuyer ab=new ApprenticeBuyer(name, numberOfUsers-1, out);
        Random random = new Random();
        int commodity=random.nextInt(20), quantity, cost;
        int wizardNo=findWizard(magicalItems[commodity].magicalItemInfo);
@@ -211,7 +211,7 @@ public class Main extends Thread implements MainRemote{
             BufferedReader br = new BufferedReader(infile);
             for(int i=0; i<MAX_COMMODITY; i++)
             {
-                magicalItems[i]=new MagicalItem(i);
+                magicalItems[i]=new MagicalItem(i, out);
                 if(br.ready())
                 {
                     String line=br.readLine();
@@ -317,7 +317,7 @@ public class Main extends Thread implements MainRemote{
             registry.bind("Read", stub1);
 	    registry.bind("Main", stub2);
 	    System.err.println("Server ready");
-            out.debug("Server started successfully\r\n");
+            obj.out.debug("Server started successfully\r\n");
             System.err.println("<Press ENTER to quit>");
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
                 br.readLine();
