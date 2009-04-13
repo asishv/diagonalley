@@ -23,16 +23,20 @@ import library.EventReaderRemote;
 public class Main extends Thread implements MainRemote{
      public static final String LOG_FILE="DiagonAlleyLog.txt";
      static EventLogger out;
-     private class SerialFileWriter extends FileWriter implements Serializable
-     {
-         private SerialFileWriter(String fileName) throws IOException
+     
+     private class SFileWriter extends FileWriter implements Serializable
+     {        
+         public SFileWriter() throws IOException
          {
-             super(fileName);
+             super(LOG_FILE);
          }
-         
+     };
+     
+     private class SerialFileWriter extends SFileWriter implements Serializable
+     {
          public SerialFileWriter() throws IOException
          {
-             this(LOG_FILE);
+             super();
          }
      };
      DailyProphet.EventReader in;
