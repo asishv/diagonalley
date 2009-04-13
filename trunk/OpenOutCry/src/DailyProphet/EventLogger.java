@@ -12,11 +12,10 @@ package DailyProphet;
 import java.io.IOException;
 import java.io.Serializable;
 import java.io.Writer;
-import java.util.ArrayList;
 import library.EventLoggerRemote;
 
 
-public class EventLogger implements EventLoggerRemote{	
+public class EventLogger{	
 	@SuppressWarnings("serial")
 	class ClosedLogException extends Exception{}
         private final int maxBuffSize; //The maximum size of the buffer, declared as final to prevent extending(child) classes from modifying the Buffer Size 
@@ -131,7 +130,7 @@ public class EventLogger implements EventLoggerRemote{
          *  and close the writer and then 
          *  terminate.  
         */
-	class LazyWriter extends Thread{   
+	class LazyWriter extends Thread implements Serializable{   
 		public void run() 
                 {
                     String msg;

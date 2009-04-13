@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 package server;
+import DailyProphet.EventLogger;
 import library.MainRemote;
 import DailyProphet.EventReader;
 import java.util.Date;
@@ -12,8 +13,8 @@ import java.io.*;
 import java.rmi.server.UnicastRemoteObject;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import library.EventLoggerRemote;
 import library.EventReaderRemote;
+
 
 /**
  *
@@ -21,7 +22,7 @@ import library.EventReaderRemote;
  */
 public class Main extends Thread implements MainRemote{
      public static final String LOG_FILE="DiagonAlleyLog.txt";
-     public EventLoggerRemote out;
+     static EventLogger out;
      DailyProphet.EventReader in;
      Date startTime;
      MagicalItem[] magicalItems;
@@ -51,7 +52,7 @@ public class Main extends Thread implements MainRemote{
      */    
     WizardSeller createWizards(String name)
     {
-       WizardSeller ws=new WizardSeller(name, numberOfUsers-1, out);
+       WizardSeller ws=new WizardSeller(name, numberOfUsers-1);
        Random random = new Random();
        int commodity=random.nextInt(20), quantity, cost;
   
@@ -151,7 +152,7 @@ public class Main extends Thread implements MainRemote{
      */    
     ApprenticeBuyer createApprentices(String name)
     {
-       ApprenticeBuyer ab=new ApprenticeBuyer(name, numberOfUsers-1, out);
+       ApprenticeBuyer ab=new ApprenticeBuyer(name, numberOfUsers-1);
        Random random = new Random();
        int commodity=random.nextInt(20), quantity, cost;
        int wizardNo=findWizard(magicalItems[commodity].magicalItemInfo);
@@ -211,7 +212,7 @@ public class Main extends Thread implements MainRemote{
             BufferedReader br = new BufferedReader(infile);
             for(int i=0; i<MAX_COMMODITY; i++)
             {
-                magicalItems[i]=new MagicalItem(i, out);
+                magicalItems[i]=new MagicalItem(i);
                 if(br.ready())
                 {
                     String line=br.readLine();
