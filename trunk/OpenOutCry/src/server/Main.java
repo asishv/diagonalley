@@ -316,7 +316,6 @@ public class Main extends Thread implements MainRemote{
         finally
         {
             try{
-                registry.unbind("Read");
                 registry.unbind("Main");
             }catch(Exception e)
             {
