@@ -15,8 +15,7 @@ import library.ApprenticeBuyerRemote;
  * @author Asish
  */
 public class ApprenticeBuyer extends Everyone implements ApprenticeBuyerRemote{
-    int index;
-    private EventLogger out;
+    int index;    
     ApprenticeBuyer(String name, int index, EventLogger out)
     {
         wizardOrNot = false;
