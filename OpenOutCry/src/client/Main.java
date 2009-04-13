@@ -6,6 +6,7 @@
 package client;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.rmi.Naming;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.Random;
@@ -36,9 +37,10 @@ public class Main {
         try {
             Random random = new Random();
             count=random.nextInt(10000);
+            System.err.println("Host:"+host);
             System.err.println("Port Number:"+portNumber);
-            registry = LocateRegistry.getRegistry(portNumber);
-            mr = (MainRemote) registry.lookup("Main");
+            //registry = LocateRegistry.getRegistry(portNumber);
+            mr = (MainRemote) Naming.lookup("rmi://"+host+":"+portNumber+"/Main");
             er = mr.register("User-"+count);
         } catch (Exception e) {
             System.out.println("Error registering user: " + e.toString());
