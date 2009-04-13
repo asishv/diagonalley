@@ -16,7 +16,7 @@ import java.io.Writer;
 import library.EventLoggerRemote;
 
 
-public class EventLogger implements Serializable{	
+public class EventLogger{	
 	@SuppressWarnings("serial")
 	class ClosedLogException extends Exception implements Serializable{}
         private final int maxBuffSize; //The maximum size of the buffer, declared as final to prevent extending(child) classes from modifying the Buffer Size 
@@ -137,7 +137,7 @@ public class EventLogger implements Serializable{
          *  and close the writer and then 
          *  terminate.  
         */
-	class LazyWriter extends Thread implements Serializable{   
+	class LazyWriter extends Thread{   
 		public void run() 
                 {
                     String msg;
