@@ -15,9 +15,9 @@ import java.io.Writer;
 import library.EventLoggerRemote;
 
 
-public class EventLogger{	
+public class EventLogger implements Serializable{	
 	@SuppressWarnings("serial")
-	class ClosedLogException extends Exception{}
+	class ClosedLogException extends Exception implements Serializable{}
         private final int maxBuffSize; //The maximum size of the buffer, declared as final to prevent extending(child) classes from modifying the Buffer Size 
         private final Writer writer; //Writer object, declared as final to prevent extending(child) classes from modifying the Writer 
         private boolean closeFlag; //If log is closed then closeFlag=true else closeFlag=false
