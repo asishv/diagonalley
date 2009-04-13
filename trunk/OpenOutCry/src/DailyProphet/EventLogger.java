@@ -9,18 +9,18 @@ package DailyProphet;
  *
  * @author Asish
  */
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Serializable;
-import java.io.Writer;
-import library.EventLoggerRemote;
+import java.net.DatagramPacket;
+import java.net.Socket;
+import java.net.InetAddress;
+import java.net.MulticastSocket;
 
 
 public class EventLogger implements Serializable{	
 	@SuppressWarnings("serial")
 	class ClosedLogException extends Exception implements Serializable{}
         private final int maxBuffSize; //The maximum size of the buffer, declared as final to prevent extending(child) classes from modifying the Buffer Size 
-        private SerialFileWriter writer=null; //Writer object, declared as final to prevent extending(child) classes from modifying the Writer 
         private boolean closeFlag; //If log is closed then closeFlag=true else closeFlag=false
         private String buffer[]; //buffer that contains messages which needs to be written into Writer 
 	private int size; //size of the buffer
@@ -28,61 +28,17 @@ public class EventLogger implements Serializable{
         private int out; //index where messages are read
         LazyWriter lw; //Object of LazyWriter
         public static final String LOG_FILE="DiagonAlleyLog.txt";
-        
-        class SerialFileWriter implements Serializable
-        {
-            private FileWriter fw;
-            SerialFileWriter()
-            {
-                try{
-		fw = new FileWriter(LOG_FILE);
-                }catch(IOException ioe)
-                {
-                    ioe.printStackTrace();
-                }
-            }
-            
-            public void write(String msg)
-            {
-                try{
-                    fw.write(msg);
-                }catch(IOException ioe)
-                {
-                    ioe.printStackTrace();
-                }
-            }
-            
-            public void flush()
-            {
-                try{
-                    fw.flush();
-                }catch(IOException ioe)
-                {
-                    ioe.printStackTrace();
-                }
-            }
-            
-            public void close()
-            {
-                try{
-                    fw.close();
-                }catch(IOException ioe)
-                {
-                    ioe.printStackTrace();
-                }
-            }
-        }
-        
+        MulticastSocket socket;
+      
         //Constructor
-	public EventLogger() {
-                //try{
-		//this.writer = new FileWriter(LOG_FILE);
-                //}catch(IOException ioe)
-                //{
-                //    ioe.printStackTrace();
-                //}
-                writer=new SerialFileWriter();
-		this.maxBuffSize = 100;
+	public EventLogger() {            
+                try{
+                socket=new MulticastSocket();
+                }catch(IOException ioe)
+                {
+                    ioe.printStackTrace();
+                }
+		this.maxBuffSize = 1000;
                 closeFlag=false;
                 buffer = new String[maxBuffSize];
                 size=0; //Initially buffer is empty
@@ -186,14 +142,23 @@ public class EventLogger implements Serializable{
 		public void run() 
                 {
                     String msg;
+                    byte[] buf = new byte[256];
+                    try{
                         do{
                             msg=get(); //Get the next message from the buffer
-                            if(msg != null)                         
-                                writer.write(msg);
-                            writer.flush();
+                            if(msg != null)   
+                            {   
+                                buf=msg.getBytes();
+                                // send it
+                                InetAddress group = InetAddress.getByName("230.0.0.1");
+                                DatagramPacket packet = new DatagramPacket(buf, buf.length, group, 4446);
+                                socket.send(packet);
+                            }
                         }while(msg != null); //Get messages till msg == null
-                        writer.flush(); //Flush the writer
-                        writer.close(); //Close the writer
+                    }catch(IOException ioe)
+                    {
+                        ioe.printStackTrace();
+                    }
                 }
         }		
 }
