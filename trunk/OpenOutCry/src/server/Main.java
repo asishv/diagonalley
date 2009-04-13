@@ -21,7 +21,7 @@ import library.EventReaderRemote;
  * @author Asish
  */
 public class Main extends Thread implements MainRemote{
-     public static final String LOG_FILE="DiagonAlleyLog.txt";
+
      static EventLogger out;
      
      DailyProphet.EventReader in;
@@ -277,16 +277,10 @@ public class Main extends Thread implements MainRemote{
     
     Main()
     {
-        try{
-            FileWriter fw=new FileWriter(LOG_FILE);
-            out=new DailyProphet.EventLogger(fw, 1000);
-            out.writeln("Welcome to Diagon Alley Open Outcry Auction!");
-            in=new DailyProphet.EventReader();
-        }catch(IOException ioe)
-        {
-            ioe.printStackTrace();
-            System.exit(0);
-        }
+           
+        out=new DailyProphet.EventLogger();
+        out.writeln("Welcome to Diagon Alley Open Outcry Auction!");
+        in=new DailyProphet.EventReader();
         createMagicalWorld();
         wizards=new ArrayList();
         apprentices=new ArrayList();
