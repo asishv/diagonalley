@@ -21,6 +21,7 @@ public class ApprenticeBuyer extends Everyone implements ApprenticeBuyerRemote{
         this.name=name;
         this.index=index;
         this.out=out;
+        out.debug("Created instance of buyer!");
     }
 
     /**
