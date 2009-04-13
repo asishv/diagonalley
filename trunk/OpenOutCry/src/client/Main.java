@@ -33,11 +33,11 @@ public class Main {
         
         //TODO: Make server call to register().
         try {
+            count++;
             System.err.println("Port Number:"+portNumber);
             registry = LocateRegistry.getRegistry(portNumber);
             mr = (MainRemote) registry.lookup("Main");
             er = mr.register("User-"+count);
-            count++;
         } catch (Exception e) {
             System.out.println("Error registering user: " + e.toString());
             e.printStackTrace();
