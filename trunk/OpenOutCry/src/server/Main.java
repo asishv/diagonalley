@@ -22,7 +22,7 @@ import library.EventReaderRemote;
  */
 public class Main extends Thread implements MainRemote{
      public static final String LOG_FILE="DiagonAlleyLog.txt";
-     EventLogger out;
+     static EventLogger out;
      
      DailyProphet.EventReader in;
      Date startTime;
