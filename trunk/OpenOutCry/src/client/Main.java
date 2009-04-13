@@ -8,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.util.Random;
 import library.MagicalItemInfoRemote;
 import library.ApprenticeBuyerRemote;
 import library.EveryoneRemote;
@@ -33,7 +34,8 @@ public class Main {
         
         //TODO: Make server call to register().
         try {
-            count++;
+            Random random = new Random();
+            count=random.nextInt(10000);
             System.err.println("Port Number:"+portNumber);
             registry = LocateRegistry.getRegistry(portNumber);
             mr = (MainRemote) registry.lookup("Main");
@@ -216,11 +218,12 @@ public class Main {
             switch(choice) {
                 case 1: if(!isWizard)
                         {
-                            System.out.println("Place bid: Enter Magical Item, price, quantity & time for bid to last(ms)");
+                            System.out.println("Place bid: Enter Magical Item, price, quantity & time for bid to last(mins)");
                             magicalItemNumber = Integer.parseInt(br.readLine());
                             price = Integer.parseInt(br.readLine());
                             quantity = Integer.parseInt(br.readLine());
-                            msec = Integer.parseInt(br.readLine());;
+                            msec = Integer.parseInt(br.readLine());
+                            msec*=60*1000; 
                             if(placeBid((ApprenticeBuyerRemote)er, magicalItemNumber, price, quantity, msec)) {
                                 System.out.println("Bid placed successfully");
                             } else {
@@ -261,7 +264,7 @@ public class Main {
                         System.out.println(miir.getPicture());
                         break;
                 case 0: choice = 0;
-                        break;
+                        System.exit(0);
                 default: break;
             }
             } catch (Exception e) {
