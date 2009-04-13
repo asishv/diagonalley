@@ -109,6 +109,7 @@ public class MagicalItem implements Serializable{
                             }
                             else
                             {
+                                EventLogger.writeln("Trade that "+ dasa.e.name+ " placed has expired!");
                                 CurrentInventoryList cil=dasa.e.currentInventoryList.get(i);
                                 cil.quantity+=dasa.quantity; //Update the quantity because the sale was invalid
                                 cil.quantityLocked-=dasa.quantity; //Update the quantitylocked because the sale was invalid
@@ -119,11 +120,16 @@ public class MagicalItem implements Serializable{
                 }
                 else
                 {
+                      EventLogger.writeln("Bid that "+ daba.e.name+ " placed has expired!");
                       FutureInventoryList fil=daba.e.futureInventoryList.get(i);
                       fil.quantity+=daba.quantity; //Update the target quantity for the seller because the bid was invalid.
                       fil.quantityLocked+=daba.quantity; //Update the quantityLocked for the buyer
                       daba.quantity=0;
                 }
+            }
+            else
+            {
+                EventLogger.debug("No bid placed by "+ daba.e.name+ " for "+ this.magicalItemInfo.name);
             }
         }
         EventLogger.debug("Exiting executeTrade");
