@@ -10,11 +10,12 @@ package DailyProphet;
  * @author Asish
  */
 import java.io.IOException;
+import java.io.Serializable;
 import java.io.Writer;
 import java.util.ArrayList;
 
 
-public class EventLogger {	
+public class EventLogger implements Serializable{	
 	@SuppressWarnings("serial")
 	class ClosedLogException extends Exception{}
         private final int maxBuffSize; //The maximum size of the buffer, declared as final to prevent extending(child) classes from modifying the Buffer Size 
