@@ -4,7 +4,7 @@
  */
 
 package server;
-import DailyProphet.EventLogger;
+//import DailyProphet.EventLogger;
 import library.EveryoneRemote;
 import java.util.ArrayList;
 import java.util.concurrent.locks.*;
@@ -17,7 +17,7 @@ public class Everyone implements EveryoneRemote{
     boolean wizardOrNot;
     private Lock l;
     volatile int score;
-    EventLogger out;
+//    EventLogger out;
     
     public boolean isWizard()
     {

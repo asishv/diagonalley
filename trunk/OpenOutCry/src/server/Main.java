@@ -21,10 +21,6 @@ import library.EventReaderRemote;
  * @author Asish
  */
 public class Main extends Thread implements MainRemote{
-
-     static EventLogger out;
-     
-     DailyProphet.EventReader in;
      Date startTime;
      MagicalItem[] magicalItems;
      public static final int MAX_COMMODITY = 20;
@@ -98,7 +94,7 @@ public class Main extends Thread implements MainRemote{
        DiagonAlleySellerAccount dasa=new DiagonAlleySellerAccount(ws);
        magicalItems[commodity].sellerAccount.add(dasa);
        ci.diagonAlleySellerAccount=dasa;
-       out.debug("Wizard Seller: "+name+" created!");
+       EventLogger.debug("Wizard Seller: "+name+" created!");
        return ws;
     }
     
@@ -113,7 +109,7 @@ public class Main extends Thread implements MainRemote{
             if(ws.getTargetCommodityInfo() == m)
                 return i;
         }
-        out.debug("No previous wizard for the commodity "+m.name+" exists!");
+        EventLogger.debug("No previous wizard for the commodity "+m.name+" exists!");
         return -1;
     }
 
@@ -128,7 +124,7 @@ public class Main extends Thread implements MainRemote{
             if(ab.getTargetCommodityInfo() == m)
                 return i;
         }
-        out.debug("No previous apprentice for the commodity "+m.name+" exists!");
+        EventLogger.debug("No previous apprentice for the commodity "+m.name+" exists!");
         return -1;
     }
 
@@ -139,11 +135,11 @@ public class Main extends Thread implements MainRemote{
     {
         numberOfUsers++; //Handle Concurrency
         if(numberOfUsers%2 == 0) {
-            out.write(name+" joined the game!\r\n"+name+" is a Wizard (Seller)\r\n");
+            EventLogger.write(name+" joined the game!\r\n"+name+" is a Wizard (Seller)\r\n");
             return (Everyone)createWizards(name);
         }
         else {
-            out.write(name+" joined the game!\r\n"+name+" is a Apprentice (Buyer)\r\n");
+            EventLogger.write(name+" joined the game!\r\n"+name+" is a Apprentice (Buyer)\r\n");
             return (Everyone)createApprentices(name);
         }
     }
@@ -153,7 +149,7 @@ public class Main extends Thread implements MainRemote{
      */    
     ApprenticeBuyer createApprentices(String name)
     {
-       ApprenticeBuyer ab=new ApprenticeBuyer(name, numberOfUsers-1, out);
+       ApprenticeBuyer ab=new ApprenticeBuyer(name, numberOfUsers-1);
        Random random = new Random();
        int commodity=random.nextInt(20), quantity, cost;
        int wizardNo=findWizard(magicalItems[commodity].magicalItemInfo);
@@ -196,7 +192,7 @@ public class Main extends Thread implements MainRemote{
        DiagonAlleyBuyerAccount daba=new DiagonAlleyBuyerAccount(ab);
        magicalItems[commodity].buyerAccount.add(daba);
        fi.diagonAlleyBuyerAccount=daba;
-       out.debug("Apprentice Buyer: "+name+" created!");
+       EventLogger.debug("Apprentice Buyer: "+name+" created!");
        return ab;
     }
    
@@ -227,7 +223,7 @@ public class Main extends Thread implements MainRemote{
             e.printStackTrace();
             System.exit(0);
         }        
-        out.debug("Magical items successfully created");
+        EventLogger.debug("Magical items successfully created");
     }
     
      /**
@@ -236,7 +232,7 @@ public class Main extends Thread implements MainRemote{
     void createVirtualWizards()
     {
      //TODO: Complete this code.  
-        out.debug("Created virtual wizards");
+        EventLogger.debug("Created virtual wizards");
     }
 
      /**
@@ -245,7 +241,7 @@ public class Main extends Thread implements MainRemote{
     void createVirtualApprentices()
     {
      //TODO: Complete this code.   
-        out.debug("Created virtual apprentices");
+        EventLogger.debug("Created virtual apprentices");
     }
 
     /**
@@ -276,11 +272,8 @@ public class Main extends Thread implements MainRemote{
     }
     
     Main()
-    {
-           
-        out=new DailyProphet.EventLogger();
-        out.writeln("Welcome to Diagon Alley Open Outcry Auction!");
-        in=new DailyProphet.EventReader();
+    {           
+        EventLogger.writeln("Welcome to Diagon Alley Open Outcry Auction!");
         createMagicalWorld();
         wizards=new ArrayList();
         apprentices=new ArrayList();
@@ -291,10 +284,8 @@ public class Main extends Thread implements MainRemote{
         Registry registry=null;
        	try {
 	    Main obj = new Main();
-            obj.in = new EventReader();
-            EventReaderRemote stub1 = (EventReaderRemote) UnicastRemoteObject.exportObject(obj.in, 0);
-	    MainRemote stub2 = (MainRemote) UnicastRemoteObject.exportObject(obj, 0);
-	    // Bind the remote object's stub2 in the registry
+	    MainRemote stub = (MainRemote) UnicastRemoteObject.exportObject(obj, 0);
+	    // Bind the remote object's stub in the registry
             switch(args.length)
             {
                 case 0:
@@ -310,10 +301,9 @@ public class Main extends Thread implements MainRemote{
                     registry = LocateRegistry.getRegistry(args[0], Integer.parseInt(args[0]));
                     break;
             }
-            registry.bind("Read", stub1);
-	    registry.bind("Main", stub2);
+	    registry.bind("Main", stub);
 	    System.err.println("Server ready");
-            obj.out.debug("Server started successfully\r\n");
+            EventLogger.debug("Server started successfully\r\n");
             System.err.println("<Press ENTER to quit>");
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
                 br.readLine();
