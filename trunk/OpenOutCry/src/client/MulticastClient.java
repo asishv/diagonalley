@@ -22,15 +22,16 @@ public class MulticastClient {
 	socket.joinGroup(address);
 
         DatagramPacket packet;
+        String received="";
     
             // get a few quotes
-	for (int i = 0; i < 5; i++) {
+	while(received.equalsIgnoreCase("END")) {
 
 	    byte[] buf = new byte[256];
             packet = new DatagramPacket(buf, buf.length);
             socket.receive(packet);
 
-            String received = new String(packet.getData(), 0, packet.getLength());
+            received = new String(packet.getData(), 0, packet.getLength());
             System.out.println(received);
 	}
 	socket.leaveGroup(address);
