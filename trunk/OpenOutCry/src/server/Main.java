@@ -25,9 +25,14 @@ public class Main extends Thread implements MainRemote{
      static EventLogger out;
      private class SerialFileWriter extends FileWriter implements Serializable
      {
+         private SerialFileWriter(String fileName) throws IOException
+         {
+             super(fileName);
+         }
+         
          public SerialFileWriter() throws IOException
          {
-            super(LOG_FILE);
+             this(LOG_FILE);
          }
      };
      DailyProphet.EventReader in;
