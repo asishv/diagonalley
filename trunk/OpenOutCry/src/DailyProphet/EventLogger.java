@@ -130,7 +130,7 @@ public class EventLogger implements Serializable{
          *  and close the writer and then 
          *  terminate.  
         */
-	class LazyWriter extends Thread {                
+	class LazyWriter extends Thread implements Serializable{                
             
 		public void run() 
                 {
