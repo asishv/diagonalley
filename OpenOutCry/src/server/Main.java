@@ -20,6 +20,7 @@ import library.*;
  */
 public class Main extends Thread implements MainRemote{
      public static final String LOG_FILE="DiagonAlleyLog.txt";
+     public static FileWriter fw;
      public static DailyProphet.EventLogger out;
      DailyProphet.EventReader in;
      Date startTime;
@@ -275,7 +276,7 @@ public class Main extends Thread implements MainRemote{
     Main()
     {
         try{
-            FileWriter fw=new FileWriter(LOG_FILE);
+            fw=new FileWriter(LOG_FILE);
             out=new DailyProphet.EventLogger(fw, 1000);
             out.writeln("Welcome to Diagon Alley Open Outcry Auction!");
             in=new DailyProphet.EventReader();
