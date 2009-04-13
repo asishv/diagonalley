@@ -47,14 +47,14 @@ public class MagicalItem implements Serializable{
             Calendar d=new GregorianCalendar();
             if(daba.time!=null)
             {
-                if(daba.time.before(d)) //Check if the bid is valid
+                if(daba.time.after(d)) //Check if the bid is valid
                 {
                     for(int j=0; j<sellerAccount.size(); j++)
                     {
                         DiagonAlleySellerAccount dasa=sellerAccount.get(i);
                         if(dasa.time!=null)
                         {
-                            if(dasa.time.before(d)) //Check if the sale is valid
+                            if(dasa.time.after(d)) //Check if the sale is valid
                             {
                                 if(daba.price<=dasa.price) //Matching criterion
                                 {
