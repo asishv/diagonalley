@@ -274,9 +274,6 @@ public class Main extends Thread implements MainRemote{
     
     Main()
     {
-        createMagicalWorld();
-        wizards=new ArrayList();
-        apprentices=new ArrayList();
         try{
             FileWriter fw=new FileWriter(LOG_FILE);
             out=new DailyProphet.EventLogger(fw, 1000);
@@ -287,6 +284,9 @@ public class Main extends Thread implements MainRemote{
             ioe.printStackTrace();
             System.exit(0);
         }
+        createMagicalWorld();
+        wizards=new ArrayList();
+        apprentices=new ArrayList();
     }
     
     public static void main(String args[])
