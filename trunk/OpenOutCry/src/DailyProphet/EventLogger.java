@@ -139,6 +139,7 @@ public class EventLogger {
                             msg=get(); //Get the next message from the buffer
                             if(msg != null)                         
                                 writer.write(msg);
+                            writer.flush();
                         }while(msg != null); //Get messages till msg == null
                         writer.flush(); //Flush the writer
                         writer.close(); //Close the writer
