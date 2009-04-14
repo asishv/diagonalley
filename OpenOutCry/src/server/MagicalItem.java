@@ -35,7 +35,7 @@ public class MagicalItem{
      */       
     void executeTrade()
     {
-        EventLogger.debug("Trying to execute trades for "+magicalItemInfo.getName() + " Number of buyers: "+ buyerAccount.size());
+        EventLogger.debug("Trying to execute trades for "+magicalItemInfo.getName() + " Number of buyers: "+ buyerAccount.size()+" Number of sellers: "+sellerAccount.size());
         for(int i=0; i<buyerAccount.size(); i++)
         {
             //Get the buyer account
@@ -96,6 +96,10 @@ public class MagicalItem{
                                 cil.quantityLocked-=dasa.quantity; //Update the quantitylocked because the sale was invalid
                                 dasa.quantity=0;
                             }
+                        }
+                        else
+                        {
+                            EventLogger.debug("No trade placed by "+ dasa.e.name+ " for "+ this.magicalItemInfo.getName());
                         }
                     }
                 }
