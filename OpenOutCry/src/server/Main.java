@@ -88,7 +88,11 @@ public class Main extends Thread implements MainRemote{
        
        for(int i=0; i<MAX_COMMODITY; i++)
        {
-           CurrentInventoryList ci=new CurrentInventoryList(0, 0, ws.index, magicalItems[i]);
+           CurrentInventoryList ci;
+           if(i==commodity)
+               ci=new CurrentInventoryList(cost, quantity, ws.index, magicalItems[i]);
+           else
+               ci=new CurrentInventoryList(0, 0, ws.index, magicalItems[i]);
            ws.currentInventoryList.add(ci);
        }
        for(int i=0; i<MAX_COMMODITY; i++)
@@ -96,15 +100,8 @@ public class Main extends Thread implements MainRemote{
            FutureInventoryList fi=new FutureInventoryList(0, 0, ws.index, magicalItems[i]);
            ws.futureInventoryList.add(fi);
        }
-
-       CurrentInventoryList ci=ws.currentInventoryList.get(commodity);
-       ci.quantity=quantity;
-       ci.sellingPriceTarget=cost;
-       ws.currentInventoryList.add(ci);
        wizards.add(ws);
        everyone.add(ws);
-       DiagonAlleySellerAccount dasa=new DiagonAlleySellerAccount(ws);
-       ci.diagonAlleySellerAccount=dasa;
        EventLogger.debug("Wizard Seller: "+name+" created!");
        return commodity;
     }
@@ -193,18 +190,16 @@ public class Main extends Thread implements MainRemote{
        }
        for(int i=0; i<MAX_COMMODITY; i++)
        {
-           FutureInventoryList fi=new FutureInventoryList(0, 0, ab.index, magicalItems[i]);
+           FutureInventoryList fi;
+           if(i==commodity)
+               fi=new FutureInventoryList(cost, quantity, ab.index, magicalItems[i]);
+           else
+               fi=new FutureInventoryList(0, 0, ab.index, magicalItems[i]);
            ab.futureInventoryList.add(fi);
        }
 
-       FutureInventoryList fi=ab.futureInventoryList.get(commodity);
-       fi.quantity=quantity;
-       fi.buyingTargetPrice=cost;
-       ab.futureInventoryList.add(fi);
        apprentices.add(ab);        
        everyone.add(ab);
-       DiagonAlleyBuyerAccount daba=new DiagonAlleyBuyerAccount(ab);
-       fi.diagonAlleyBuyerAccount=daba;
        EventLogger.debug("Apprentice Buyer: "+name+" created!");
        return commodity;
     }
