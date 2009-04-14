@@ -4,6 +4,7 @@
  */
 
 package server;
+import DailyProphet.EventLogger;
 import java.io.Serializable;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
@@ -104,6 +105,7 @@ public class Executor extends Thread implements ExecutorRemote{
         switch(r.op)
         {
             case 0: //Trade
+                EventLogger.debug("Executor: Operation = TRADE!");
                 bidtrade=(BidTradeArgs)r.args;
                 e=Main.getUser(r.userID);
                 boolean res=e.trade(bidtrade.getPrice(), bidtrade.getQuantity(), itemNumber, bidtrade.getTime());
@@ -111,6 +113,7 @@ public class Executor extends Thread implements ExecutorRemote{
                 r.result=result;
                 break;
             case 1: //Modify Trade
+                EventLogger.debug("Executor: Operation = MODIFY TRADE!");
                 bidtrade=(BidTradeArgs)r.args;
                 e=Main.getUser(r.userID);
                 res=e.modifyTrade(bidtrade.getPrice(), bidtrade.getQuantity(), itemNumber, bidtrade.getTime());
@@ -118,6 +121,7 @@ public class Executor extends Thread implements ExecutorRemote{
                 r.result=result;
                 break;
             case 2: //Get All Info
+                EventLogger.debug("Executor: Operation = GET ALL INFO!");
                 e=Main.getUser(r.userID);
                 if(e.isWizard())
                 {
@@ -133,6 +137,7 @@ public class Executor extends Thread implements ExecutorRemote{
                 }
                 break;
             case 3: //Bid
+                EventLogger.debug("Executor: Operation = BID!");
                 bidtrade=(BidTradeArgs)r.args;
                 e=Main.getUser(r.userID);
                 res=e.bid(bidtrade.getPrice(), bidtrade.getQuantity(), itemNumber, bidtrade.getTime());
@@ -140,6 +145,7 @@ public class Executor extends Thread implements ExecutorRemote{
                 r.result=result;
                 break;
             case 4: //Modify Bid
+                EventLogger.debug("Executor: Operation = MODIFY BID!");
                 bidtrade=(BidTradeArgs)r.args;
                 e=Main.getUser(r.userID);
                 res=e.modifyBid(bidtrade.getPrice(), bidtrade.getQuantity(), itemNumber, bidtrade.getTime());
