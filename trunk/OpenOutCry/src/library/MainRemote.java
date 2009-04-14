@@ -7,12 +7,13 @@ package library;
 
 import java.io.Serializable;
 import java.rmi.Remote;
+import java.rmi.RemoteException;
 
 /**
  *
  * @author Asish
  */
 public interface MainRemote extends Serializable, Remote {
-    EveryoneRef register(String name);
-    MagicalItemInfo[] getAllMagicalItems();
+    EveryoneRef register(String name)  throws RemoteException;
+    MagicalItemInfo[] getAllMagicalItems()  throws RemoteException;
 }
