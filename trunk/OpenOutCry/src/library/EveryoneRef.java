@@ -5,11 +5,13 @@
 
 package library;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Asish
  */
-public class EveryoneRef {
+public class EveryoneRef implements Serializable{
     private boolean isWizard;
     private int id;
     private int itemNumber;

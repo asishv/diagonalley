@@ -165,9 +165,11 @@ public class Executor extends Thread implements ExecutorRemote{
          closeFlag=true;
          for (int i=0; i<MAX_COMMODITY; i++)
          {
+             lock[i].lock();
              condition[i][0].signalAll();
              condition[i][1].signalAll();
              condition[i][2].signalAll();
+             lock[i].unlock();
          }
     }
     
