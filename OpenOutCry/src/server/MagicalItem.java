@@ -86,6 +86,8 @@ public class MagicalItem{
                                         dasa.quantity=0; //Update the sale quantity
                                     }
                                 }
+                                else
+                                    EventLogger.debug("Buyer's offer less than Seller's demand! ");
                             }
                             else
                             {
@@ -95,6 +97,7 @@ public class MagicalItem{
                                 cil.quantity+=dasa.quantity; //Update the quantity because the sale was invalid
                                 cil.quantityLocked-=dasa.quantity; //Update the quantitylocked because the sale was invalid
                                 dasa.quantity=0;
+                                dasa.time=null;
                             }
                         }
                         else
@@ -111,6 +114,7 @@ public class MagicalItem{
                       fil.quantity+=daba.quantity; //Update the target quantity for the seller because the bid was invalid.
                       fil.quantityLocked+=daba.quantity; //Update the quantityLocked for the buyer
                       daba.quantity=0;
+                      daba.time=null;
                 }
             }
             else
