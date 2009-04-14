@@ -47,7 +47,7 @@ public class MagicalItem{
                 {
                     for(int j=0; j<sellerAccount.size(); j++)
                     {
-                        DiagonAlleySellerAccount dasa=sellerAccount.get(i);
+                        DiagonAlleySellerAccount dasa=sellerAccount.get(j);
                         if(dasa.time!=null)
                         {
                             if(dasa.time.after(d)) //Check if the sale is valid
