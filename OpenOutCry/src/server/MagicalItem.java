@@ -97,10 +97,10 @@ public class MagicalItem{
                                             fil.quantity=0;
                                             fil.quantityLocked=0;
                                         }
-                                        daba.e.score+=(fil.buyingTargetPrice-cost)*daba.quantity;//Update score for buyer
+                                        daba.e.score+=(fil.buyingTargetPrice-cost)*dasa.quantity;//Update score for buyer
                                         cil=dasa.e.currentInventoryList.get(index);
                                         cil.quantityLocked-=dasa.quantity; //Update the quantity locked for the seller
-                                        dasa.e.score+=(cost-cil.sellingPriceTarget)*daba.quantity; //Update score for seller
+                                        dasa.e.score+=(cost-cil.sellingPriceTarget)*dasa.quantity; //Update score for seller
                                         EventLogger.debug("Buyer Score: "+daba.e.score+" Seller Score: "+dasa.e.score);
                                         EventLogger.writeln("Sold "+dasa.quantity+" of "+cil.magicalItem.magicalItemInfo.getName()+" for "+cost);
                                         dasa.quantity=0; //Update the sale quantity
