@@ -292,6 +292,7 @@ public class Main extends Thread implements MainRemote{
         createMagicalWorld();
         wizards=new ArrayList();
         apprentices=new ArrayList();
+        everyone=new ArrayList();
     }
     
     public static void main(String args[])
