@@ -4,7 +4,6 @@
  */
 
 package library;
-
 import java.io.Serializable;
 import java.rmi.Remote;
 
@@ -12,7 +11,7 @@ import java.rmi.Remote;
  *
  * @author Asish
  */
-public interface MainRemote extends Serializable, Remote {
-    EveryoneRef register(String name);
-    MagicalItemInfo[] getAllMagicalItems();
+public interface ExecutorRemote extends Remote, Serializable{
+    int MAX_COMMODITY = 20;
+    Object invoke(int userID, int itemNumber, int op, Object obj) throws Exception;
 }
