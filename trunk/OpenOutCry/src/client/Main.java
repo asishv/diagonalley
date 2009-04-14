@@ -7,8 +7,6 @@ package client;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.rmi.Naming;
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
 import java.util.Random;
 import library.BidTradeArgs;
 import library.MagicalItemInfo;

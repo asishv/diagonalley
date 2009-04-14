@@ -104,7 +104,6 @@ public class Main extends Thread implements MainRemote{
        wizards.add(ws);
        everyone.add(ws);
        DiagonAlleySellerAccount dasa=new DiagonAlleySellerAccount(ws);
-       magicalItems[commodity].sellerAccount.add(dasa);
        ci.diagonAlleySellerAccount=dasa;
        EventLogger.debug("Wizard Seller: "+name+" created!");
        return commodity;
@@ -205,7 +204,6 @@ public class Main extends Thread implements MainRemote{
        apprentices.add(ab);        
        everyone.add(ab);
        DiagonAlleyBuyerAccount daba=new DiagonAlleyBuyerAccount(ab);
-       magicalItems[commodity].buyerAccount.add(daba);
        fi.diagonAlleyBuyerAccount=daba;
        EventLogger.debug("Apprentice Buyer: "+name+" created!");
        return commodity;
