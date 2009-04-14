@@ -5,13 +5,15 @@
 
 package library;
 
+import java.io.Serializable;
+import java.rmi.Remote;
 import java.util.Calendar;
 
 /**
  *
  * @author Asish
  */
-public class BidTradeArgs {
+public class BidTradeArgs implements Serializable, Remote{
     private int price;
     private int quantity;
     private long time;
