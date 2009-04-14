@@ -100,7 +100,7 @@ public class Main {
         UserStats result;
         try {
            ExecutorRemote ex = (ExecutorRemote) Naming.lookup("rmi://"+hostName+":"+port+"/Executor");
-            result=(UserStats)ex.invoke(er.getID(), er.getItemNumber(), 0, er);
+            result=(UserStats)ex.invoke(er.getID(), er.getItemNumber(), 2, er);
             return result.getScore();
         }
         catch(Exception e) {
@@ -119,7 +119,7 @@ public class Main {
        UserStats result;
         try {
            ExecutorRemote ex = (ExecutorRemote) Naming.lookup("rmi://"+hostName+":"+port+"/Executor");
-            result=(UserStats)ex.invoke(er.getID(), er.getItemNumber(), 0, er);
+            result=(UserStats)ex.invoke(er.getID(), er.getItemNumber(), 2, er);
             return result.getMagicalItemInfo();
         } catch (Exception e) {
             System.out.println("Error getting list of magical items: " + e.toString());
@@ -134,7 +134,7 @@ public class Main {
        UserStats result;
         try {
            ExecutorRemote ex = (ExecutorRemote) Naming.lookup("rmi://"+hostName+":"+port+"/Executor");
-            result=(UserStats)ex.invoke(er.getID(), er.getItemNumber(), 0, er);
+            result=(UserStats)ex.invoke(er.getID(), er.getItemNumber(), 2, er);
             return result.getCost();
         } catch (Exception e) {
             System.out.println("Error getting list of magical items: " + e.toString());
@@ -147,7 +147,7 @@ public class Main {
        UserStats result;
         try {
            ExecutorRemote ex = (ExecutorRemote) Naming.lookup("rmi://"+hostName+":"+port+"/Executor");
-            result=(UserStats)ex.invoke(er.getID(), er.getItemNumber(), 0, er);
+            result=(UserStats)ex.invoke(er.getID(), er.getItemNumber(), 2, er);
             return result.getQuantity()+result.getQuantityLocked();
         } catch (Exception e) {
             System.out.println("Error getting list of magical items: " + e.toString());
