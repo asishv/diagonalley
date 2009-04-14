@@ -4,30 +4,27 @@
  */
 
 package server;
+import library.MagicalItemInfo;
 import DailyProphet.EventLogger;
 import java.util.ArrayList;
 import java.io.*;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.concurrent.locks.*;
-import library.EventLoggerRemote;
 
 /**
  *
  * @author Asish
  */
-public class MagicalItem implements Serializable{
+public class MagicalItem{
     int index;
     MagicalItemInfo magicalItemInfo;
     volatile int averageSellingPrice;
     ArrayList<DiagonAlleySellerAccount> sellerAccount;
     ArrayList<DiagonAlleyBuyerAccount> buyerAccount;
-    private Lock l;
     
     MagicalItem(int index)
     {
-        l=new ReentrantLock();
         sellerAccount=new ArrayList();
         buyerAccount=new ArrayList();
         this.index=index;
@@ -38,8 +35,7 @@ public class MagicalItem implements Serializable{
      */       
     void executeTrade()
     {
-        EventLogger.debug("Trying to exexute trades for "+magicalItemInfo.name + " Number of buyers: "+ buyerAccount.size());
-        lock();
+        EventLogger.debug("Trying to execute trades for "+magicalItemInfo.getName() + " Number of buyers: "+ buyerAccount.size());
         for(int i=0; i<buyerAccount.size(); i++)
         {
             //Get the buyer account
@@ -64,24 +60,14 @@ public class MagicalItem implements Serializable{
                                         dasa.quantity-=daba.quantity;  //Reduce the quantity in the sale
                                         CurrentInventoryList cil=daba.e.currentInventoryList.get(i);
                                         int cost=(daba.price+dasa.price)/2; //Calculate the cost for the sale
-                                        cil.lock();
                                         cil.quantity+=daba.quantity; //Update the quantity bought for the buyer
-                                        cil.unlock();
                                         FutureInventoryList fil=daba.e.futureInventoryList.get(i);
-                                        fil.lock();
                                         fil.quantity-=daba.quantity; //Update the goal for the buyer
-                                        fil.unlock();
-                                        daba.e.lock();
                                         daba.e.score+=(fil.buyingTargetPrice-cost)*daba.quantity;//Update score for buyer
-                                        daba.e.unlock();
                                         cil=dasa.e.currentInventoryList.get(i);
-                                        cil.lock();
                                         cil.quantityLocked-=daba.quantity; //Update the quantity locked for the seller
-                                        cil.unlock();
-                                        dasa.e.lock();
                                         dasa.e.score+=(cost-cil.sellingPriceTarget)*daba.quantity; //Update score for seller
-                                        dasa.e.unlock();
-                                        EventLogger.writeln("Sold "+daba.quantity+" of "+cil.magicalItem.magicalItemInfo.name+" for "+cost);
+                                        EventLogger.writeln("Sold "+daba.quantity+" of "+cil.magicalItem.magicalItemInfo.getName()+" for "+cost);
                                         daba.quantity=0; //Update the bid quantity
                                     }
                                     else
@@ -89,24 +75,14 @@ public class MagicalItem implements Serializable{
                                         daba.quantity-=dasa.quantity; //Reduce the bid quantity
                                         CurrentInventoryList cil=daba.e.currentInventoryList.get(i);
                                         int cost=(daba.price+dasa.price)/2; //Calculate the cost for the sale
-                                        cil.lock();
                                         cil.quantity+=dasa.quantity; //Update the quantity bought for the buyer
-                                        cil.unlock();
                                         FutureInventoryList fil=daba.e.futureInventoryList.get(i);
-                                        fil.lock();
                                         fil.quantity-=dasa.quantity; //Update the goal for the buyer
-                                        fil.unlock();
-                                        daba.e.lock();
                                         daba.e.score+=(fil.buyingTargetPrice-cost)*daba.quantity;//Update score for buyer
-                                        daba.e.unlock();
                                         cil=dasa.e.currentInventoryList.get(i);
-                                        cil.lock();
                                         cil.quantityLocked-=daba.quantity; //Update the quantity locked for the seller
-                                        cil.unlock();
-                                        dasa.e.lock();
                                         dasa.e.score+=(cost-cil.sellingPriceTarget)*daba.quantity; //Update score for seller
-                                        dasa.e.unlock();
-                                        EventLogger.writeln("Sold "+dasa.quantity+" of "+cil.magicalItem.magicalItemInfo.name+" for "+cost);
+                                        EventLogger.writeln("Sold "+dasa.quantity+" of "+cil.magicalItem.magicalItemInfo.getName()+" for "+cost);
                                         dasa.quantity=0; //Update the sale quantity
                                     }
                                 }
@@ -135,26 +111,9 @@ public class MagicalItem implements Serializable{
             }
             else
             {
-                EventLogger.debug("No bid placed by "+ daba.e.name+ " for "+ this.magicalItemInfo.name);
+                EventLogger.debug("No bid placed by "+ daba.e.name+ " for "+ this.magicalItemInfo.getName());
             }
         }
         EventLogger.debug("Exiting executeTrade");
-        unlock();
-    }
-
-    /**
-     * Locks the magical item.
-     */       
-    public void lock()
-    {
-        l.lock();
-    }
-
-    /**
-     * Unlocks the magical item.
-     */       
-    public void unlock()
-    {
-        l.unlock();
     }
 }

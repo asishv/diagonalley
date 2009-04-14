@@ -10,7 +10,7 @@ import java.util.Calendar;
  *
  * @author Asish
  */
-public class DiagonAlleyAccount implements Serializable{
+public class DiagonAlleyAccount{
     int price;
     int quantity;
     Calendar time;

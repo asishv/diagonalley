@@ -3,9 +3,9 @@
  * and open the template in the editor.
  */
 package server;
+import library.MagicalItemInfo;
 import DailyProphet.EventLogger;
 import java.io.BufferedReader;
-import library.MainRemote;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.Random;
@@ -15,6 +15,9 @@ import java.io.InputStreamReader;
 import java.rmi.server.UnicastRemoteObject;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import library.EveryoneRef;
+import library.ExecutorRemote;
+import library.MainRemote;
 
 
 /**
@@ -24,7 +27,8 @@ import java.rmi.registry.Registry;
 public class Main extends Thread implements MainRemote{
      Date startTime;
      MagicalItem[] magicalItems;
-     public static final int MAX_COMMODITY = 20;
+     public static final int MAX_COMMODITY = ExecutorRemote.MAX_COMMODITY;
+     public static ArrayList<Everyone> everyone;
      ArrayList<WizardSeller> wizards;
      ArrayList<ApprenticeBuyer> apprentices;
      ArrayList<MagicalItemInfo> magicalItemInfo;
@@ -44,11 +48,18 @@ public class Main extends Thread implements MainRemote{
          }
          return m;
      }
+     
+     public static Everyone getUser(int id)
+     {
+         if(id<everyone.size())
+            return everyone.get(id);
+         return null;
+     }
 
      /**
      * Creates the Diagon Alley Wizards Sellers.
      */    
-    WizardSeller createWizards(String name)
+    int createWizards(String name)
     {
        WizardSeller ws=new WizardSeller(name, numberOfUsers-1);
        Random random = new Random();
@@ -90,13 +101,13 @@ public class Main extends Thread implements MainRemote{
        ci.quantity=quantity;
        ci.sellingPriceTarget=cost;
        ws.currentInventoryList.add(ci);
-
        wizards.add(ws);
+       everyone.add(ws);
        DiagonAlleySellerAccount dasa=new DiagonAlleySellerAccount(ws);
        magicalItems[commodity].sellerAccount.add(dasa);
        ci.diagonAlleySellerAccount=dasa;
        EventLogger.debug("Wizard Seller: "+name+" created!");
-       return ws;
+       return commodity;
     }
     
      /**
@@ -110,7 +121,7 @@ public class Main extends Thread implements MainRemote{
             if(ws.getTargetCommodityInfo() == m)
                 return i;
         }
-        EventLogger.debug("No previous wizard for the commodity "+m.name+" exists!");
+        EventLogger.debug("No previous wizard for the commodity "+m.getName()+" exists!");
         return -1;
     }
 
@@ -125,30 +136,32 @@ public class Main extends Thread implements MainRemote{
             if(ab.getTargetCommodityInfo() == m)
                 return i;
         }
-        EventLogger.debug("No previous apprentice for the commodity "+m.name+" exists!");
+        EventLogger.debug("No previous apprentice for the commodity "+m.getName()+" exists!");
         return -1;
     }
 
      /**
      * Register a user in Diagon Alley.
      */    
-    synchronized public Everyone register(String name)
+    public synchronized EveryoneRef register(String name)
     {
         numberOfUsers++; //Handle Concurrency
         if(numberOfUsers%2 == 0) {
             EventLogger.write(name+" joined the game!\r\n"+name+" is a Wizard (Seller)\r\n");
-            return (Everyone)createWizards(name);
+            int commodity=createWizards(name);
+            return new EveryoneRef(true,numberOfUsers-1, commodity);
         }
         else {
             EventLogger.write(name+" joined the game!\r\n"+name+" is a Apprentice (Buyer)\r\n");
-            return (Everyone)createApprentices(name);
-        }
+            int commodity=createApprentices(name);
+            return new EveryoneRef(false,numberOfUsers-1, commodity);
+        }        
     }
     
      /**
      * Creates the Diagon Alley Apprentice Buyers.
      */    
-    ApprenticeBuyer createApprentices(String name)
+    int createApprentices(String name)
     {
        ApprenticeBuyer ab=new ApprenticeBuyer(name, numberOfUsers-1);
        Random random = new Random();
@@ -190,11 +203,12 @@ public class Main extends Thread implements MainRemote{
        fi.buyingTargetPrice=cost;
        ab.futureInventoryList.add(fi);
        apprentices.add(ab);        
+       everyone.add(ab);
        DiagonAlleyBuyerAccount daba=new DiagonAlleyBuyerAccount(ab);
        magicalItems[commodity].buyerAccount.add(daba);
        fi.diagonAlleyBuyerAccount=daba;
        EventLogger.debug("Apprentice Buyer: "+name+" created!");
-       return ab;
+       return commodity;
     }
    
     /**
@@ -283,10 +297,14 @@ public class Main extends Thread implements MainRemote{
     public static void main(String args[])
     {
         Registry registry=null;
+        Executor ex=new Executor();
+        ex.start();
+        Main obj = new Main();
+        obj.start();
        	try {
-	    Main obj = new Main();
-	    MainRemote stub = (MainRemote) UnicastRemoteObject.exportObject(obj, 0);
-	    // Bind the remote object's stub in the registry
+	    MainRemote stub1 = (MainRemote) UnicastRemoteObject.exportObject(obj, 0);
+            ExecutorRemote stub2 = (ExecutorRemote) UnicastRemoteObject.exportObject(ex, 0);
+	    // Bind the remote object's stub1 in the registry
             switch(args.length)
             {
                 case 0:
@@ -302,12 +320,13 @@ public class Main extends Thread implements MainRemote{
                     registry = LocateRegistry.getRegistry(args[0], Integer.parseInt(args[0]));
                     break;
             }
-	    registry.bind("Main", stub);
+	    registry.bind("Main", stub1);
+            registry.bind("Executor", stub2);
 	    System.err.println("Server ready");
             EventLogger.debug("Server started successfully\r\n");
             System.err.println("<Press ENTER to quit>");
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-                br.readLine();
+            br.readLine();
         } 
         catch (IOException ioe) {ioe.printStackTrace();}
 	catch (Exception e) {
@@ -316,8 +335,11 @@ public class Main extends Thread implements MainRemote{
         }
         finally
         {
+            ex.close();
             try{
+                Thread.sleep(5000);
                 registry.unbind("Main");
+                registry.unbind("Executor");
             }catch(Exception e)
             {
                 e.printStackTrace();

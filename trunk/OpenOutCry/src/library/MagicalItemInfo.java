@@ -3,20 +3,21 @@
  * and open the template in the editor.
  */
 
-package server;
+package library;
 
-import library.MagicalItemInfoRemote;
+import java.io.Serializable;
+import java.rmi.Remote;
 
 /**
  *
  * @author Asish
  */
-public class MagicalItemInfo implements MagicalItemInfoRemote{
+public class MagicalItemInfo implements Serializable, Remote{
     String name;
     String symbol;
     String picture;
     int index;
-    MagicalItemInfo(String name, String symbol, String picture, int index)
+    public MagicalItemInfo(String name, String symbol, String picture, int index)
     {
         this.name=name;
         this.symbol=symbol;

@@ -10,11 +10,12 @@ import java.rmi.Naming;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.Random;
-import library.MagicalItemInfoRemote;
-import library.ApprenticeBuyerRemote;
-import library.EveryoneRemote;
+import library.BidTradeArgs;
+import library.MagicalItemInfo;
+import library.EveryoneRef;
+import library.ExecutorRemote;
 import library.MainRemote;
-import library.WizardSellerRemote;
+import library.UserStats;
 
 /**
  *
@@ -25,13 +26,13 @@ public class Main {
     static int count = 0;
     int costValue = 0; // Indicates Cost C for seller or Value V for buyer
     int quantity = 0; // Indicates the quantity QS for seller or QB for buyer
-
+    static String hostName;
+    static int port;
     /**
     * To register a user. Get the user details and create his account on server.
     */
-    static EveryoneRemote registerUser(String host, int portNumber) {
-        Registry registry = null;
-        EveryoneRemote er = null;
+    static EveryoneRef registerUser(String host, int portNumber) {
+        EveryoneRef er = null;
         
         //TODO: Make server call to register().
         try {
@@ -53,12 +54,16 @@ public class Main {
     /**
     * ApprenticeBuyers place a bid on the market.
     */
-    static boolean placeBid(ApprenticeBuyerRemote abr, int magicalItemNumber, int price, int quantity, long msec) {
+    static boolean placeBid(int userID, int magicalItemNumber, int price, int quantity, long msec) {
         //TODO: Place bid on the market
         // RMI Call to server. Provide Magical Item , price and Qty
         // Validate Magical Item , price and Qty before making server call
+        Boolean result;
         try {
-            return abr.bid(price, quantity, magicalItemNumber, msec);
+            ExecutorRemote ex = (ExecutorRemote) Naming.lookup("rmi://"+hostName+":"+port+"/Executor");
+            BidTradeArgs bid=new BidTradeArgs(price, quantity, msec);
+            result=(Boolean)ex.invoke(userID, magicalItemNumber, 3, bid);
+            return result.booleanValue();
         }catch (Exception e) {
             System.out.println("Error: Reading from cmd line - " + e.toString());
                                 e.printStackTrace();
@@ -69,12 +74,16 @@ public class Main {
     /**
     * WizardSellers place a trade on the market.
     */
-    static boolean placeTrade(WizardSellerRemote wsr, int magicalItemNumber, int price, int quantity, long m) {
+    static boolean placeTrade(int userID, int magicalItemNumber, int price, int quantity, long m) {
         //TODO: Sellers place a trade on the market
         // RMI Call to server. Provide Magical Item , price and Qty
         // Validate Magical Item , price and Qty before making call
+        Boolean result;
         try {
-            return wsr.trade(price, quantity, magicalItemNumber, m);
+            ExecutorRemote ex = (ExecutorRemote) Naming.lookup("rmi://"+hostName+":"+port+"/Executor");
+            BidTradeArgs trade=new BidTradeArgs(price, quantity, m);
+            result=(Boolean)ex.invoke(userID, magicalItemNumber, 0, trade);
+            return result.booleanValue();
         }catch (Exception e) {
             System.out.println("Error: Reading from cmd line - " + e.toString());
                                 e.printStackTrace();
@@ -85,16 +94,14 @@ public class Main {
     /**
     * Obtain current score to be displayed
     */
-    static int currentScore(EveryoneRemote er) {
+    static int currentScore(EveryoneRef er) {
         //TODO: Obtain my score from the server
         int score = 0;
+        UserStats result;
         try {
-            if(er.isWizard()){
-                score =((WizardSellerRemote)er).getScore();
-            }
-            else {
-                score = ((ApprenticeBuyerRemote)er).getScore();
-            }
+           ExecutorRemote ex = (ExecutorRemote) Naming.lookup("rmi://"+hostName+":"+port+"/Executor");
+            result=(UserStats)ex.invoke(er.getID(), er.getItemNumber(), 0, er);
+            return result.getScore();
         }
         catch(Exception e) {
             System.out.println("Error getting score: "+e.toString());
@@ -106,48 +113,43 @@ public class Main {
     /**
     * Obtain current commodity which the buyer or seller is dealing with
     */
-    static MagicalItemInfoRemote currentCommodity(EveryoneRemote er) {
+    static MagicalItemInfo currentCommodity(EveryoneRef er) {
         //TODO: Obtain my current goal from server
-        MagicalItemInfoRemote miir;
+        MagicalItemInfo miir;
+       UserStats result;
         try {
-            if(er.isWizard())
-                miir = ((WizardSellerRemote)er).getTargetCommodityInfo();
-            else
-                miir = ((ApprenticeBuyerRemote)er).getTargetCommodityInfo();                
-            return miir;
-         } catch (Exception e) {
+           ExecutorRemote ex = (ExecutorRemote) Naming.lookup("rmi://"+hostName+":"+port+"/Executor");
+            result=(UserStats)ex.invoke(er.getID(), er.getItemNumber(), 0, er);
+            return result.getMagicalItemInfo();
+        } catch (Exception e) {
             System.out.println("Error getting list of magical items: " + e.toString());
             e.printStackTrace();
         }
         return null;
     }
 
-    static int targetCost(EveryoneRemote er) {
+    static int targetCost(EveryoneRef er) {
         //TODO: Obtain my current goal from server
         int cost;
+       UserStats result;
         try {
-            if(er.isWizard())
-                cost = ((WizardSellerRemote)er).getTargetCost();
-            else
-                cost = ((ApprenticeBuyerRemote)er).getTargetCost();                
-            return cost;
-         } catch (Exception e) {
+           ExecutorRemote ex = (ExecutorRemote) Naming.lookup("rmi://"+hostName+":"+port+"/Executor");
+            result=(UserStats)ex.invoke(er.getID(), er.getItemNumber(), 0, er);
+            return result.getCost();
+        } catch (Exception e) {
             System.out.println("Error getting list of magical items: " + e.toString());
             e.printStackTrace();
         }
         return -1;
     }
 
-    static int targetQuantity(EveryoneRemote er) {
-        //TODO: Obtain my current goal from server
-        int qty;
+    static int targetQuantity(EveryoneRef er) {
+       UserStats result;
         try {
-            if(er.isWizard())
-                qty = ((WizardSellerRemote)er).getTargetQuantity();
-            else
-                qty = ((ApprenticeBuyerRemote)er).getTargetQuantity();                
-            return qty;
-         } catch (Exception e) {
+           ExecutorRemote ex = (ExecutorRemote) Naming.lookup("rmi://"+hostName+":"+port+"/Executor");
+            result=(UserStats)ex.invoke(er.getID(), er.getItemNumber(), 0, er);
+            return result.getQuantity()+result.getQuantityLocked();
+        } catch (Exception e) {
             System.out.println("Error getting list of magical items: " + e.toString());
             e.printStackTrace();
         }
@@ -161,7 +163,7 @@ public class Main {
     static void listAllMagicalItems(MainRemote mr) {
         //TODO: Obtain a list of all magical items
         try {
-            MagicalItemInfoRemote[] magicalItemInfo;
+            MagicalItemInfo[] magicalItemInfo;
             magicalItemInfo = mr.getAllMagicalItems();
             for(int i= 0; i < magicalItemInfo.length; i++){
                 System.out.println("Name:" + magicalItemInfo[i].getName()+ " Symbol:"+magicalItemInfo[i].getSymbol());
@@ -192,13 +194,15 @@ public class Main {
     public static void main(String[] args) {
         int choice = -1;
         boolean isWizard = false;
-        EveryoneRemote er= null;
+        EveryoneRef er= null;
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int price, quantity, magicalItemNumber = 0;
         long msec;
         String host = (args.length < 1) ? null : args[0];
+        hostName=host;
+        port=Integer.parseInt(args[1]);
         try {
-            er = registerUser(host,Integer.parseInt(args[1]));
+            er = registerUser(host,port);
             isWizard = er.isWizard();
             
         } catch (Exception e) {
@@ -226,7 +230,7 @@ public class Main {
                             quantity = Integer.parseInt(br.readLine());
                             msec = Integer.parseInt(br.readLine());
                             msec*=60*1000; 
-                            if(placeBid((ApprenticeBuyerRemote)er, magicalItemNumber, price, quantity, msec)) {
+                            if(placeBid(er.getID(), magicalItemNumber, price, quantity, msec)) {
                                 System.out.println("Bid placed successfully");
                             } else {
                                 System.out.println("Bid could not be placed");
@@ -242,7 +246,7 @@ public class Main {
                             price = Integer.parseInt(br.readLine());
                             quantity = Integer.parseInt(br.readLine());
                             msec = Integer.parseInt(br.readLine());;
-                            if(placeTrade((WizardSellerRemote)er, magicalItemNumber, price, quantity, msec)) {
+                            if(placeTrade(er.getID(), magicalItemNumber, price, quantity, msec)) {
                                 System.out.println("Trade placed successfully");
                             } else {
                                 System.out.println("Trade could not be placed");
@@ -256,7 +260,7 @@ public class Main {
                         break;
                 case 4: listAllMagicalItems(mr);
                         break;
-                case 5: MagicalItemInfoRemote miir = currentCommodity(er);
+                case 5: MagicalItemInfo miir = currentCommodity(er);
                         int tcost=targetCost(er), tquantity=targetQuantity(er);
                         if(er.isWizard())
                             System.out.println("You have a goal of selling "+tquantity+" "+miir.getName()+"["+miir.getIndex()+"]"+" and your target selling price is "+tcost);

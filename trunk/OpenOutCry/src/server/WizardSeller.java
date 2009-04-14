@@ -5,19 +5,13 @@
 
 package server;
 
-import DailyProphet.EventLogger;
-import java.util.GregorianCalendar;
-import library.EventLoggerRemote;
-import library.WizardSellerRemote;
-import library.MagicalItemInfoRemote;
+import library.MagicalItemInfo;
 
 /**
  *
  * @author Asish
  */
-public class WizardSeller extends Everyone implements WizardSellerRemote{
-    int index;
-
+public class WizardSeller extends Everyone{
     public WizardSeller(String name, int index)
     {
         wizardOrNot=true;
@@ -25,16 +19,7 @@ public class WizardSeller extends Everyone implements WizardSellerRemote{
         this.index=index;
     }
     
-    public int getScore()
-    {
-        int score;
-        lock();
-        score=this.score;
-        unlock();
-        return score;
-    }
-
-     /**
+         /**
      * Gets the target quantity for the magical item to sell.
      */    
     public int getTargetQuantity()
@@ -85,14 +70,14 @@ public class WizardSeller extends Everyone implements WizardSellerRemote{
     /**
      * Gets the target magical item to sell for the wizard.
      */    
-    public MagicalItemInfoRemote getTargetCommodityInfo()
+    public MagicalItemInfo getTargetCommodityInfo()
     {
         for(int i=0; i<currentInventoryList.size(); i++)
         {
             CurrentInventoryList cil=currentInventoryList.get(i);
             if (cil.sellingPriceTarget != 0)
             {
-                return (MagicalItemInfoRemote)cil.magicalItem.magicalItemInfo;
+                return cil.magicalItem.magicalItemInfo;
             }
         }
         return null;        
@@ -114,79 +99,5 @@ public class WizardSeller extends Everyone implements WizardSellerRemote{
     {
         CurrentInventoryList cil = this.currentInventoryList.get(magicalItemNumber);
         return cil.diagonAlleySellerAccount.quantity;
-    }
-
-    /**
-     * Diagon Alley Wizard Sellers trade a magical item.
-     */
-    public boolean trade(int price, int quantity, int magicalItemNumber, long m)
-    {
-        CurrentInventoryList cil = this.currentInventoryList.get(magicalItemNumber);
-        
-        if(quantity > cil.quantity) {
-            EventLogger.debug("Trade cannot be placed because the quantity is more than the user holds.");
-            return false;
-        }
-        
-        if(cil.sellingPriceTarget != 0 && price<cil.sellingPriceTarget)
-        {
-            EventLogger.debug("Trade cannot be placed because the selling price is less than the target price.");
-            return false;
-        }
-        
-        /* Obtain Lock, update the DiagonAlleySellerAccount values in Q,
-         * update avg. price in Magical Item, unlock and execute trade.  */
-        cil.magicalItem.lock();
-        cil.magicalItem.averageSellingPrice = Math.min(cil.magicalItem.averageSellingPrice, price);
-        /* Quantity of item decreases by 'x' in CIL, QuantityLocked will be incremented by 'x' */
-        cil.quantity = cil.quantity - quantity;
-        cil.quantityLocked = cil.quantityLocked + quantity;
-        cil.diagonAlleySellerAccount.price = price;
-        cil.diagonAlleySellerAccount.quantity = quantity;
-        cil.diagonAlleySellerAccount.time=new GregorianCalendar();
-        EventLogger.debug("Old Time in millis = "+cil.diagonAlleySellerAccount.time.getTimeInMillis());
-        cil.diagonAlleySellerAccount.time.setTimeInMillis(cil.diagonAlleySellerAccount.time.getTimeInMillis()+m);
-        EventLogger.debug("New Time in millis = "+cil.diagonAlleySellerAccount.time.getTimeInMillis());
-        cil.magicalItem.unlock();
-        EventLogger.writeln(this.name+" is trying to sell "+quantity+" nos of "+cil.magicalItem.magicalItemInfo.name+" @$"+price);
-        cil.magicalItem.executeTrade();
-        return true;
-    }
-
-     /**
-     * Diagon Alley Wizard Sellers modify existing trade for a magical item.
-     */       
-    public boolean modifyTrade(int price, int quantity, int magicalItemNumber, long m)
-    {
-        CurrentInventoryList cil = this.currentInventoryList.get(magicalItemNumber);
-
-        int oldQuantity = cil.diagonAlleySellerAccount.quantity;
-        if(quantity > cil.quantity + oldQuantity) {
-            EventLogger.debug("Trade cannot be placed because the quantity is more than the user holds.");
-            return false;
-        }
-        
-        if(cil.sellingPriceTarget != 0 && price<cil.sellingPriceTarget)
-        {
-            EventLogger.debug("Trade cannot be placed because the selling price is less than the target price.");
-            return false;
-        }
-
-        /* Obtain Lock, update the DiagonAlleySellerAccount values in Q,
-         * update avg. price in Magical Item, unlock and execute trade. */
-        cil.magicalItem.lock();
-        cil.magicalItem.averageSellingPrice = Math.min(cil.magicalItem.averageSellingPrice, price);
-
-        /* Modify the quantity and the quantity locked values in CIL */
-        cil.quantity = cil.quantity + oldQuantity - quantity;
-        cil.quantityLocked = cil.quantityLocked - oldQuantity + quantity;
-
-        cil.diagonAlleySellerAccount.price = price;
-        cil.diagonAlleySellerAccount.quantity = quantity;
-        cil.diagonAlleySellerAccount.time.setTimeInMillis(cil.diagonAlleySellerAccount.time.getTimeInMillis()+m);
-        cil.magicalItem.unlock();
-        EventLogger.writeln(this.name+" is trying to sell "+quantity+" nos of "+cil.magicalItem.magicalItemInfo.name+" @$"+price);
-        cil.magicalItem.executeTrade();
-        return true;
     }
 }
