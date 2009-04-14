@@ -5,11 +5,14 @@
 
 package library;
 
+import java.io.Serializable;
+import java.rmi.Remote;
+
 /**
  *
  * @author Asish
  */
-public class UserStats {
+public class UserStats implements Serializable, Remote{
     private int score;
     private int quantity;
     private int cost;
