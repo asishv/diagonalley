@@ -57,39 +57,51 @@ public class MagicalItem{
                                     //Execute trade
                                     if(daba.quantity<dasa.quantity) //Check if the buyer needs less quantity than seller
                                     {
-                                        EventLogger.debug("Quantity available in the market less than what buyer needs");
+                                        EventLogger.debug("Quantity needed by the buyer is less than what the seller is selling!");
                                         dasa.quantity-=daba.quantity;  //Reduce the quantity in the sale
                                         CurrentInventoryList cil=daba.e.currentInventoryList.get(index);
                                         int cost=(daba.price+dasa.price)/2; //Calculate the cost for the sale
                                         cil.quantity+=daba.quantity; //Update the quantity bought for the buyer
                                         FutureInventoryList fil=daba.e.futureInventoryList.get(index);
-                                        if(fil.quantity-daba.quantity>0)
-                                            fil.quantity-=daba.quantity; //Update the goal for the buyer
+                                        if(fil.quantity+fil.quantityLocked-daba.quantity>0)
+                                        {
+                                            fil.quantityLocked-=daba.quantity;//Update the goal for the buyer
+                                        }
                                         else
+                                        {
                                             fil.quantity=0;
+                                            fil.quantityLocked=0;
+                                        }
                                         daba.e.score+=(fil.buyingTargetPrice-cost)*daba.quantity;//Update score for buyer
                                         cil=dasa.e.currentInventoryList.get(index);
                                         cil.quantityLocked-=daba.quantity; //Update the quantity locked for the seller
                                         dasa.e.score+=(cost-cil.sellingPriceTarget)*daba.quantity; //Update score for seller
+                                        EventLogger.debug("Buyer Score: "+daba.e.score+" Seller Score: "+dasa.e.score);
                                         EventLogger.writeln("Sold "+daba.quantity+" of "+cil.magicalItem.magicalItemInfo.getName()+" for "+cost);
                                         daba.quantity=0; //Update the bid quantity
                                     }
                                     else
                                     {
-                                        EventLogger.debug("Quantity bought by the buyer is less than what the seller is selling");
+                                        EventLogger.debug("Quantity available in the market less than what buyer needs");
                                         daba.quantity-=dasa.quantity; //Reduce the bid quantity
                                         CurrentInventoryList cil=daba.e.currentInventoryList.get(index);
                                         int cost=(daba.price+dasa.price)/2; //Calculate the cost for the sale
                                         cil.quantity+=dasa.quantity; //Update the quantity bought for the buyer
                                         FutureInventoryList fil=daba.e.futureInventoryList.get(index);
-                                        if(fil.quantity-dasa.quantity>0)
-                                            fil.quantity-=dasa.quantity; //Update the goal for the buyer
+                                        if(fil.quantity+fil.quantityLocked-dasa.quantity>0)
+                                        {
+                                            fil.quantityLocked-=dasa.quantity;//Update the goal for the buyer
+                                        }
                                         else
+                                        {
                                             fil.quantity=0;
+                                            fil.quantityLocked=0;
+                                        }
                                         daba.e.score+=(fil.buyingTargetPrice-cost)*daba.quantity;//Update score for buyer
                                         cil=dasa.e.currentInventoryList.get(index);
                                         cil.quantityLocked-=dasa.quantity; //Update the quantity locked for the seller
                                         dasa.e.score+=(cost-cil.sellingPriceTarget)*daba.quantity; //Update score for seller
+                                        EventLogger.debug("Buyer Score: "+daba.e.score+" Seller Score: "+dasa.e.score);
                                         EventLogger.writeln("Sold "+dasa.quantity+" of "+cil.magicalItem.magicalItemInfo.getName()+" for "+cost);
                                         dasa.quantity=0; //Update the sale quantity
                                     }
