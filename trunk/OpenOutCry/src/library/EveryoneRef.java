@@ -6,12 +6,13 @@
 package library;
 
 import java.io.Serializable;
+import java.rmi.Remote;
 
 /**
  *
  * @author Asish
  */
-public class EveryoneRef implements Serializable{
+public class EveryoneRef implements Serializable, Remote{
     private boolean isWizard;
     private int id;
     private int itemNumber;
