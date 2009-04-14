@@ -4,16 +4,17 @@
  */
 package server;
 import DailyProphet.EventLogger;
+import java.io.BufferedReader;
 import library.MainRemote;
-import DailyProphet.EventReader;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.Random;
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.rmi.server.UnicastRemoteObject;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import library.EventReaderRemote;
 
 
 /**

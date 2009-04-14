@@ -38,7 +38,7 @@ public class MagicalItem implements Serializable{
      */       
     void executeTrade()
     {
-        EventLogger.debug("Trying to check for trades that can be executed!");
+        EventLogger.debug("Trying to exexute trades for "+magicalItemInfo.name + "Number of buyers: "+ buyerAccount.size());
         lock();
         for(int i=0; i<buyerAccount.size(); i++)
         {
