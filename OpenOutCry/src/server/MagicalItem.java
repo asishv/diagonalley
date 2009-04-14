@@ -52,7 +52,7 @@ public class MagicalItem{
                         {
                             if(dasa.time.after(d)) //Check if the sale is valid
                             {
-                                if(daba.price<=dasa.price) //Matching criterion
+                                if(daba.price>=dasa.price) //Matching criterion
                                 {
                                     //Execute trade
                                     if(daba.quantity<dasa.quantity) //Check if the buyer needs less quantity than seller
