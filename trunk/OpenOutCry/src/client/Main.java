@@ -315,6 +315,11 @@ public class Main {
                             ru[k]=new RandomUser(hostName, port);
                             ru[k].start();
                         }
+                        while(true){}
+                        /*for(int k=0; k<100; k++)
+                        {
+                            ru[k].interrupt();
+                        }*/
                 case 0: choice = 0;
                         System.exit(0);
                 default: break;
