@@ -32,7 +32,7 @@ public class WizardSeller extends Everyone{
                 return cil.quantity+cil.quantityLocked;
             }
         }
-        return -1;
+        return 0;
     }
     
          /**
@@ -48,7 +48,7 @@ public class WizardSeller extends Everyone{
                 return fil.quantityLocked;
             }
         }
-        return -1;
+        return 0;
     }
 
     /**
@@ -64,7 +64,7 @@ public class WizardSeller extends Everyone{
                 return cil.sellingPriceTarget;
             }
         }
-        return -1;        
+        return 0;        
     }
 
     /**
