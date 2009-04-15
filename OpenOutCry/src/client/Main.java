@@ -328,7 +328,7 @@ public class Main {
                          System.out.println("Enter the item number:");
                          int itemNumber = Integer.parseInt(br.readLine());
                          System.out.println("You have "+getQuantity(er, itemNumber)+" of item no. "+itemNumber);
-                    
+                         break;
                 case 7:
                         RandomUser ru[]=new RandomUser[100];
                         for(int k=0; k<100; k++)
