@@ -185,7 +185,7 @@ public class Main extends Thread implements MainRemote{
 
        for(int i=0; i<MAX_COMMODITY; i++)
        {
-           CurrentInventoryList ci=new CurrentInventoryList(0, ab.index, 0, magicalItems[i]);
+           CurrentInventoryList ci=new CurrentInventoryList(0, 0, ab.index, magicalItems[i]);
            ab.currentInventoryList.add(ci);
        }
        for(int i=0; i<MAX_COMMODITY; i++)
