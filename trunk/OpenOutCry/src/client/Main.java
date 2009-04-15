@@ -271,7 +271,8 @@ public class Main {
             System.out.println("3: View score");
             System.out.println("4: View Magical Items");
             System.out.println("5: View my Goal/Target");
-            System.out.println("6: Random test!");
+            System.out.println("6: View the quantity");
+            System.out.println("7: Random test!");
             System.out.println("0: Exit");
             try {
             choice = Integer.parseInt(br.readLine());
@@ -324,6 +325,11 @@ public class Main {
                         System.out.println(miir.getPicture());
                         break;
                 case 6:
+                         System.out.println("Enter the item number:");
+                         int itemNumber = Integer.parseInt(br.readLine());
+                         System.out.println("You have "+getQuantity(er, itemNumber)+" of item no. "+itemNumber);
+                    
+                case 7:
                         RandomUser ru[]=new RandomUser[100];
                         for(int k=0; k<100; k++)
                         {
