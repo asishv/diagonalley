@@ -15,6 +15,41 @@ import library.ExecutorRemote;
 import library.MainRemote;
 import library.UserStats;
 
+
+class RandomUser extends Thread
+{
+    String host;
+    int port;
+    public RandomUser(String host, int port)
+    {
+        this.host=host;
+        this.port=port;
+    }
+    public void run()
+    {
+        EveryoneRef er=Main.registerUser(host, port);
+        while(!isInterrupted())
+        {
+            Main.currentScore(er);
+            Random random1 = new Random();
+            int op=random1.nextInt(2);
+            int item=random1.nextInt(20);
+            int price=random1.nextInt(1000);
+            int quantity=random1.nextInt(1000);
+            int msec=random1.nextInt(10000);
+            switch(op)
+            {
+                case 0:                    
+                    Main.placeBid(er.getID(), item, price, quantity, msec);
+                    break;
+                case 1:
+                    Main.placeTrade(er.getID(), item, price, quantity, op);
+                    break;
+            }
+        }
+    }
+}
+
 /**
  *
  * @author karthik
@@ -221,6 +256,7 @@ public class Main {
             System.out.println("3: View score");
             System.out.println("4: View Magical Items");
             System.out.println("5: View my Goal/Target");
+            System.out.println("6: Random test!");
             System.out.println("0: Exit");
             try {
             choice = Integer.parseInt(br.readLine());
@@ -272,6 +308,13 @@ public class Main {
                         System.out.println(miir.getSymbol());
                         System.out.println(miir.getPicture());
                         break;
+                case 6:
+                        RandomUser ru[]=new RandomUser[100];
+                        for(int k=0; k<100; k++)
+                        {
+                            ru[k]=new RandomUser(hostName, port);
+                            ru[k].start();
+                        }
                 case 0: choice = 0;
                         System.exit(0);
                 default: break;
