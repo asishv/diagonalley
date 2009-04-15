@@ -29,24 +29,29 @@ public class Main {
     /**
     * To register a user. Get the user details and create his account on server.
     */
-    static EveryoneRef registerUser(String host, int portNumber) {
+    static EveryoneRef registerUser(String host, int portNumber, String name) {
         EveryoneRef er = null;
         
         //TODO: Make server call to register().
         try {
-            Random random = new Random();
-            count=random.nextInt(10000);
             System.err.println("Host:"+host);
             System.err.println("Port Number:"+portNumber);
             //registry = LocateRegistry.getRegistry(portNumber);
             mr = (MainRemote) Naming.lookup("rmi://"+host+":"+portNumber+"/Main");
-            er = mr.register("User-"+count);
+            er = mr.register(name);
         } catch (Exception e) {
             System.out.println("Error registering user: " + e.toString());
             e.printStackTrace();
         }
         //TODO: Set costValue and quantity based on server's results after register()
         return er;
+    }
+    
+    static EveryoneRef registerUser(String host, int portNumber) {
+        Random random = new Random();
+        int userNo=random.nextInt(10000);
+        String name="User-"+userNo;
+        return registerUser(host, portNumber, name);
     }
 
     /**
