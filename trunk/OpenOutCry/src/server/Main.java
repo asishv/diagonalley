@@ -300,7 +300,9 @@ public class Main extends Thread implements MainRemote{
            while(true)
            {
                 Thread.sleep(1000);
-/*                for(i=0; i<everyone.size(); i++)
+                if(everyone.size()==0)
+                    continue;
+                for(i=0; i<everyone.size(); i++)
                 {
                     Everyone e=everyone.get(i);
                     if(!e.goalMetOrNot)
@@ -319,7 +321,7 @@ public class Main extends Thread implements MainRemote{
                         e.printStackTrace();
                     }
                     System.exit(0);
-                }*/
+                }
            }
         }
         catch(InterruptedException ie)
