@@ -66,6 +66,10 @@ public class MagicalItem{
                                         if(fil.quantity+fil.quantityLocked-daba.quantity>0)
                                         {
                                             fil.quantityLocked-=daba.quantity;//Update the goal for the buyer
+                                            if(fil.quantityLocked == 0 && fil.quantity == 0)//Set Goal Met
+                                            {
+                                                daba.e.goalMetOrNot=true;
+                                            }
                                         }
                                         else
                                         {
@@ -75,6 +79,8 @@ public class MagicalItem{
                                         daba.e.score+=(fil.buyingTargetPrice-cost)*daba.quantity;//Update score for buyer
                                         cil=dasa.e.currentInventoryList.get(index);
                                         cil.quantityLocked-=daba.quantity; //Update the quantity locked for the seller
+                                        if(cil.quantityLocked==0 && cil.quantity == 0) //Set Goal Met
+                                            dasa.e.goalMetOrNot=true;
                                         dasa.e.score+=(cost-cil.sellingPriceTarget)*daba.quantity; //Update score for seller
                                         EventLogger.debug("Buyer Score: "+daba.e.score+" Seller Score: "+dasa.e.score);
                                         EventLogger.writeln("Sold "+daba.quantity+" of "+cil.magicalItem.magicalItemInfo.getName()+" for "+cost);
@@ -91,6 +97,10 @@ public class MagicalItem{
                                         if(fil.quantity+fil.quantityLocked-dasa.quantity>0)
                                         {
                                             fil.quantityLocked-=dasa.quantity;//Update the goal for the buyer
+                                            if(fil.quantityLocked == 0 && fil.quantity == 0 && fil.buyingTargetPrice!=0)//Check if goals are met
+                                            {
+                                                daba.e.goalMetOrNot=true;
+                                            }
                                         }
                                         else
                                         {
@@ -100,6 +110,8 @@ public class MagicalItem{
                                         daba.e.score+=(fil.buyingTargetPrice-cost)*dasa.quantity;//Update score for buyer
                                         cil=dasa.e.currentInventoryList.get(index);
                                         cil.quantityLocked-=dasa.quantity; //Update the quantity locked for the seller
+                                        if(cil.quantityLocked==0 && cil.quantity == 0 && cil.sellingPriceTarget!=0) //Check if goals are met
+                                            dasa.e.goalMetOrNot=true;
                                         dasa.e.score+=(cost-cil.sellingPriceTarget)*dasa.quantity; //Update score for seller
                                         EventLogger.debug("Buyer Score: "+daba.e.score+" Seller Score: "+dasa.e.score);
                                         EventLogger.writeln("Sold "+dasa.quantity+" of "+cil.magicalItem.magicalItemInfo.getName()+" for "+cost);

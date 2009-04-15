@@ -16,6 +16,7 @@ import library.MagicalItemInfo;
 public class Everyone{
     String name;
     boolean wizardOrNot;
+    volatile boolean goalMetOrNot;
     volatile int score;
     int index; 
     
@@ -26,6 +27,7 @@ public class Everyone{
     
     Everyone()
     {
+        goalMetOrNot=false;
         currentInventoryList=new ArrayList();
         futureInventoryList=new ArrayList();
     }
@@ -38,6 +40,12 @@ public class Everyone{
         int score;
         score=this.score;
         return score;
+    }
+    
+    public int getQuantity(int itemNumber)
+    {
+        CurrentInventoryList cil=currentInventoryList.get(itemNumber);
+        return cil.quantity;
     }
 
     /**
