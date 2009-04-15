@@ -13,9 +13,11 @@ package client;
 
 
 
+import java.util.ArrayList;
 import javax.swing.SwingWorker;
 import javax.swing.table.DefaultTableModel;
 import library.EveryoneRef;
+import library.MagicalItemInfo;
 import org.jvnet.substance.skin.SubstanceBusinessBlackSteelLookAndFeel;
 import org.jvnet.substance.skin.SubstanceBusinessLookAndFeel;
 
@@ -102,8 +104,6 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jScrollPane4 = new javax.swing.JScrollPane();
         cilTable = new javax.swing.JTable();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        filTable = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -207,7 +207,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
         assignedAs.setText("[WIZARD-SELLER]");
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 15));
-        jLabel8.setText("Your task: ");
+        jLabel8.setText("Your Goal: ");
 
         mytask.setFont(new java.awt.Font("Tahoma", 0, 13));
         mytask.setText("Sell all the comodities at best price.");
@@ -227,7 +227,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                         .addComponent(jLabel8)
                         .addGap(18, 18, 18)
                         .addComponent(mytask)))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,7 +240,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(mytask))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -251,11 +251,11 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 77, Short.MAX_VALUE)
+            .addGap(0, 134, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 64, Short.MAX_VALUE)
+            .addGap(0, 123, Short.MAX_VALUE)
         );
 
         nameLabel.setFont(new java.awt.Font("Tahoma", 0, 15));
@@ -265,24 +265,20 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(nameLabel)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(nameLabel))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(85, 85, 85)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel13))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel13)))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addGap(115, 115, 115)
                     .addComponent(jLabel14)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addContainerGap(47, Short.MAX_VALUE)))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -295,13 +291,13 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                         .addComponent(jLabel13))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(nameLabel)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nameLabel)
+                .addContainerGap())
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                    .addContainerGap(87, Short.MAX_VALUE)
+                    .addContainerGap(141, Short.MAX_VALUE)
                     .addComponent(jLabel14)
                     .addGap(29, 29, 29)))
         );
@@ -320,10 +316,11 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel4)
-                    .addComponent(score)))
+                    .addComponent(score))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -332,10 +329,10 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(score)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        bidTradeDetails.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        bidTradeDetails.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "STEP 3", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 15))); // NOI18N
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 0, 15));
         jLabel18.setText("Place a Bid");
@@ -490,7 +487,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 812, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1047, Short.MAX_VALUE)
                     .addComponent(jLabel20))
                 .addContainerGap())
         );
@@ -506,35 +503,20 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
 
         cilTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Items that you own"
+                "Items that you own", "Quantity"
             }
         ));
+        cilTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane4.setViewportView(cilTable);
-
-        filTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null}
-            },
-            new String [] {
-                "Items that you should buy"
-            }
-        ));
-        jScrollPane5.setViewportView(filTable);
 
         jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -555,7 +537,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(190, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -566,7 +548,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel12)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(151, Short.MAX_VALUE))
         );
 
         buttonGroup.add(mButton1);
@@ -681,15 +663,17 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(28, 28, 28)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
+                                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(99, 99, 99))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jPanel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(mButton1)
@@ -705,25 +689,26 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                                                 .addComponent(mButton10)))
                                         .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(mButton11)
-                                            .addComponent(mButton12)
-                                            .addComponent(mButton13)
-                                            .addComponent(mButton14)
-                                            .addComponent(mButton15)
-                                            .addComponent(mButton16)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(mButton11)
+                                                    .addComponent(mButton12)
+                                                    .addComponent(mButton13)
+                                                    .addComponent(mButton14)
+                                                    .addComponent(mButton15)
+                                                    .addComponent(mButton16))
+                                                .addGap(28, 28, 28)
+                                                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(bidTradeDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addComponent(mButton17)
                                             .addComponent(mButton18)
                                             .addComponent(mButton19)
                                             .addComponent(mButton20))
-                                        .addGap(28, 28, 28)
-                                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(bidTradeDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(39, 39, 39)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
-                                    .addComponent(jScrollPane4, 0, 0, Short.MAX_VALUE))))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addGap(52, 52, 52)))
                         .addGap(116, 116, 116))))
         );
         layout.setVerticalGroup(
@@ -731,19 +716,20 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(20, 20, 20)
@@ -791,8 +777,11 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(bidTradeDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(18, 18, 18))
+                    .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -907,6 +896,23 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
         // TODO add your handling code here:
 }//GEN-LAST:event_jRadioTradeActionPerformed
 
+    void populateMagicalItems(javax.swing.JFrame frame) {
+        try {
+            MagicalItemInfo[] magicalItemInfo;
+            magicalItemInfo = Main.mr.getAllMagicalItems();
+            this.mButton1.setText(magicalItemInfo[1].getName());
+
+//
+//            for(int i= 0; i < magicalItemInfo.length; i++){
+//
+//                System.out.println("Name:" + magicalItemInfo[i].getName()+ " Symbol:"+magicalItemInfo[i].getSymbol());
+//            }
+        } catch (Exception e) {
+            System.out.println("Error getting list of magical items: " + e.toString());
+            e.printStackTrace();
+        }
+
+    }
     /**
     * @param args the command line arguments
     */
@@ -917,8 +923,6 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
         javax.swing.JFrame.setDefaultLookAndFeelDecorated(true);
         try {
             javax.swing.UIManager.setLookAndFeel(new SubstanceBusinessBlackSteelLookAndFeel());
-            
-            
         } catch (Exception e) {
             System.out.println("Substance Raven Graphite failed to initialize");
         }
@@ -926,6 +930,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 final DiagonAlleyUINew frame = newInstance();
+                MagicalItemInfo[] magicalItemInfo = null;
                 
                 Main.hostName = "sand.cise.ufl.edu"; // WARNING: HARDCODED !!!!
                 Main.port = 3600; // WARNING: HARDCODED !!!!
@@ -951,6 +956,36 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                     frame.mytask.setText("Buy the comodity at lowest price");
                 }
 
+                // Populate magical Item buttons
+                
+                try {
+                    magicalItemInfo = Main.mr.getAllMagicalItems();
+                    frame.mButton1.setText(magicalItemInfo[0].getName());
+                    frame.mButton2.setText(magicalItemInfo[1].getName());
+                    frame.mButton3.setText(magicalItemInfo[2].getName());
+                    frame.mButton4.setText(magicalItemInfo[3].getName());
+                    frame.mButton5.setText(magicalItemInfo[4].getName());
+                    frame.mButton6.setText(magicalItemInfo[5].getName());
+                    frame.mButton7.setText(magicalItemInfo[6].getName());
+                    frame.mButton8.setText(magicalItemInfo[7].getName());
+                    frame.mButton9.setText(magicalItemInfo[8].getName());
+                    frame.mButton10.setText(magicalItemInfo[9].getName());
+                    frame.mButton11.setText(magicalItemInfo[10].getName());
+                    frame.mButton12.setText(magicalItemInfo[11].getName());
+                    frame.mButton13.setText(magicalItemInfo[12].getName());
+                    frame.mButton14.setText(magicalItemInfo[13].getName());
+                    frame.mButton15.setText(magicalItemInfo[14].getName());
+                    frame.mButton16.setText(magicalItemInfo[15].getName());
+                    frame.mButton17.setText(magicalItemInfo[16].getName());
+                    frame.mButton18.setText(magicalItemInfo[17].getName());
+                    frame.mButton19.setText(magicalItemInfo[18].getName());
+                    frame.mButton20.setText(magicalItemInfo[19].getName());
+                } catch (Exception e) {
+                    System.out.println("Exception in populating magical Item");
+                    e.printStackTrace();
+                }
+
+
                 // Set the Score Label
                 frame.score.setText("100");
                 // Background worker thread for score label
@@ -969,9 +1004,36 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                 };
                 scoreWorker.execute();
 
+                // Populating the Current Inventory List
+                final MagicalItemInfo[] magicalItemInfoName = magicalItemInfo;
                 ((DefaultTableModel)frame.cilTable.getModel()).setRowCount(0);
-                
-                
+                cilTableWorker = new SwingWorker<Void, Void>() {
+                @Override
+                public Void doInBackground() {
+                    ArrayList<String> magicalItemName = null;
+                    ArrayList<Integer> quantity = null;
+                    int qty = 0;
+                    while(frame.isVisible()) {
+                        for(int i=0;i<20;i++) {
+                            qty = Main.getQuantity(er,i);
+                            if(qty != 0) {
+                                magicalItemName.add(magicalItemInfoName[i].getName());
+                                quantity.add(qty);
+                            }
+                        }
+                        if(magicalItemName.size() != 0) {
+                            ((DefaultTableModel)frame.cilTable.getModel()).setRowCount(magicalItemName.size());
+                            for(int i=0;i<magicalItemName.size();i++) {
+                                frame.cilTable.setValueAt(magicalItemName, i, 1);
+                                frame.cilTable.setValueAt(quantity, i, 2);
+                            }
+                        }
+                        magicalItemName.clear();
+                        quantity.clear();
+                    }
+                    return null;
+                }
+            };
             }
         });
     }
@@ -983,7 +1045,6 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JTable cilTable;
-    private javax.swing.JTable filTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1020,7 +1081,6 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextArea jTextArea1;
