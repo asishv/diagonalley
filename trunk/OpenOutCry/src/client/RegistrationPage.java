@@ -21,6 +21,7 @@ import org.jvnet.substance.skin.SubstanceBusinessBlackSteelLookAndFeel;
  */
 public class RegistrationPage extends javax.swing.JFrame {
 
+    int picture=0;
     /** Creates new form RegistrationPage */
     public RegistrationPage() {
         initComponents();
@@ -70,30 +71,90 @@ public class RegistrationPage extends javax.swing.JFrame {
         jLabel2.setText("Select symbol:");
 
         jToggleButton1.setText("@");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
 
         jToggleButton2.setText("#");
+        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton2ActionPerformed(evt);
+            }
+        });
 
         jToggleButton3.setText("$");
+        jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton3ActionPerformed(evt);
+            }
+        });
 
         jToggleButton4.setText("%");
+        jToggleButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton4ActionPerformed(evt);
+            }
+        });
 
         jToggleButton5.setText("&");
+        jToggleButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton5ActionPerformed(evt);
+            }
+        });
 
         jToggleButton6.setText("*");
+        jToggleButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton6ActionPerformed(evt);
+            }
+        });
 
         jToggleButton7.setText("~");
+        jToggleButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton7ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Select picture:");
 
         jToggleButton8.setText("X");
+        jToggleButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton8ActionPerformed(evt);
+            }
+        });
 
         jToggleButton9.setText("X");
+        jToggleButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton9ActionPerformed(evt);
+            }
+        });
 
         jToggleButton10.setText("X");
+        jToggleButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton10ActionPerformed(evt);
+            }
+        });
 
         jToggleButton11.setText("X");
+        jToggleButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton11ActionPerformed(evt);
+            }
+        });
 
         jToggleButton12.setText("X");
+        jToggleButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton12ActionPerformed(evt);
+            }
+        });
 
         submitButton.setText("SUBMIT");
         submitButton.addActionListener(new java.awt.event.ActionListener() {
@@ -210,6 +271,61 @@ private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
 private void userNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameActionPerformed
 // TODO add your handling code here:
 }//GEN-LAST:event_userNameActionPerformed
+
+private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+String text=this.userName.getText();
+this.userName.setText(text+"@");
+}//GEN-LAST:event_jToggleButton1ActionPerformed
+
+private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+String text=this.userName.getText();
+this.userName.setText(text+"#");
+}//GEN-LAST:event_jToggleButton2ActionPerformed
+
+private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
+String text=this.userName.getText();
+this.userName.setText(text+"$");
+}//GEN-LAST:event_jToggleButton3ActionPerformed
+
+private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
+String text=this.userName.getText();
+this.userName.setText(text+"%");
+}//GEN-LAST:event_jToggleButton4ActionPerformed
+
+private void jToggleButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton5ActionPerformed
+String text=this.userName.getText();
+this.userName.setText(text+"&");
+}//GEN-LAST:event_jToggleButton5ActionPerformed
+
+private void jToggleButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton6ActionPerformed
+String text=this.userName.getText();
+this.userName.setText(text+"*");
+}//GEN-LAST:event_jToggleButton6ActionPerformed
+
+private void jToggleButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton7ActionPerformed
+String text=this.userName.getText();
+this.userName.setText(text+"~");
+}//GEN-LAST:event_jToggleButton7ActionPerformed
+
+private void jToggleButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton8ActionPerformed
+    picture=0;
+}//GEN-LAST:event_jToggleButton8ActionPerformed
+
+private void jToggleButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton9ActionPerformed
+    picture=1;
+}//GEN-LAST:event_jToggleButton9ActionPerformed
+
+private void jToggleButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton10ActionPerformed
+    picture=2;
+}//GEN-LAST:event_jToggleButton10ActionPerformed
+
+private void jToggleButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton11ActionPerformed
+    picture=3;
+}//GEN-LAST:event_jToggleButton11ActionPerformed
+
+private void jToggleButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton12ActionPerformed
+    picture=4;
+}//GEN-LAST:event_jToggleButton12ActionPerformed
 
 
     
