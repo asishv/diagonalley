@@ -33,7 +33,7 @@ public class ApprenticeBuyer extends Everyone{
                 return fil.quantity;
             }
         }
-        return -1;
+        return 0;
     }
     
          /**
@@ -49,7 +49,7 @@ public class ApprenticeBuyer extends Everyone{
                 return fil.quantityLocked;
             }
         }
-        return -1;
+        return 0;
     }
     
         /**
@@ -65,7 +65,7 @@ public class ApprenticeBuyer extends Everyone{
                 return fil.buyingTargetPrice;
             }
         }
-        return -1;        
+        return 0;        
     }
     
      /**
