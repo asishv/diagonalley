@@ -11,6 +11,8 @@
 
 package client;
 
+import org.jvnet.substance.skin.SubstanceBusinessBlackSteelLookAndFeel;
+
 
 
 /**
@@ -58,6 +60,12 @@ public class RegistrationPage extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Registration", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 15))); // NOI18N
 
         jLabel1.setText("Enter Name:");
+
+        userName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userNameActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Select symbol:");
 
@@ -190,9 +198,18 @@ public class RegistrationPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
-    this.setVisible(false);
-    
+    String args[]=new String[1];
+    args[0]=this.userName.getText();
+    if(!args[0].isEmpty())
+    {
+        this.setVisible(false);
+        DiagonAlleyUI.main(args);
+    }
 }//GEN-LAST:event_submitButtonActionPerformed
+
+private void userNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameActionPerformed
+// TODO add your handling code here:
+}//GEN-LAST:event_userNameActionPerformed
 
 
     
