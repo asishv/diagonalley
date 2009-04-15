@@ -108,30 +108,34 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        mButton1 = new javax.swing.JRadioButton();
-        mButton2 = new javax.swing.JRadioButton();
-        mButton3 = new javax.swing.JRadioButton();
-        mButton4 = new javax.swing.JRadioButton();
-        mButton5 = new javax.swing.JRadioButton();
-        mButton6 = new javax.swing.JRadioButton();
-        mButton7 = new javax.swing.JRadioButton();
-        mButton8 = new javax.swing.JRadioButton();
-        mButton9 = new javax.swing.JRadioButton();
-        mButton10 = new javax.swing.JRadioButton();
-        mButton11 = new javax.swing.JRadioButton();
-        mButton12 = new javax.swing.JRadioButton();
-        mButton13 = new javax.swing.JRadioButton();
-        mButton14 = new javax.swing.JRadioButton();
-        mButton15 = new javax.swing.JRadioButton();
-        mButton16 = new javax.swing.JRadioButton();
-        mButton17 = new javax.swing.JRadioButton();
-        mButton18 = new javax.swing.JRadioButton();
-        mButton19 = new javax.swing.JRadioButton();
-        mButton20 = new javax.swing.JRadioButton();
         jPanel6 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jRadioBid = new javax.swing.JRadioButton();
         jRadioTrade = new javax.swing.JRadioButton();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
+        mButton1 = new javax.swing.JRadioButton();
+        mButton11 = new javax.swing.JRadioButton();
+        mButton2 = new javax.swing.JRadioButton();
+        mButton12 = new javax.swing.JRadioButton();
+        mButton3 = new javax.swing.JRadioButton();
+        mButton13 = new javax.swing.JRadioButton();
+        mButton4 = new javax.swing.JRadioButton();
+        mButton14 = new javax.swing.JRadioButton();
+        mButton5 = new javax.swing.JRadioButton();
+        mButton15 = new javax.swing.JRadioButton();
+        mButton6 = new javax.swing.JRadioButton();
+        mButton16 = new javax.swing.JRadioButton();
+        mButton7 = new javax.swing.JRadioButton();
+        mButton17 = new javax.swing.JRadioButton();
+        mButton8 = new javax.swing.JRadioButton();
+        mButton18 = new javax.swing.JRadioButton();
+        mButton9 = new javax.swing.JRadioButton();
+        mButton19 = new javax.swing.JRadioButton();
+        mButton10 = new javax.swing.JRadioButton();
+        mButton20 = new javax.swing.JRadioButton();
+        jLabel10 = new javax.swing.JLabel();
 
         jLabel3.setText("jLabel3");
 
@@ -332,10 +336,10 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        bidTradeDetails.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "STEP 3", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 15))); // NOI18N
+        bidTradeDetails.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "STEP 3", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 17))); // NOI18N
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 0, 15));
-        jLabel18.setText("Place a Bid");
+        jLabel18.setText("Place a Bid:");
 
         jPanel11.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
 
@@ -487,7 +491,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1047, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 632, Short.MAX_VALUE)
                     .addComponent(jLabel20))
                 .addContainerGap())
         );
@@ -548,71 +552,12 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel12)
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
 
-        buttonGroup.add(mButton1);
-        mButton1.setText("jRadioButton1");
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "STEP 2", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 17))); // NOI18N
 
-        buttonGroup.add(mButton2);
-        mButton2.setText("jRadioButton2");
-
-        buttonGroup.add(mButton3);
-        mButton3.setText("jRadioButton1");
-
-        buttonGroup.add(mButton4);
-        mButton4.setText("jRadioButton1");
-
-        buttonGroup.add(mButton5);
-        mButton5.setText("jRadioButton1");
-
-        buttonGroup.add(mButton6);
-        mButton6.setText("jRadioButton1");
-
-        buttonGroup.add(mButton7);
-        mButton7.setText("jRadioButton1");
-
-        buttonGroup.add(mButton8);
-        mButton8.setText("jRadioButton1");
-
-        buttonGroup.add(mButton9);
-        mButton9.setText("jRadioButton1");
-
-        buttonGroup.add(mButton10);
-        mButton10.setText("jRadioButton1");
-
-        buttonGroup.add(mButton11);
-        mButton11.setText("jRadioButton1");
-
-        buttonGroup.add(mButton12);
-        mButton12.setText("jRadioButton1");
-
-        buttonGroup.add(mButton13);
-        mButton13.setText("jRadioButton1");
-
-        buttonGroup.add(mButton14);
-        mButton14.setText("jRadioButton1");
-
-        buttonGroup.add(mButton15);
-        mButton15.setText("jRadioButton1");
-
-        buttonGroup.add(mButton16);
-        mButton16.setText("jRadioButton1");
-
-        buttonGroup.add(mButton17);
-        mButton17.setText("jRadioButton1");
-
-        buttonGroup.add(mButton18);
-        mButton18.setText("jRadioButton1");
-
-        buttonGroup.add(mButton19);
-        mButton19.setText("jRadioButton1");
-
-        buttonGroup.add(mButton20);
-        mButton20.setText("jRadioButton1");
-
-        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "STEP 2", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 15))); // NOI18N
-
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         jLabel2.setText("Do you wish to buy or sell:");
 
         buttonGroup2.add(jRadioBid);
@@ -647,7 +592,179 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                 .addComponent(jRadioBid)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jRadioTrade)
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Status Bar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 17))); // NOI18N
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(204, 0, 0));
+        jLabel15.setText("Status messages ..");
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel15)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "STEP 1", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 17))); // NOI18N
+        jPanel9.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+
+        buttonGroup.add(mButton1);
+        mButton1.setText("jRadioButton1");
+
+        buttonGroup.add(mButton11);
+        mButton11.setText("jRadioButton1");
+
+        buttonGroup.add(mButton2);
+        mButton2.setText("jRadioButton2");
+
+        buttonGroup.add(mButton12);
+        mButton12.setText("jRadioButton1");
+
+        buttonGroup.add(mButton3);
+        mButton3.setText("jRadioButton1");
+
+        buttonGroup.add(mButton13);
+        mButton13.setText("jRadioButton1");
+
+        buttonGroup.add(mButton4);
+        mButton4.setText("jRadioButton1");
+
+        buttonGroup.add(mButton14);
+        mButton14.setText("jRadioButton1");
+
+        buttonGroup.add(mButton5);
+        mButton5.setText("jRadioButton1");
+
+        buttonGroup.add(mButton15);
+        mButton15.setText("jRadioButton1");
+
+        buttonGroup.add(mButton6);
+        mButton6.setText("jRadioButton1");
+
+        buttonGroup.add(mButton16);
+        mButton16.setText("jRadioButton1");
+
+        buttonGroup.add(mButton7);
+        mButton7.setText("jRadioButton1");
+
+        buttonGroup.add(mButton17);
+        mButton17.setText("jRadioButton1");
+
+        buttonGroup.add(mButton8);
+        mButton8.setText("jRadioButton1");
+
+        buttonGroup.add(mButton18);
+        mButton18.setText("jRadioButton1");
+
+        buttonGroup.add(mButton9);
+        mButton9.setText("jRadioButton1");
+
+        buttonGroup.add(mButton19);
+        mButton19.setText("jRadioButton1");
+
+        buttonGroup.add(mButton10);
+        mButton10.setText("jRadioButton1");
+
+        buttonGroup.add(mButton20);
+        mButton20.setText("jRadioButton1");
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        jLabel10.setText("Select a magical Item:");
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(mButton1)
+                            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(mButton2)
+                                .addComponent(mButton3)
+                                .addComponent(mButton4)
+                                .addComponent(mButton5)
+                                .addComponent(mButton6)
+                                .addComponent(mButton7)
+                                .addComponent(mButton8)
+                                .addComponent(mButton9)
+                                .addComponent(mButton10)))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(mButton11)
+                            .addComponent(mButton12)
+                            .addComponent(mButton13)
+                            .addComponent(mButton14)
+                            .addComponent(mButton15)
+                            .addComponent(mButton16)
+                            .addComponent(mButton17)
+                            .addComponent(mButton18)
+                            .addComponent(mButton19)
+                            .addComponent(mButton20)))
+                    .addComponent(jLabel10))
+                .addContainerGap(51, Short.MAX_VALUE))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(mButton11)
+                    .addComponent(mButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(mButton2)
+                    .addComponent(mButton12))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(mButton3)
+                    .addComponent(mButton13))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(mButton4)
+                    .addComponent(mButton14))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(mButton5)
+                    .addComponent(mButton15))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(mButton6)
+                    .addComponent(mButton16))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(mButton7)
+                    .addComponent(mButton17))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(mButton8)
+                    .addComponent(mButton18))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(mButton9)
+                    .addComponent(mButton19))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(mButton10)
+                    .addComponent(mButton20))
+                .addGap(24, 24, 24))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -661,55 +778,36 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(288, 288, 288))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(28, 28, 28)
+                                .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
+                                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(bidTradeDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(363, 363, 363)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(99, 99, 99))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jPanel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(mButton1)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(mButton2)
-                                                .addComponent(mButton3)
-                                                .addComponent(mButton4)
-                                                .addComponent(mButton5)
-                                                .addComponent(mButton6)
-                                                .addComponent(mButton7)
-                                                .addComponent(mButton8)
-                                                .addComponent(mButton9)
-                                                .addComponent(mButton10)))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(mButton11)
-                                                    .addComponent(mButton12)
-                                                    .addComponent(mButton13)
-                                                    .addComponent(mButton14)
-                                                    .addComponent(mButton15)
-                                                    .addComponent(mButton16))
-                                                .addGap(28, 28, 28)
-                                                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(bidTradeDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(mButton17)
-                                            .addComponent(mButton18)
-                                            .addComponent(mButton19)
-                                            .addComponent(mButton20))
+                                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                                 .addGap(52, 52, 52)))
-                        .addGap(116, 116, 116))))
+                        .addGap(38, 38, 38))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -719,68 +817,26 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                        .addGap(1, 1, 1)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(mButton11)
-                                    .addComponent(mButton1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(mButton2)
-                                    .addComponent(mButton12))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(mButton3)
-                                    .addComponent(mButton13))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(mButton4)
-                                    .addComponent(mButton14))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(mButton5)
-                                    .addComponent(mButton15))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(mButton6)
-                                    .addComponent(mButton16))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(mButton7)
-                                    .addComponent(mButton17))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(mButton8)
-                                    .addComponent(mButton18))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(mButton9)
-                                    .addComponent(mButton19))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(mButton10)
-                                    .addComponent(mButton20)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(7, 7, 7)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(bidTradeDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(18, 18, 18))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(bidTradeDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(168, 168, 168)
                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -859,7 +915,12 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                 System.out.println("Trade could not be placed");
             }
         }
-        
+
+        // Set all textboxes to NULL
+        this.priceField.setText(null);
+        this.quantityField.setText(null);
+        this.timeField.setText(null);
+
 }//GEN-LAST:event_submitButtonActionPerformed
 
     private void priceFieldPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_priceFieldPropertyChange
@@ -887,7 +948,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
             if(timeField != null) {
                 String text=timeField.getText();
                 if(!text.equals(""))
-                    msec = Integer.parseInt(text);
+                    msec = Integer.parseInt(text)*60*1000;
             }
         }
     }//GEN-LAST:event_timeFieldPropertyChange
@@ -896,23 +957,6 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
         // TODO add your handling code here:
 }//GEN-LAST:event_jRadioTradeActionPerformed
 
-    void populateMagicalItems(javax.swing.JFrame frame) {
-        try {
-            MagicalItemInfo[] magicalItemInfo;
-            magicalItemInfo = Main.mr.getAllMagicalItems();
-            this.mButton1.setText(magicalItemInfo[1].getName());
-
-//
-//            for(int i= 0; i < magicalItemInfo.length; i++){
-//
-//                System.out.println("Name:" + magicalItemInfo[i].getName()+ " Symbol:"+magicalItemInfo[i].getSymbol());
-//            }
-        } catch (Exception e) {
-            System.out.println("Error getting list of magical items: " + e.toString());
-            e.printStackTrace();
-        }
-
-    }
     /**
     * @param args the command line arguments
     */
@@ -956,8 +1000,17 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                     frame.mytask.setText("Buy the comodity at lowest price");
                 }
 
+                // Assign goal to the Wizard-seller or Apprentice-buyer
+                MagicalItemInfo miir = Main.currentCommodity(er);
+                int tcost = Main.targetCost(er), tquantity = Main.targetQuantity(er);
+                if(er.isWizard()) {
+                    frame.mytask.setText("Selling "+tquantity+" "+miir.getName()+"["+miir.getIndex()+"]"+" and your target selling price is "+tcost);
+                } else {
+                    frame.mytask.setText("Buying "+tquantity+" "+miir.getName()+"["+miir.getIndex()+"]"+" and your buying price target is "+tcost);
+                }
+
+
                 // Populate magical Item buttons
-                
                 try {
                     magicalItemInfo = Main.mr.getAllMagicalItems();
                     frame.mButton1.setText(magicalItemInfo[0].getName());
@@ -992,12 +1045,15 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                 scoreWorker = new SwingWorker<Void, Void>() {
                     @Override
                     public Void doInBackground() {
-                        int currentScore = Main.currentScore(er);
-                        //int currentScore = 10000;
+                        int currentScore;
                         while(frame.isVisible()) {
-                            //currentScore--;
-                            frame.score.setText(String.valueOf(currentScore));
-                            //if (currentScore < -1) break;
+                              currentScore = Main.currentScore(er);
+                              frame.score.setText(String.valueOf(currentScore));
+                              try{
+                                  Thread.sleep(1000);
+                              }catch(InterruptedException ie)
+                              {
+                              }
                         }
                         return null;
                     }
@@ -1007,33 +1063,41 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                 // Populating the Current Inventory List
                 final MagicalItemInfo[] magicalItemInfoName = magicalItemInfo;
                 ((DefaultTableModel)frame.cilTable.getModel()).setRowCount(0);
-                cilTableWorker = new SwingWorker<Void, Void>() {
-                @Override
-                public Void doInBackground() {
-                    ArrayList<String> magicalItemName = null;
-                    ArrayList<Integer> quantity = null;
-                    int qty = 0;
-                    while(frame.isVisible()) {
-                        for(int i=0;i<20;i++) {
-                            qty = Main.getQuantity(er,i);
-                            if(qty != 0) {
-                                magicalItemName.add(magicalItemInfoName[i].getName());
-                                quantity.add(qty);
-                            }
-                        }
-                        if(magicalItemName.size() != 0) {
-                            ((DefaultTableModel)frame.cilTable.getModel()).setRowCount(magicalItemName.size());
-                            for(int i=0;i<magicalItemName.size();i++) {
-                                frame.cilTable.setValueAt(magicalItemName, i, 1);
-                                frame.cilTable.setValueAt(quantity, i, 2);
-                            }
-                        }
-                        magicalItemName.clear();
-                        quantity.clear();
-                    }
-                    return null;
-                }
-            };
+ cilTableWorker = new SwingWorker<Void, Void>() {
+              @Override
+              public Void doInBackground() {
+                  ArrayList<String> magicalItemName = new ArrayList();
+                  ArrayList<Integer> quantity = new ArrayList();
+                  int qty = 0;
+                  while(frame.isVisible()) {
+                      try{
+                          Thread.sleep(1000);
+                      for(int i=0;i<20;i++) {
+                          qty = Main.getQuantity(er,i);
+                          if(qty != 0) {
+                              magicalItemName.add(magicalItemInfoName[i].getName());
+                              quantity.add(qty);
+                          }
+                      }
+                      if(magicalItemName.size() != 0) {
+                          ((DefaultTableModel)frame.cilTable.getModel()).setRowCount(magicalItemName.size());
+                          for(int i=0;i<magicalItemName.size();i++) {
+                              frame.cilTable.setValueAt(magicalItemName.get(i), i, 0);
+                              frame.cilTable.setValueAt(quantity.get(i), i, 1);
+                          }
+                      }
+                      magicalItemName.clear();
+                      quantity.clear();
+                      Thread.sleep(1000);
+                      }catch(Exception ie)
+                      {
+                          ie.printStackTrace();
+                      }
+                  }
+                  return null;
+              }
+          };
+          cilTableWorker.execute();
             }
         });
     }
@@ -1046,10 +1110,12 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JTable cilTable;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
@@ -1074,7 +1140,9 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JRadioButton jRadioBid;
     private javax.swing.JRadioButton jRadioTrade;
     private javax.swing.JScrollPane jScrollPane1;
