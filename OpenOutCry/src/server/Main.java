@@ -33,6 +33,9 @@ public class Main extends Thread implements MainRemote{
      ArrayList<ApprenticeBuyer> apprentices;
      ArrayList<MagicalItemInfo> magicalItemInfo;
      volatile int numberOfUsers=0;
+     static Executor ex;
+     static Main obj;
+     static Registry registry;
      
      MagicalItem getMagicalItem(int magicalItemNumber)
      {
@@ -234,6 +237,34 @@ public class Main extends Thread implements MainRemote{
         EventLogger.debug("Magical items successfully created");
     }
     
+    static void announceWinners()
+    {
+        ArrayList<Everyone> winners=new ArrayList();
+        int maxscore=0;
+        for(int k=0; k<everyone.size(); k++)
+        {
+            Everyone e=everyone.get(k);
+            if(maxscore<e.getScore())
+            {
+                maxscore=e.getScore();
+            }
+        }
+        for(int k=0; k<everyone.size(); k++)
+        {
+            Everyone e=everyone.get(k);
+            if(maxscore==e.getScore())
+            {
+                winners.add(e);
+            }
+        }
+        DailyProphet.EventLogger.writeln("Winner(s) of the auction game is ");
+        for(int k=0; k<winners.size(); k++)
+        {
+            Everyone e=winners.get(k);
+            DailyProphet.EventLogger.writeln(e.name+" and his/her score is "+e.getScore());
+        }
+    }
+    
      /**
      * Creates a virtual wizard.
      */    
@@ -276,7 +307,19 @@ public class Main extends Thread implements MainRemote{
                         break;
                 }
                 if(i==everyone.size())
-                    break;
+                {
+                    ex.close();
+                    announceWinners();
+                    try{
+                        Thread.sleep(5000);
+                        registry.unbind("Main");
+                        registry.unbind("Executor");
+                    }catch(Exception e)
+                    {
+                        e.printStackTrace();
+                    }
+                    System.exit(0);
+                }
            }
         }
         catch(InterruptedException ie)
@@ -296,10 +339,10 @@ public class Main extends Thread implements MainRemote{
     
     public static void main(String args[])
     {
-        Registry registry=null;
-        Executor ex=new Executor();
+        registry=null;
+        ex=new Executor();
         ex.start();
-        Main obj = new Main();
+        obj = new Main();
         obj.start();
        	try {
 	    MainRemote stub1 = (MainRemote) UnicastRemoteObject.exportObject(obj, 0);
@@ -336,6 +379,8 @@ public class Main extends Thread implements MainRemote{
         finally
         {
             ex.close();
+            announceWinners();
+
             try{
                 Thread.sleep(5000);
                 registry.unbind("Main");
