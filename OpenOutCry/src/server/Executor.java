@@ -121,7 +121,6 @@ public class Executor extends Thread implements ExecutorRemote{
                     r.result=result;
                     break;
                 case 2: //Get All Info
-                    EventLogger.debug("Executor: Operation = GET ALL INFO!");
                     e=Main.getUser(r.userID);
                     if(e.isWizard())
                     {
@@ -153,7 +152,6 @@ public class Executor extends Thread implements ExecutorRemote{
                     r.result=result;
                     break;
                 case 5:
-                    EventLogger.debug("Executor: Operation = GET COMMODITY QUANTITY!");
                     e=Main.getUser(r.userID);                    
                     Integer resInt=new Integer(e.getQuantity(itemNumber));
                     r.result=resInt;
