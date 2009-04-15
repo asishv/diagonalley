@@ -107,7 +107,7 @@ public class DiagonAlleyUI extends javax.swing.JFrame {
         jScrollPane6 = new javax.swing.JScrollPane();
         jTable5 = new javax.swing.JTable();
         jScrollPane7 = new javax.swing.JScrollPane();
-        jTable6 = new javax.swing.JTable();
+        magicalItemList = new javax.swing.JTable();
         jToggleButton1 = new javax.swing.JToggleButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -248,7 +248,7 @@ public class DiagonAlleyUI extends javax.swing.JFrame {
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
-        nameLabel.setFont(new java.awt.Font("Tahoma", 0, 15));
+        nameLabel.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         nameLabel.setText("[NAME]");
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 15));
@@ -612,7 +612,7 @@ public class DiagonAlleyUI extends javax.swing.JFrame {
         ));
         jScrollPane6.setViewportView(jTable5);
 
-        jTable6.setModel(new javax.swing.table.DefaultTableModel(
+        magicalItemList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null},
                 {null},
@@ -639,7 +639,7 @@ public class DiagonAlleyUI extends javax.swing.JFrame {
                 "Magical Item List"
             }
         ));
-        jScrollPane7.setViewportView(jTable6);
+        jScrollPane7.setViewportView(magicalItemList);
 
         jToggleButton1.setText("Created By: Asish & Karthik");
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -855,7 +855,7 @@ public class DiagonAlleyUI extends javax.swing.JFrame {
 
                 // Register User
                 try {
-                    frame.er = Main.registerUser(Main.hostName,Main.port);
+                    frame.er = Main.registerUser(Main.hostName,Main.port, userName);
                     frame.isWizard = er.isWizard();
 
                 } catch (Exception e) {
@@ -929,9 +929,9 @@ public class DiagonAlleyUI extends javax.swing.JFrame {
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable5;
-    private javax.swing.JTable jTable6;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JTable magicalItemList;
     private javax.swing.JFormattedTextField magicalItemNumberField;
     private javax.swing.JLabel mytask;
     private javax.swing.JLabel nameLabel;
