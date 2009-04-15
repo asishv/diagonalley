@@ -160,10 +160,25 @@ public class Main {
             result=(UserStats)ex.invoke(er.getID(), er.getItemNumber(), 2, er);
             return result.getMagicalItemInfo();
         } catch (Exception e) {
-            System.out.println("Error getting list of magical items: " + e.toString());
+            System.out.println("Error getting current commodity: " + e.toString());
             e.printStackTrace();
         }
         return null;
+    }
+    
+    static int getQuantity(EveryoneRef er, int itemNumber)
+    {
+       Integer result;
+        try {
+           ExecutorRemote ex = (ExecutorRemote) Naming.lookup("rmi://"+hostName+":"+port+"/Executor");
+            result=(Integer)ex.invoke(er.getID(), itemNumber, 5, er);
+            return result.intValue();
+        } catch (Exception e) {
+            System.out.println("Error getting quantity for item "+itemNumber +" "+ e.toString());
+            e.printStackTrace();
+        }
+        return -1;
+        
     }
 
     static int targetCost(EveryoneRef er) {
@@ -175,7 +190,7 @@ public class Main {
             result=(UserStats)ex.invoke(er.getID(), er.getItemNumber(), 2, er);
             return result.getCost();
         } catch (Exception e) {
-            System.out.println("Error getting list of magical items: " + e.toString());
+            System.out.println("Error getting target cost: " + e.toString());
             e.printStackTrace();
         }
         return -1;
@@ -188,7 +203,7 @@ public class Main {
             result=(UserStats)ex.invoke(er.getID(), er.getItemNumber(), 2, er);
             return result.getQuantity()+result.getQuantityLocked();
         } catch (Exception e) {
-            System.out.println("Error getting list of magical items: " + e.toString());
+            System.out.println("Error getting target quantity: " + e.toString());
             e.printStackTrace();
         }
         return -1;

@@ -264,13 +264,19 @@ public class Main extends Thread implements MainRemote{
     
     public void run()
     {
-        //TODO:Check if all buyerAccount and sellerAccount have met their goals
-        //if (true) stop the server
+        int i;
         try{
            while(true)
            {
-                Thread.sleep(5000);
-                
+                Thread.sleep(1000);
+                for(i=0; i<everyone.size(); i++)
+                {
+                    Everyone e=everyone.get(i);
+                    if(!e.goalMetOrNot)
+                        break;
+                }
+                if(i==everyone.size())
+                    break;
            }
         }
         catch(InterruptedException ie)

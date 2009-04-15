@@ -87,73 +87,79 @@ public class Executor extends Thread implements ExecutorRemote{
         //await((closeFlag = false) v (size > 0))
         lock[itemNumber].lock();
         try{
-        while(closeFlag == false && size[itemNumber] <= 0) 
-            try{ condition[itemNumber][2].await(); } catch(InterruptedException ie){ie.printStackTrace();}
-        if(size[itemNumber]>0)
-        {
-           r=buffer[itemNumber][out[itemNumber]]; //Take request out of buffer
-           out[itemNumber]=(out[itemNumber]+1)%maxRequestSize;
-           size[itemNumber]--;
-           condition[itemNumber][0].signal();
-        }
-        else
-        {
-            return false;
-        }
-        BidTradeArgs bidtrade;
-        Everyone e;
-        switch(r.op)
-        {
-            case 0: //Trade
-                EventLogger.debug("Executor: Operation = TRADE!");
-                bidtrade=(BidTradeArgs)r.args;
-                e=Main.getUser(r.userID);
-                boolean res=e.trade(bidtrade.getPrice(), bidtrade.getQuantity(), itemNumber, bidtrade.getTime());
-                Boolean result=new Boolean(res);
-                r.result=result;
-                break;
-            case 1: //Modify Trade
-                EventLogger.debug("Executor: Operation = MODIFY TRADE!");
-                bidtrade=(BidTradeArgs)r.args;
-                e=Main.getUser(r.userID);
-                res=e.modifyTrade(bidtrade.getPrice(), bidtrade.getQuantity(), itemNumber, bidtrade.getTime());
-                result=new Boolean(res);
-                r.result=result;
-                break;
-            case 2: //Get All Info
-                EventLogger.debug("Executor: Operation = GET ALL INFO!");
-                e=Main.getUser(r.userID);
-                if(e.isWizard())
-                {
-                    WizardSeller ws=(WizardSeller)e;
-                    UserStats us=new UserStats(e.getScore(), ws.getTargetQuantity(), ws.getTargetCost(), ws.getTargetQuantityLocked(), ws.getTargetCommodityInfo());
-                    r.result=us;
-                }
-                else
-                {
-                    ApprenticeBuyer ab=(ApprenticeBuyer)e;
-                    UserStats us=new UserStats(e.getScore(), ab.getTargetQuantity(), ab.getTargetCost(), ab.getTargetQuantityLocked(), ab.getTargetCommodityInfo());
-                    r.result=us;
-                }
-                break;
-            case 3: //Bid
-                EventLogger.debug("Executor: Operation = BID!");
-                bidtrade=(BidTradeArgs)r.args;
-                e=Main.getUser(r.userID);
-                res=e.bid(bidtrade.getPrice(), bidtrade.getQuantity(), itemNumber, bidtrade.getTime());
-                result=new Boolean(res);
-                r.result=result;
-                break;
-            case 4: //Modify Bid
-                EventLogger.debug("Executor: Operation = MODIFY BID!");
-                bidtrade=(BidTradeArgs)r.args;
-                e=Main.getUser(r.userID);
-                res=e.modifyBid(bidtrade.getPrice(), bidtrade.getQuantity(), itemNumber, bidtrade.getTime());
-                result=new Boolean(res);
-                r.result=result;
-                break;
-        }
-        condition[itemNumber][1].signal();
+            while(closeFlag == false && size[itemNumber] <= 0) 
+                try{ condition[itemNumber][2].await(); } catch(InterruptedException ie){ie.printStackTrace();}
+            if(size[itemNumber]>0)
+            {
+               r=buffer[itemNumber][out[itemNumber]]; //Take request out of buffer
+               out[itemNumber]=(out[itemNumber]+1)%maxRequestSize;
+               size[itemNumber]--;
+               condition[itemNumber][0].signal();
+            }
+            else
+            {
+                return false;
+            }
+            BidTradeArgs bidtrade;
+            Everyone e;
+            switch(r.op)
+            {
+                case 0: //Trade
+                    EventLogger.debug("Executor: Operation = TRADE!");
+                    bidtrade=(BidTradeArgs)r.args;
+                    e=Main.getUser(r.userID);
+                    boolean res=e.trade(bidtrade.getPrice(), bidtrade.getQuantity(), itemNumber, bidtrade.getTime());
+                    Boolean result=new Boolean(res);
+                    r.result=result;
+                    break;
+                case 1: //Modify Trade
+                    EventLogger.debug("Executor: Operation = MODIFY TRADE!");
+                    bidtrade=(BidTradeArgs)r.args;
+                    e=Main.getUser(r.userID);
+                    res=e.modifyTrade(bidtrade.getPrice(), bidtrade.getQuantity(), itemNumber, bidtrade.getTime());
+                    result=new Boolean(res);
+                    r.result=result;
+                    break;
+                case 2: //Get All Info
+                    EventLogger.debug("Executor: Operation = GET ALL INFO!");
+                    e=Main.getUser(r.userID);
+                    if(e.isWizard())
+                    {
+                        WizardSeller ws=(WizardSeller)e;
+                        UserStats us=new UserStats(e.getScore(), ws.getTargetQuantity(), ws.getTargetCost(), ws.getTargetQuantityLocked(), ws.getTargetCommodityInfo());
+                        r.result=us;
+                    }
+                    else
+                    {
+                        ApprenticeBuyer ab=(ApprenticeBuyer)e;
+                        UserStats us=new UserStats(e.getScore(), ab.getTargetQuantity(), ab.getTargetCost(), ab.getTargetQuantityLocked(), ab.getTargetCommodityInfo());
+                        r.result=us;
+                    }
+                    break;
+                case 3: //Bid
+                    EventLogger.debug("Executor: Operation = BID!");
+                    bidtrade=(BidTradeArgs)r.args;
+                    e=Main.getUser(r.userID);
+                    res=e.bid(bidtrade.getPrice(), bidtrade.getQuantity(), itemNumber, bidtrade.getTime());
+                    result=new Boolean(res);
+                    r.result=result;
+                    break;
+                case 4: //Modify Bid
+                    EventLogger.debug("Executor: Operation = MODIFY BID!");
+                    bidtrade=(BidTradeArgs)r.args;
+                    e=Main.getUser(r.userID);
+                    res=e.modifyBid(bidtrade.getPrice(), bidtrade.getQuantity(), itemNumber, bidtrade.getTime());
+                    result=new Boolean(res);
+                    r.result=result;
+                    break;
+                case 5:
+                    EventLogger.debug("Executor: Operation = GET COMMODITY QUANTITY!");
+                    e=Main.getUser(r.userID);                    
+                    Integer resInt=new Integer(e.getQuantity(itemNumber));
+                    r.result=resInt;
+                    break;
+            }
+            condition[itemNumber][1].signal();
         }finally{
             lock[itemNumber].unlock();
         }
