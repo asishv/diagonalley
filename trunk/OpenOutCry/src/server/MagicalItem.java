@@ -113,7 +113,7 @@ public class MagicalItem{
                             {
                                 EventLogger.debug("Trade Time in millis "+dasa.time.getTimeInMillis());
                                 EventLogger.writeln("Trade that "+ dasa.e.name+ " placed has expired!");
-                                CurrentInventoryList cil=dasa.e.currentInventoryList.get(i);
+                                CurrentInventoryList cil=dasa.e.currentInventoryList.get(index);
                                 cil.quantity+=dasa.quantity; //Update the quantity because the sale was invalid
                                 cil.quantityLocked-=dasa.quantity; //Update the quantitylocked because the sale was invalid
                                 dasa.quantity=0;
@@ -130,7 +130,7 @@ public class MagicalItem{
                 {
                       EventLogger.debug("Bid Time in millis is "+daba.time.getTimeInMillis()+" current time in millis is "+d.getTimeInMillis());
                       EventLogger.writeln("Bid that "+ daba.e.name+ " placed has expired!");
-                      FutureInventoryList fil=daba.e.futureInventoryList.get(i);
+                      FutureInventoryList fil=daba.e.futureInventoryList.get(index);
                       fil.quantity+=daba.quantity; //Update the target quantity for the seller because the bid was invalid.
                       fil.quantityLocked+=daba.quantity; //Update the quantityLocked for the buyer
                       daba.quantity=0;
