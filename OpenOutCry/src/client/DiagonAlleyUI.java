@@ -365,6 +365,12 @@ public class DiagonAlleyUI extends javax.swing.JFrame {
 
         jLabel19.setText("Magical Item Number");
 
+        magicalItemNumberField.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                magicalItemNumberFieldPropertyChange(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
@@ -729,15 +735,40 @@ public class DiagonAlleyUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+
         // Fetch MagicalItemNumber, price, qty, time
-        magicalItemNumber = Integer.parseInt(this.magicalItemNumberField.getValue().toString());
+        /*magicalItemNumber = Integer.parseInt(this.magicalItemNumberField.getValue().toString());
         price = Integer.parseInt(this.priceLabel.getValue().toString());
         quantity = Integer.parseInt(this.quantityLabel.getValue().toString());
-        //time = Integer.parseInt(this.timeLabel.getValue().toString());
-
-
+        msec = Integer.parseInt(this.timeLabel.getValue().toString());
+        msec*=60*1000;*/
+        System.out.println("Magical Item No. "+ magicalItemNumber);
+        /*System.out.println("Price "+ price);
+        System.out.println("Qty "+ quantity);
+        System.out.println("Time "+ msec);*/
+        // TODO: Validate the input data
+        /*
+        // Place the bid
+        if(!isWizard)
+        {
+            if(Main.placeBid(er.getID(), magicalItemNumber, price, quantity, msec)) {
+                System.out.println("Bid placed successfully");
+            } else {
+                System.out.println("Bid could not be placed");
+            }
+        }
+        else {
+            System.out.println("Cannot place bid. You are not an Apprentice");
+        }
+        */
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void magicalItemNumberFieldPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_magicalItemNumberFieldPropertyChange
+        // TODO add your handling code here:
+        Object source = evt.getSource();
+        if (source.equals("magicalItemNumberField"))
+            magicalItemNumber = Integer.parseInt(this.magicalItemNumberField.getValue().toString());
+    }//GEN-LAST:event_magicalItemNumberFieldPropertyChange
 
     /**
     * @param args the command line arguments
