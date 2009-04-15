@@ -76,7 +76,8 @@ public class MagicalItem{
                                             fil.quantity=0;
                                             fil.quantityLocked=0;
                                         }
-                                        daba.e.score+=(fil.buyingTargetPrice-cost)*daba.quantity;//Update score for buyer
+                                        if(fil.buyingTargetPrice!=0)
+                                            daba.e.score+=(fil.buyingTargetPrice-cost)*daba.quantity;//Update score for buyer
                                         cil=dasa.e.currentInventoryList.get(index);
                                         cil.quantityLocked-=daba.quantity; //Update the quantity locked for the seller
                                         if(cil.quantityLocked==0 && cil.quantity == 0) //Set Goal Met
@@ -107,7 +108,8 @@ public class MagicalItem{
                                             fil.quantity=0;
                                             fil.quantityLocked=0;
                                         }
-                                        daba.e.score+=(fil.buyingTargetPrice-cost)*dasa.quantity;//Update score for buyer
+                                        if(fil.buyingTargetPrice!=0)
+                                            daba.e.score+=(fil.buyingTargetPrice-cost)*dasa.quantity;//Update score for buyer
                                         cil=dasa.e.currentInventoryList.get(index);
                                         cil.quantityLocked-=dasa.quantity; //Update the quantity locked for the seller
                                         if(cil.quantityLocked==0 && cil.quantity == 0 && cil.sellingPriceTarget!=0) //Check if goals are met
