@@ -34,12 +34,12 @@ public class UserStats implements Serializable, Remote{
     
     public int getQuantity()
     {
-        return quantity;
+        return (quantity>0)? quantity: 0;
     }
     
     public int getQuantityLocked()
     {
-        return quantityLocked;
+        return (quantityLocked>0)? quantityLocked: 0;
     }
     
     public int getCost()

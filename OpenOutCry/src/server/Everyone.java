@@ -44,8 +44,12 @@ public class Everyone{
     
     public int getQuantity(int itemNumber)
     {
-        CurrentInventoryList cil=currentInventoryList.get(itemNumber);
-        return cil.quantity;
+        if(isWizard())
+        {
+            CurrentInventoryList cil=currentInventoryList.get(itemNumber);
+            return cil.quantity;
+        }
+        return 0;
     }
 
     /**
