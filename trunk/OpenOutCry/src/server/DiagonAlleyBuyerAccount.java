@@ -34,7 +34,7 @@ public class DiagonAlleyBuyerAccount extends DiagonAlleyAccount{
     
     public void modify(int i)
     {
-        if(i != -1)
+        if(i != -1&&i<history.size())
         {
             History h=history.remove(i);
             add(this.price, this.quantity, this.time);

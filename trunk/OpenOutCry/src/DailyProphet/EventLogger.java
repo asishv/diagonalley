@@ -116,16 +116,16 @@ public class EventLogger implements Serializable{
         
         public static void debug (String msg)
         {
-            /*if(obj==null)
+            if(obj==null)
             {
-                //obj=new EventLogger();
+                obj=new EventLogger();
             }
             try{
-                //obj.add("DEBUG: "+msg+"\r\n");
+                obj.add("DEBUG: "+msg+"\r\n");
             }catch (ClosedLogException cle)
             {
                 cle.printStackTrace();
-            }*/
+            }
         }
 
         /*  close the Log.  After the log has been closed, no additional message may be added to the log. */
