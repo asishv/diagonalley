@@ -65,10 +65,9 @@ public class DiagonAlleyAccount{
         for(int i=0; i<history.size(); i++)
         {
             h=history.get(i);
-            if(h.time.before(d))
+            if(h.time.before(d) && h.quantity==0)
             {
                 history.remove(i);
-                //TODO: remove if it is the minimum selling price for the magical item
             }
             else
             {
@@ -93,7 +92,7 @@ public class DiagonAlleyAccount{
         for(int i=0; i<history.size(); i++)
         {
             h=history.get(i);
-            if(h.time.before(d))
+            if(h.time.before(d) && h.quantity==0)
             {
                 history.remove(i);
             }
@@ -107,7 +106,6 @@ public class DiagonAlleyAccount{
                     index=i;
                 }                    
             }
-        }
-        
+        }        
     }
 }
