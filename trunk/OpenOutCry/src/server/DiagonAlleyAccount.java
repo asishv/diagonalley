@@ -79,6 +79,8 @@ public class DiagonAlleyAccount{
                 }                    
             }
         }
+        if(price == 32767)
+            price=0;
     }
     
     public void getMaximum()
@@ -106,5 +108,7 @@ public class DiagonAlleyAccount{
                 }                    
             }
         }        
+        if(price == -32767)
+            price=0;
     }
 }
