@@ -1014,6 +1014,11 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
 
         buttonGroup3.add(cancelButton);
         cancelButton.setText("Cancel existing bid");
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelButtonActionPerformed(evt);
+            }
+        });
         cancelButton.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 cancelButtonPropertyChange(evt);
@@ -1234,6 +1239,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
 
         // Cancel an existing bid
         if(this.cancelButton.isSelected()) {
+            System.out.println("Cancel!");
         if(isBid) {
               String text = bidIdField.getText();
               try {
@@ -1241,7 +1247,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                           bidId = Integer.parseInt(text);
                           this.statusMessageLabel.setText("Status message ..");
                   }
-                  if(Main.modifyBid(this.bidId, er.getID(), 0, 0, 0, 0)) {
+                  if(Main.modifyBid(bidId, er.getID(), magicalItemNumber, 0, 0, 0)) {
                       System.out.println("Bid cancelled successfully");
                       this.statusMessageLabel.setText("Bid: "+ bidId +" has been cancelled.");
                   }
@@ -1259,7 +1265,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                               this.statusMessageLabel.setText("Status message ..");
                       }
 
-                  if(Main.modifyTrade(this.bidId, er.getID(), 0, 0, 0, 0)) {
+                  if(Main.modifyTrade(bidId, er.getID(), magicalItemNumber, 0, 0, 0)) {
                       System.out.println("Bid cancelled successfully");
                       this.statusMessageLabel.setText("Bid: "+ bidId +" has been cancelled.");
                   }
@@ -1273,6 +1279,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
         }
         // Modify bid
         else if(this.modifyBidButton.isSelected()) {
+            System.out.println("Modify!");
             if(isBid) {
               String text = bidIdField.getText();
               try {
@@ -1312,6 +1319,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
         }
         else if(this.newBidButton.isSelected()){
         // Place the bid
+            System.out.println("New bid!");
             if(isBid)
             {
                 if(Main.placeBid(er.getID(), magicalItemNumber, price, quantity, msec)) {
@@ -1443,6 +1451,10 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
             bidIdPanel.setVisible(true);
         }
     }//GEN-LAST:event_cancelButtonPropertyChange
+
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cancelButtonActionPerformed
 
     /**
     * @param args the command line arguments
