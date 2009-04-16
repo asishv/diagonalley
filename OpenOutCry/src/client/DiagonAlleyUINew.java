@@ -1361,7 +1361,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                 // Assign button defaults
                 frame.newBidButton.setSelected(true);
                 if(!isWizard) frame.buyButton.setSelected(true);
-                else frame.buyButton.setSelected(true);
+                else frame.sellButton.setSelected(true);
                 frame.mButton1.setSelected(true);
                 // Populate magical Item buttons
                 try {
