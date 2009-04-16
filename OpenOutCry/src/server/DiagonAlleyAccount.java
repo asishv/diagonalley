@@ -46,10 +46,13 @@ public class DiagonAlleyAccount{
     
     public void getHistory(int id)
     {
-        History h=history.get(id);
-        price=h.price;
-        quantity=h.quantity;
-        time=h.time;
+        if(id<history.size())
+        {
+            History h=history.get(id);
+            price=h.price;
+            quantity=h.quantity;
+            time=h.time;
+        }
     }
     
     public void getMinimum()
