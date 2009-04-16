@@ -4,6 +4,7 @@
  */
 
 package server;
+import library.History;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -12,18 +13,6 @@ import java.util.GregorianCalendar;
  *
  * @author Asish
  */
-class History
-{
-    int price;
-    int quantity;
-    Calendar time;
-    public History(int price, int quantity, Calendar time)
-    {
-        this.price=price;
-        this.quantity=quantity;
-        this.time=time;
-    }
-}
 
 public class DiagonAlleyAccount{
     ArrayList<History> history;
@@ -36,6 +25,16 @@ public class DiagonAlleyAccount{
     {
         index=-1;
         history=new ArrayList();
+    }
+    
+    public History[] getHistory()
+    {
+        History h[]=new History[history.size()];
+        for(int i=0; i<history.size(); i++)
+        {
+            h[i]=history.get(i);
+        }
+        return h;
     }
     
     public void add(int price, int quantity, Calendar time)

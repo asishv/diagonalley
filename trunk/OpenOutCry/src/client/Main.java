@@ -7,11 +7,13 @@ package client;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.rmi.Naming;
+import java.util.ArrayList;
 import java.util.Random;
 import library.BidTradeArgs;
 import library.MagicalItemInfo;
 import library.EveryoneRef;
 import library.ExecutorRemote;
+import library.History;
 import library.MainRemote;
 import library.UserStats;
 
@@ -261,6 +263,45 @@ public class Main {
         return -1;
     }
 
+    static History[] getAllBids(EveryoneRef er, int itemNumber)
+    {
+        ArrayList<History> h;
+        History out[]=null;
+        try {
+            ExecutorRemote ex = (ExecutorRemote) Naming.lookup("rmi://"+hostName+":"+port+"/Executor");
+            h=(ArrayList<History>)ex.invoke(er.getID(), er.getItemNumber(), 7, er);
+            if(h.size()>0)
+            {
+                out=new History[h.size()];
+                for(int i=0; i<h.size(); i++)
+                    out[i]=h.get(i);
+            }
+        } catch (Exception e) {
+            System.out.println("Error getting bid history: " + e.toString());
+            e.printStackTrace();
+        }
+       return out;
+    }
+    
+    static History[] getAllTrades(EveryoneRef er, int itemNumber)
+    {
+        ArrayList<History> h;
+        History out[]=null;
+        try {
+            ExecutorRemote ex = (ExecutorRemote) Naming.lookup("rmi://"+hostName+":"+port+"/Executor");
+            h=(ArrayList<History>)ex.invoke(er.getID(), er.getItemNumber(), 8, er);
+            if(h.size()>0)
+            {
+                out=new History[h.size()];
+                for(int i=0; i<h.size(); i++)
+                    out[i]=h.get(i);
+            }
+        } catch (Exception e) {
+            System.out.println("Error getting trade history: " + e.toString());
+            e.printStackTrace();
+        }
+       return out;
+    }
     
    /**
     * Obtain all current trades to be displayed on UI.
@@ -280,19 +321,8 @@ public class Main {
 
     }
 
-    /**
-    * Current inventory list
-    */
-    void currentInventoryList() {
-        //TODO: Display list of items in my current inventory list
-    }
-
-    /**
-    * Future Inventory List
-    */
-    void futureInventoryList() {
-        //TODO: Display List of items in my future inventory list
-    }
+    
+    
     /**
     * Main function used to test the client and RMI
     */
@@ -328,6 +358,8 @@ public class Main {
             System.out.println("8: Modify trade");
             System.out.println("9: Get Minimum Price");
             System.out.println("10: Random test!");
+            System.out.println("11: Get Bid History!");
+            System.out.println("12: Get Trade History!");
             System.out.println("0: Exit");
             try {
             choice = Integer.parseInt(br.readLine());
@@ -430,6 +462,30 @@ public class Main {
                         {
                             ru[k].interrupt();
                         }*/
+                case 11:
+                     System.out.println("Enter the item number:");
+                     itemNumber = Integer.parseInt(br.readLine());
+                     History h[]=getAllBids(er, itemNumber);
+                     if(h!=null)
+                     {
+                        for(int i=0; i<h.length; i++)
+                        {
+                            System.out.println("Bid ID:"+i+" Price:"+h[i].price+" Quantity:"+h[i].quantity);
+                        }
+                     }
+                     break;
+                case 12:
+                     System.out.println("Enter the item number:");
+                     itemNumber = Integer.parseInt(br.readLine());
+                     h=getAllTrades(er, itemNumber);
+                     if(h!=null)
+                     {
+                        for(int i=0; i<h.length; i++)
+                        {
+                            System.out.println("Trade ID:"+i+" Price:"+h[i].price+" Quantity:"+h[i].quantity);
+                        }
+                     }
+                     break;
                 case 0: choice = 0;
                         System.exit(0);
                 default: break;

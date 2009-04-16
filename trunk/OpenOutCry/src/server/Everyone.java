@@ -9,6 +9,7 @@ import DailyProphet.EventLogger;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import library.History;
 import library.MagicalItemInfo;
 /**
  *
@@ -52,6 +53,29 @@ public class Everyone{
 //        }
 //        return 0;
     }
+    
+    public ArrayList<History> getTradeHistory(int itemNumber)
+    {
+        CurrentInventoryList cil=currentInventoryList.get(itemNumber);
+        History sellHistory[]=cil.diagonAlleySellerAccount.getHistory();
+        ArrayList<History> h=new ArrayList();
+        int i=0;
+        for(i=0; i<sellHistory.length; i++)
+            h.add(sellHistory[i]);
+        return h;
+    }
+    
+    public ArrayList<History> getBidHistory(int itemNumber)
+    {
+        FutureInventoryList fil=futureInventoryList.get(itemNumber);
+        History buyHistory[]=fil.diagonAlleyBuyerAccount.getHistory();
+        ArrayList<History> h=new ArrayList();
+        int j=0;
+        for(j=0; j<buyHistory.length; j++)
+            h.add(buyHistory[j]);
+        return h;
+    }
+
 
     /**
      * Diagon Alley Wizard Sellers trade a magical item.
