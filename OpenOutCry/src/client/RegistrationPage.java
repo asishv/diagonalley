@@ -314,22 +314,42 @@ this.userName.setText(text+"~");
 
 private void jToggleButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton8ActionPerformed
     picture=0;
+    this.jToggleButton9.setVisible(false);
+    this.jToggleButton10.setVisible(false);
+    this.jToggleButton11.setVisible(false);
+    this.jToggleButton12.setVisible(false);
 }//GEN-LAST:event_jToggleButton8ActionPerformed
 
 private void jToggleButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton9ActionPerformed
     picture=1;
+    this.jToggleButton8.setVisible(false);
+    this.jToggleButton10.setVisible(false);
+    this.jToggleButton11.setVisible(false);
+    this.jToggleButton12.setVisible(false);
 }//GEN-LAST:event_jToggleButton9ActionPerformed
 
 private void jToggleButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton10ActionPerformed
     picture=2;
+    this.jToggleButton9.setVisible(false);
+    this.jToggleButton8.setVisible(false);
+    this.jToggleButton11.setVisible(false);
+    this.jToggleButton12.setVisible(false);
 }//GEN-LAST:event_jToggleButton10ActionPerformed
 
 private void jToggleButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton11ActionPerformed
     picture=3;
+    this.jToggleButton9.setVisible(false);
+    this.jToggleButton10.setVisible(false);
+    this.jToggleButton8.setVisible(false);
+    this.jToggleButton12.setVisible(false);
 }//GEN-LAST:event_jToggleButton11ActionPerformed
 
 private void jToggleButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton12ActionPerformed
     picture=4;
+        this.jToggleButton9.setVisible(false);
+    this.jToggleButton10.setVisible(false);
+    this.jToggleButton11.setVisible(false);
+    this.jToggleButton8.setVisible(false);
 }//GEN-LAST:event_jToggleButton12ActionPerformed
 
 public static void main(String args[])
