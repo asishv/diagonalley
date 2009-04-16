@@ -125,7 +125,7 @@ public class Everyone{
             return false;
         }
         
-        if(cil.sellingPriceTarget != 0 && price<cil.sellingPriceTarget)
+        if(cil.sellingPriceTarget != 0 && price<cil.sellingPriceTarget&&quantity!=0)
         {
             EventLogger.debug("Trade cannot be placed because the selling price is less than the target price.");
             return false;
@@ -185,7 +185,7 @@ public class Everyone{
         fil.diagonAlleyBuyerAccount.getHistory(id);
         if(fil.diagonAlleyBuyerAccount.time==null)
             return false;
-        if(fil.buyingTargetPrice!=0&&price>fil.buyingTargetPrice)
+        if(fil.buyingTargetPrice!=0&&price>fil.buyingTargetPrice&&quantity!=0)
         {
             EventLogger.debug("Trade cannot be placed because the buying price is more than the target price.");
             return false;
