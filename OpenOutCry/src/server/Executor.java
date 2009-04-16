@@ -116,7 +116,7 @@ public class Executor extends Thread implements ExecutorRemote{
                     EventLogger.debug("Executor: Operation = MODIFY TRADE!");
                     bidtrade=(BidTradeArgs)r.args;
                     e=Main.getUser(r.userID);
-                    res=e.modifyTrade(bidtrade.getPrice(), bidtrade.getQuantity(), itemNumber, bidtrade.getTime());
+                    res=e.modifyTrade(bidtrade.getID(), bidtrade.getPrice(), bidtrade.getQuantity(), itemNumber, bidtrade.getTime());
                     result=new Boolean(res);
                     r.result=result;
                     break;
@@ -148,7 +148,7 @@ public class Executor extends Thread implements ExecutorRemote{
                     EventLogger.debug("Executor: Operation = MODIFY BID!");
                     bidtrade=(BidTradeArgs)r.args;
                     e=Main.getUser(r.userID);
-                    res=e.modifyBid(bidtrade.getPrice(), bidtrade.getQuantity(), itemNumber, bidtrade.getTime());
+                    res=e.modifyBid(bidtrade.getID(), bidtrade.getPrice(), bidtrade.getQuantity(), itemNumber, bidtrade.getTime());
                     result=new Boolean(res);
                     r.result=result;
                     break;

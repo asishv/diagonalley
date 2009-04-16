@@ -129,7 +129,7 @@ public class Main {
         return false;
     }
     
-    static boolean modifyBid(int userID, int magicalItemNumber, int price, int quantity, long msec) 
+    static boolean modifyBid(int id, int userID, int magicalItemNumber, int price, int quantity, long msec) 
     {
         //TODO: Place bid on the market
         // RMI Call to server. Provide Magical Item , price and Qty
@@ -137,7 +137,7 @@ public class Main {
         Boolean result;
         try {
             ExecutorRemote ex = (ExecutorRemote) Naming.lookup("rmi://"+hostName+":"+port+"/Executor");
-            BidTradeArgs bid=new BidTradeArgs(price, quantity, msec);
+            BidTradeArgs bid=new BidTradeArgs(id, price, quantity, msec);
             result=(Boolean)ex.invoke(userID, magicalItemNumber, 4, bid);
             return result.booleanValue();
         }catch (Exception e) {
@@ -150,14 +150,14 @@ public class Main {
         /**
     * WizardSellers place a trade on the market.
     */
-    static boolean modifyTrade(int userID, int magicalItemNumber, int price, int quantity, long m) {
+    static boolean modifyTrade(int id, int userID, int magicalItemNumber, int price, int quantity, long m) {
         //TODO: Sellers place a trade on the market
         // RMI Call to server. Provide Magical Item , price and Qty
         // Validate Magical Item , price and Qty before making call
         Boolean result;
         try {
             ExecutorRemote ex = (ExecutorRemote) Naming.lookup("rmi://"+hostName+":"+port+"/Executor");
-            BidTradeArgs trade=new BidTradeArgs(price, quantity, m);
+            BidTradeArgs trade=new BidTradeArgs(id, price, quantity, m);
             result=(Boolean)ex.invoke(userID, magicalItemNumber, 1, trade);
             return result.booleanValue();
         }catch (Exception e) {
@@ -324,7 +324,10 @@ public class Main {
             System.out.println("4: View Magical Items");
             System.out.println("5: View my Goal/Target");
             System.out.println("6: View the quantity");
-            System.out.println("7: Random test!");
+            System.out.println("7: Modify bid");
+            System.out.println("8: Modify trade");
+            System.out.println("9: Get Minimum Price");
+            System.out.println("10: Random test!");
             System.out.println("0: Exit");
             try {
             choice = Integer.parseInt(br.readLine());
@@ -382,6 +385,40 @@ public class Main {
                          System.out.println("You have "+getQuantity(er, itemNumber)+" of item no. "+itemNumber);
                          break;
                 case 7:
+                         System.out.println("Enter the bid number:");
+                         int bidid = Integer.parseInt(br.readLine());
+                            System.out.println("Place Trade: Enter Magical Item, price, quantity & time for bid to last(ms)");
+                            magicalItemNumber = Integer.parseInt(br.readLine());
+                            price = Integer.parseInt(br.readLine());
+                            quantity = Integer.parseInt(br.readLine());
+                            msec = Integer.parseInt(br.readLine());;
+                            if(modifyTrade(bidid, er.getID(), magicalItemNumber, price, quantity, msec)) {
+                                System.out.println("Trade placed successfully");
+                            } else {
+                                System.out.println("Trade could not be placed");
+                            }
+                            break;
+                case 8:
+                         System.out.println("Enter the bid number:");
+                         bidid = Integer.parseInt(br.readLine());
+                            System.out.println("Place Trade: Enter Magical Item, price, quantity & time for bid to last(ms)");
+                            magicalItemNumber = Integer.parseInt(br.readLine());
+                            price = Integer.parseInt(br.readLine());
+                            quantity = Integer.parseInt(br.readLine());
+                            msec = Integer.parseInt(br.readLine());;
+                            if(modifyBid(bidid, er.getID(), magicalItemNumber, price, quantity, msec)) {
+                                System.out.println("Trade placed successfully");
+                            } else {
+                                System.out.println("Trade could not be placed");
+                            }
+                            break;
+                case 9:
+                         System.out.println("Enter the item number:");
+                         itemNumber = Integer.parseInt(br.readLine());
+                         System.out.println("Minimum price is "+getAverageSellingPrice(er, itemNumber));
+                         break;
+                   
+                case 10:
                         RandomUser ru[]=new RandomUser[100];
                         for(int k=0; k<100; k++)
                         {
