@@ -374,7 +374,7 @@ public class Main extends Thread implements MainRemote{
                     timeout=Integer.parseInt(args[2]);
                 case 2:
                     System.err.println("Hostname:"+args[0]+" Port:"+args[1]);
-                    registry = LocateRegistry.getRegistry(args[0], Integer.parseInt(args[0]));
+                    registry = LocateRegistry.getRegistry(args[0], Integer.parseInt(args[1]));
                     break;
             }
 	    registry.bind("Main", stub1);
