@@ -1292,8 +1292,9 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                 String text=timeField.getText();
                 if(!text.equals("")) {
                     try {
-                        //if(goodUntilEndButton.isSelected()) msec =
-                        msec = Integer.parseInt(text)*60*1000;
+                        if(goodUntilEndButton.isSelected()) msec = 1440 * 60 * 1000;
+                        else msec = Integer.parseInt(text)*60*1000;
+                        if(msec == 0) msec = 1440 * 60 * 1000;
                         this.statusMessageLabel.setText("Status message ..");
                     } catch (Exception e) {this.statusMessageLabel.setText("Invalid input. Enter numbers only !");}
                 }
