@@ -339,9 +339,8 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(picture)))
-                .addGap(32, 32, 32)
-                .addComponent(nameLabel)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addComponent(nameLabel))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                     .addContainerGap(66, Short.MAX_VALUE)
@@ -1248,7 +1247,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                   }
                   else {
                       System.out.println("Bid could not be cancelled");
-                      this.statusMessageLabel.setText("Bid couldn't be cancelled. Retry !");
+                      this.statusMessageLabel.setText("Bid: "+ bidId +" couldn't be cancelled. Retry !");
                   }
               } catch (Exception e) {this.statusMessageLabel.setText("Invalid input. Enter numbers only !");}
           }
@@ -1260,13 +1259,13 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                               this.statusMessageLabel.setText("Status message ..");
                       }
 
-                  if(Main.modifyTrade(this.bidId, er.getID(), magicalItemNumber, price, quantity, msec)) {
-                      System.out.println("Bid modified successfully");
-                      this.statusMessageLabel.setText("Modify bid: " + bidId + " has been submitted.");
+                  if(Main.modifyTrade(this.bidId, er.getID(), 0, 0, 0, 0)) {
+                      System.out.println("Bid cancelled successfully");
+                      this.statusMessageLabel.setText("Bid: "+ bidId +" has been cancelled.");
                   }
                   else {
-                      System.out.println("Modify Bid could not be submitted");
-                      this.statusMessageLabel.setText("Modify Bid couldn't be submitted. Retry with valid inputs.");
+                      System.out.println("Bid could not be cancelled");
+                      this.statusMessageLabel.setText("Bid couldn't be cancelled. Retry !");
                   }
              } catch (Exception e) {this.statusMessageLabel.setText("Invalid input. Enter numbers only !");}
           }
@@ -1339,6 +1338,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
         this.priceField.setText(null);
         this.quantityField.setText(null);
         this.timeField.setText(null);
+        this.bidIdField.setText(null);
         //this.submitButton.setVisible(false);
 
 }//GEN-LAST:event_submitButtonActionPerformed
@@ -1488,7 +1488,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                 // Picture
 
                 String image = "Ron";
-                if(arguments.length == 2) {
+                if(arguments.length > 2) {
                     if(Integer.parseInt(arguments[1]) == 0) image = "harry";
                     else if(Integer.parseInt(arguments[1]) == 1) image = "Ron";
                     else if(Integer.parseInt(arguments[1]) == 2) image = "hermione";
