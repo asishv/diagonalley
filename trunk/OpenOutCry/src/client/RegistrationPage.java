@@ -264,7 +264,7 @@ private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     if(!args[0].isEmpty())
     {
         this.setVisible(false);
-        DiagonAlleyUI.main(args);
+        DiagonAlleyUINew.main(args);
     }
 }//GEN-LAST:event_submitButtonActionPerformed
 
