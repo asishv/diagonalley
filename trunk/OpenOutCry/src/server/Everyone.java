@@ -7,6 +7,7 @@ package server;
 //import DailyProphet.EventLogger;
 import DailyProphet.EventLogger;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import library.MagicalItemInfo;
 /**
@@ -72,30 +73,26 @@ public class Everyone{
             return false;
         }
         
-        cil.magicalItem.averageSellingPrice = Math.min(cil.magicalItem.averageSellingPrice, price);
         /* Quantity of item decreases by 'x' in CIL, QuantityLocked will be incremented by 'x' */
         cil.quantity = cil.quantity - quantity;
         cil.quantityLocked = cil.quantityLocked + quantity;
-        cil.diagonAlleySellerAccount.price = price;
-        cil.diagonAlleySellerAccount.quantity = quantity;
-        cil.diagonAlleySellerAccount.time=new GregorianCalendar();
-        EventLogger.debug("Old Time in millis = "+cil.diagonAlleySellerAccount.time.getTimeInMillis());
-        cil.diagonAlleySellerAccount.time.setTimeInMillis(cil.diagonAlleySellerAccount.time.getTimeInMillis()+m);
-        EventLogger.debug("New Time in millis = "+cil.diagonAlleySellerAccount.time.getTimeInMillis());
+        Calendar time=new GregorianCalendar();
+        time.setTimeInMillis(time.getTimeInMillis()+m);
+        cil.diagonAlleySellerAccount.add(price, quantity, time);
         EventLogger.writeln(this.name+" is trying to sell "+quantity+" nos of "+cil.magicalItem.magicalItemInfo.getName()+" @$"+price);
-        if((cil.magicalItem.sellerAccount.get(index)).time!=null)
-            EventLogger.debug("Time not set for trade!");
         cil.magicalItem.executeTrade();
+        cil.diagonAlleySellerAccount.getMinimum();
+        cil.magicalItem.minimumSellingPrice = cil.diagonAlleySellerAccount.price;
         return true;
     }
 
      /**
      * Diagon Alley Wizard Sellers modify existing trade for a magical item.
      */       
-    public boolean modifyTrade(int price, int quantity, int magicalItemNumber, long m)
+    public boolean modifyTrade(int id, int price, int quantity, int magicalItemNumber, long m)
     {
         CurrentInventoryList cil = this.currentInventoryList.get(magicalItemNumber);
-
+        cil.diagonAlleySellerAccount.getHistory(id);
         int oldQuantity = cil.diagonAlleySellerAccount.quantity;
         if(quantity > cil.quantity + oldQuantity) {
             EventLogger.debug("Trade cannot be placed because the quantity is more than the user holds.");
@@ -108,10 +105,6 @@ public class Everyone{
             return false;
         }
 
-        /* Obtain Lock, update the DiagonAlleySellerAccount values in Q,
-         * update avg. price in Magical Item, unlock and execute trade. */
-        cil.magicalItem.averageSellingPrice = Math.min(cil.magicalItem.averageSellingPrice, price);
-
         /* Modify the quantity and the quantity locked values in CIL */
         cil.quantity = cil.quantity + oldQuantity - quantity;
         cil.quantityLocked = cil.quantityLocked - oldQuantity + quantity;
@@ -119,8 +112,11 @@ public class Everyone{
         cil.diagonAlleySellerAccount.price = price;
         cil.diagonAlleySellerAccount.quantity = quantity;
         cil.diagonAlleySellerAccount.time.setTimeInMillis(cil.diagonAlleySellerAccount.time.getTimeInMillis()+m);
+        cil.diagonAlleySellerAccount.modify(id);
         EventLogger.writeln(this.name+" is trying to sell "+quantity+" nos of "+cil.magicalItem.magicalItemInfo.getName()+" @$"+price);
         cil.magicalItem.executeTrade();
+        cil.diagonAlleySellerAccount.getMinimum();
+        cil.magicalItem.minimumSellingPrice = cil.diagonAlleySellerAccount.price;
         return true;
     }
   
@@ -136,30 +132,25 @@ public class Everyone{
         {
             EventLogger.debug("Trade cannot be placed because the buying price is more than the target price.");
             return false;
-        }
-        
-        fil.diagonAlleyBuyerAccount.price=price;
-        fil.diagonAlleyBuyerAccount.quantity=quantity;
-        fil.diagonAlleyBuyerAccount.time=new GregorianCalendar();
-        EventLogger.debug("Old Time in millis = "+fil.diagonAlleyBuyerAccount.time.getTimeInMillis());
-        fil.diagonAlleyBuyerAccount.time.setTimeInMillis(fil.diagonAlleyBuyerAccount.time.getTimeInMillis()+msec);
-        EventLogger.debug("New Time in millis = "+fil.diagonAlleyBuyerAccount.time.getTimeInMillis());
+        }        
+        Calendar time=new GregorianCalendar();
+        time.setTimeInMillis(fil.diagonAlleyBuyerAccount.time.getTimeInMillis()+msec);
+        fil.diagonAlleyBuyerAccount.add(price, quantity, time);
         fil.quantity-=quantity;
         fil.quantityLocked+=quantity;
         EventLogger.writeln(this.name+" is trying to buy "+quantity+" nos of "+fil.magicalItem.magicalItemInfo.getName()+" @$"+price);
-        if((fil.magicalItem.buyerAccount.get(index)).time!=null)
-            EventLogger.debug("Time not set for trade!");
         fil.magicalItem.executeTrade();
+        fil.diagonAlleyBuyerAccount.getMaximum();
         return true;
     }
     
     /**
      * Diagon Alley Apprentice Buyers modify an existing bid for a magical item.
      */       
-    public boolean modifyBid(int price, int quantity, int magicalItemNumber, long msec)
+    public boolean modifyBid(int id, int price, int quantity, int magicalItemNumber, long msec)
     {
         FutureInventoryList fil=futureInventoryList.get(magicalItemNumber);
-
+        fil.diagonAlleyBuyerAccount.getHistory(id);
         if(fil.buyingTargetPrice!=0&&price>fil.buyingTargetPrice)
         {
             EventLogger.debug("Trade cannot be placed because the buying price is more than the target price.");
@@ -168,10 +159,12 @@ public class Everyone{
         fil.diagonAlleyBuyerAccount.price=price;
         fil.diagonAlleyBuyerAccount.quantity=quantity;
         fil.diagonAlleyBuyerAccount.time.setTimeInMillis(fil.diagonAlleyBuyerAccount.time.getTimeInMillis()+msec);
+        fil.diagonAlleyBuyerAccount.modify(id);
         fil.quantity-=quantity+fil.diagonAlleyBuyerAccount.quantity;
         fil.quantityLocked+=quantity-fil.diagonAlleyBuyerAccount.quantity;
         EventLogger.writeln(this.name+" is trying to buy "+quantity+" nos of "+fil.magicalItem.magicalItemInfo.getName()+" @$"+price);
         fil.magicalItem.executeTrade(); 
+        fil.diagonAlleyBuyerAccount.getMaximum();
         return true;
     }
 }

@@ -62,7 +62,7 @@ public class Main extends Thread implements MainRemote{
     public static int getAverageSellingPrice(int itemNumber)
     {
             MagicalItem m=magicalItems[itemNumber];
-            return m.averageSellingPrice;
+            return m.minimumSellingPrice;
     }
 
      /**
