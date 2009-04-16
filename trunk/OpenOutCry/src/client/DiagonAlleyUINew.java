@@ -100,14 +100,14 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
         score = new javax.swing.JLabel();
         bidTradeDetails = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
-        jPanel11 = new javax.swing.JPanel();
+        pricePanel = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
         priceField = new javax.swing.JFormattedTextField();
-        jPanel12 = new javax.swing.JPanel();
+        quantityPanel = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         quantityField = new javax.swing.JFormattedTextField();
         submitButton = new javax.swing.JButton();
-        jPanel14 = new javax.swing.JPanel();
+        timePanel = new javax.swing.JPanel();
         jLabel25 = new javax.swing.JLabel();
         timeField = new javax.swing.JFormattedTextField();
         goodUntilEndButton = new javax.swing.JRadioButton();
@@ -177,6 +177,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         newBidButton = new javax.swing.JRadioButton();
         modifyBidButton = new javax.swing.JRadioButton();
+        cancelButton = new javax.swing.JRadioButton();
         jPanel15 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         historyTable = new javax.swing.JTable();
@@ -368,7 +369,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(score)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         bidTradeDetails.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "STEP 4", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 17))); // NOI18N
@@ -376,7 +377,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
         jLabel18.setFont(new java.awt.Font("Tahoma", 0, 15));
         jLabel18.setText("Place a Bid:");
 
-        jPanel11.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        pricePanel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
 
         jLabel23.setText("Price");
 
@@ -386,28 +387,28 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
-        jPanel11.setLayout(jPanel11Layout);
-        jPanel11Layout.setHorizontalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
+        javax.swing.GroupLayout pricePanelLayout = new javax.swing.GroupLayout(pricePanel);
+        pricePanel.setLayout(pricePanelLayout);
+        pricePanelLayout.setHorizontalGroup(
+            pricePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pricePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel23)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(priceField, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(36, Short.MAX_VALUE))
         );
-        jPanel11Layout.setVerticalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
+        pricePanelLayout.setVerticalGroup(
+            pricePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pricePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pricePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel23)
                     .addComponent(priceField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel12.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        quantityPanel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
 
         jLabel24.setText("Quantity");
 
@@ -417,22 +418,22 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
-        jPanel12.setLayout(jPanel12Layout);
-        jPanel12Layout.setHorizontalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel12Layout.createSequentialGroup()
+        javax.swing.GroupLayout quantityPanelLayout = new javax.swing.GroupLayout(quantityPanel);
+        quantityPanel.setLayout(quantityPanelLayout);
+        quantityPanelLayout.setHorizontalGroup(
+            quantityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(quantityPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel24)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(quantityField, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
                 .addGap(16, 16, 16))
         );
-        jPanel12Layout.setVerticalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
+        quantityPanelLayout.setVerticalGroup(
+            quantityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, quantityPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(quantityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel24)
                     .addComponent(quantityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37))
@@ -446,7 +447,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
             }
         });
 
-        jPanel14.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        timePanel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
 
         jLabel25.setText("Time (mins)");
 
@@ -458,26 +459,26 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
 
         goodUntilEndButton.setText("Good until end");
 
-        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
-        jPanel14.setLayout(jPanel14Layout);
-        jPanel14Layout.setHorizontalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel14Layout.createSequentialGroup()
+        javax.swing.GroupLayout timePanelLayout = new javax.swing.GroupLayout(timePanel);
+        timePanel.setLayout(timePanelLayout);
+        timePanelLayout.setHorizontalGroup(
+            timePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(timePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(timePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(timeField, javax.swing.GroupLayout.Alignment.LEADING, 0, 0, Short.MAX_VALUE)
                     .addComponent(jLabel25, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(goodUntilEndButton)
                 .addContainerGap(29, Short.MAX_VALUE))
         );
-        jPanel14Layout.setVerticalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
+        timePanelLayout.setVerticalGroup(
+            timePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, timePanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel25)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(timePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(goodUntilEndButton, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(timeField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
@@ -522,20 +523,17 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(bidTradeDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(bidTradeDetailsLayout.createSequentialGroup()
-                        .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(timePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
+                        .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel18)
                     .addGroup(bidTradeDetailsLayout.createSequentialGroup()
-                        .addComponent(jLabel18)
-                        .addContainerGap(299, Short.MAX_VALUE))
-                    .addGroup(bidTradeDetailsLayout.createSequentialGroup()
-                        .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pricePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(quantityPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bidIdPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(24, 24, 24))))
+                        .addComponent(bidIdPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         bidTradeDetailsLayout.setVerticalGroup(
             bidTradeDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -543,14 +541,14 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                 .addComponent(jLabel18)
                 .addGap(5, 5, 5)
                 .addGroup(bidTradeDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bidIdPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(bidTradeDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(bidIdPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(pricePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(quantityPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(bidTradeDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(bidTradeDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(submitButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(timePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(16, 16, 16))
         );
 
@@ -747,64 +745,64 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
         jLabel10.setText("Listed below are magical items and their current price.");
 
         priceLabel1.setForeground(new java.awt.Color(204, 0, 0));
-        priceLabel1.setText("jLabel15");
+        priceLabel1.setText(" ");
 
         priceLabel11.setForeground(new java.awt.Color(204, 0, 0));
-        priceLabel11.setText("jLabel16");
+        priceLabel11.setText("            ");
 
         priceLabel2.setForeground(new java.awt.Color(204, 0, 0));
-        priceLabel2.setText("jLabel17");
+        priceLabel2.setText("            ");
 
         priceLabel3.setForeground(new java.awt.Color(204, 0, 0));
-        priceLabel3.setText("jLabel19");
+        priceLabel3.setText("           ");
 
         priceLabel4.setForeground(new java.awt.Color(204, 0, 0));
-        priceLabel4.setText("jLabel20");
+        priceLabel4.setText("           ");
 
         priceLabel5.setForeground(new java.awt.Color(204, 0, 0));
-        priceLabel5.setText("jLabel22");
+        priceLabel5.setText("           ");
 
         priceLabel6.setForeground(new java.awt.Color(204, 0, 0));
-        priceLabel6.setText("jLabel26");
+        priceLabel6.setText("           ");
 
         priceLabel7.setForeground(new java.awt.Color(204, 0, 0));
-        priceLabel7.setText("jLabel27");
+        priceLabel7.setText("            ");
 
         priceLabel8.setForeground(new java.awt.Color(204, 0, 0));
-        priceLabel8.setText("jLabel28");
+        priceLabel8.setText("            ");
 
         priceLabel9.setForeground(new java.awt.Color(204, 0, 0));
-        priceLabel9.setText("jLabel29");
+        priceLabel9.setText("            ");
 
         priceLabel10.setForeground(new java.awt.Color(204, 0, 0));
-        priceLabel10.setText("jLabel30");
+        priceLabel10.setText("             ");
 
         priceLabel12.setForeground(new java.awt.Color(204, 0, 0));
-        priceLabel12.setText("jLabel31");
+        priceLabel12.setText("            ");
 
         priceLabel13.setForeground(new java.awt.Color(204, 0, 0));
-        priceLabel13.setText("jLabel32");
+        priceLabel13.setText("            ");
 
         priceLabel14.setForeground(new java.awt.Color(204, 0, 0));
-        priceLabel14.setText("jLabel33");
+        priceLabel14.setText("            ");
 
         priceLabel15.setForeground(new java.awt.Color(204, 0, 0));
-        priceLabel15.setText("jLabel34");
+        priceLabel15.setText("            ");
 
         priceLabel16.setForeground(new java.awt.Color(204, 0, 0));
-        priceLabel16.setText("jLabel35");
+        priceLabel16.setText("            ");
 
         priceLabel17.setForeground(new java.awt.Color(204, 0, 0));
-        priceLabel17.setText("jLabel36");
+        priceLabel17.setText("            ");
 
         priceLabel18.setForeground(new java.awt.Color(204, 0, 0));
-        priceLabel18.setText("jLabel37");
+        priceLabel18.setText("            ");
 
         priceLabel19.setForeground(new java.awt.Color(204, 0, 0));
-        priceLabel19.setText("jLabel38");
+        priceLabel19.setText("            ");
 
         priceLabel20.setForeground(new java.awt.Color(204, 0, 0));
-        priceLabel20.setText("jLabel39");
+        priceLabel20.setText("            ");
 
         jLabel40.setFont(new java.awt.Font("Tahoma", 0, 15));
         jLabel40.setText("Select the item you wish to bid for.");
@@ -834,17 +832,17 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                             .addComponent(mButton9)
                             .addComponent(mButton10))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(priceLabel1)
-                            .addComponent(priceLabel2)
-                            .addComponent(priceLabel3)
-                            .addComponent(priceLabel4)
-                            .addComponent(priceLabel5)
-                            .addComponent(priceLabel6)
-                            .addComponent(priceLabel7)
-                            .addComponent(priceLabel8)
-                            .addComponent(priceLabel9)
-                            .addComponent(priceLabel10))
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(priceLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(priceLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(priceLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(priceLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(priceLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(priceLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(priceLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(priceLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(priceLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(priceLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(mButton11)
@@ -859,9 +857,9 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                             .addComponent(mButton20))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(priceLabel13)
                             .addComponent(priceLabel11)
                             .addComponent(priceLabel12)
-                            .addComponent(priceLabel13)
                             .addComponent(priceLabel14)
                             .addComponent(priceLabel15)
                             .addComponent(priceLabel16)
@@ -890,7 +888,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(mButton13)
-                            .addComponent(priceLabel13))
+                            .addComponent(priceLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(mButton14)
@@ -992,7 +990,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(191, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         jPanel16.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "STEP 1", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 17))); // NOI18N
@@ -1016,6 +1014,14 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup3.add(cancelButton);
+        cancelButton.setText("Cancel existing bid");
+        cancelButton.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                cancelButtonPropertyChange(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
         jPanel16Layout.setHorizontalGroup(
@@ -1023,6 +1029,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cancelButton)
                     .addComponent(modifyBidButton)
                     .addComponent(newBidButton)
                     .addComponent(jLabel15))
@@ -1036,7 +1043,9 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                 .addComponent(newBidButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(modifyBidButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cancelButton)
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         jPanel15.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Bid History", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 17))); // NOI18N
@@ -1098,8 +1107,8 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                             .addComponent(bidTradeDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(384, 384, 384))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1135,10 +1144,10 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1151,9 +1160,9 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(16, 16, 16)))))
-                .addGap(87, 87, 87))
+                                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(68, 68, 68)))
+                .addContainerGap())
         );
 
         pack();
@@ -1231,6 +1240,29 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
             this.statusMessageLabel.setText("Please complete Step 2. Do you wish to buy or sell an item?");
         }
 
+        // Cancel an existing bid
+        if(this.cancelButton.isSelected()) {
+            if(isBid) {
+                if(Main.modifyBid(this.bidId, er.getID(), 0, 0, 0, 0)) {
+                    System.out.println("Bid modified successfully");
+                    this.statusMessageLabel.setText("Modify Bid: "+ bidId +" has been submitted.");
+                }
+                else {
+                    System.out.println("Modify Bid could not be submitted");
+                    this.statusMessageLabel.setText("Modify Bid couldn't be submitted. Retry with valid inputs.");
+                }
+            }
+            else if(!isBid) {
+                if(Main.modifyTrade(this.bidId, er.getID(), 0, 0, 0, 0)) {
+                    System.out.println("Bid modified successfully");
+                    this.statusMessageLabel.setText("Modify bid: " + bidId + " has been submitted.");
+                }
+                else {
+                    System.out.println("Modify Bid could not be submitted");
+                    this.statusMessageLabel.setText("Modify Bid couldn't be submitted. Retry with valid inputs.");
+                }
+            }
+        }
         // Modify bid
         if(this.modifyBidButton.isSelected()) {
             if(isBid) {
@@ -1296,6 +1328,8 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                         if(price == 0) price = Integer.parseInt("a");
                         this.statusMessageLabel.setText("Status message ..");
                         this.submitButton.setVisible(true);
+                        if(this.modifyBidButton.isSelected()) this.bidIdPanel.setVisible(true);
+                        else this.bidIdPanel.setVisible(false);
                     } catch (Exception e) {this.statusMessageLabel.setText("Invaild input. Enter numbers only !");}
                 }
             }
@@ -1339,24 +1373,23 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
 
     private void newBidButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBidButtonActionPerformed
         // TODO add your handling code here:
+        if(!cancelButton.isSelected()) {
+            pricePanel.setVisible(true);
+            quantityPanel.setVisible(true);
+            timePanel.setVisible(true);
+            submitButton.setText("Submit");
+        }
 
 }//GEN-LAST:event_newBidButtonActionPerformed
 
     private void modifyBidButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyBidButtonActionPerformed
         // TODO add your handling code here:
-        //System.out.println("Event: " + evt.get);
-        /*if ("value".equals(evt.getPropertyName())) {
-            if(this.bidIdField != null) {
-                String text = bidIdField.getText();
-                if(!text.equals("")){
-                    try {
-                        bidId = Integer.parseInt(text);
-                        if(bidId == 0) bidId = Integer.parseInt("a");
-                        this.statusMessageLabel.setText("Status message ..");
-                    } catch (Exception e) {this.statusMessageLabel.setText("Invalid input. Enter numbers only !");}
-                }
-            }
-        }*/
+        if(!cancelButton.isSelected()) {
+            pricePanel.setVisible(true);
+            quantityPanel.setVisible(true);
+            timePanel.setVisible(true);
+            submitButton.setText("Submit");
+        }
 }//GEN-LAST:event_modifyBidButtonActionPerformed
 
     private void bidIdFieldPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_bidIdFieldPropertyChange
@@ -1367,13 +1400,24 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                 if(!text.equals("")){
                     try {
                         bidId = Integer.parseInt(text);
-                        if(bidId == 0) bidId = Integer.parseInt("a");
+                        if(bidId < 0) bidId = Integer.parseInt("a");
                         this.statusMessageLabel.setText("Status message ..");
                     } catch (Exception e) {this.statusMessageLabel.setText("Invalid input. Enter numbers only !");}
                 }
             }
         }
 }//GEN-LAST:event_bidIdFieldPropertyChange
+
+    private void cancelButtonPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_cancelButtonPropertyChange
+        // TODO add your handling code here:
+        if(cancelButton.isSelected()) {
+            pricePanel.setVisible(false);
+            quantityPanel.setVisible(false);
+            timePanel.setVisible(false);
+            submitButton.setText("Cancel bid");
+            bidIdPanel.setVisible(true);
+        }
+    }//GEN-LAST:event_cancelButtonPropertyChange
 
     /**
     * @param args the command line arguments
@@ -1411,6 +1455,9 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                 // Set name Label
                 if(userName != null) frame.nameLabel.setText(userName);
                 else frame.nameLabel.setText("PLAYER");
+
+                // Set Bid Id no. to Invisible initially
+                frame.bidIdPanel.setVisible(false);
 
                 // Set AssignedAs Label to WIZARD-SELLER or APPRENTICE-BUYER
                 if(frame.isWizard) {
@@ -1670,6 +1717,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.JRadioButton buyButton;
+    private javax.swing.JRadioButton cancelButton;
     private javax.swing.JTable cilTable;
     private javax.swing.JTextArea dailyProphet;
     private javax.swing.JRadioButton goodUntilEndButton;
@@ -1697,10 +1745,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel2;
@@ -1763,12 +1808,15 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
     private javax.swing.JLabel priceLabel7;
     private javax.swing.JLabel priceLabel8;
     private javax.swing.JLabel priceLabel9;
+    private javax.swing.JPanel pricePanel;
     private javax.swing.JFormattedTextField quantityField;
+    private javax.swing.JPanel quantityPanel;
     private javax.swing.JLabel score;
     private javax.swing.JRadioButton sellButton;
     private javax.swing.JLabel statusMessageLabel;
     private javax.swing.JButton submitButton;
     private javax.swing.JFormattedTextField timeField;
+    private javax.swing.JPanel timePanel;
     // End of variables declaration//GEN-END:variables
 
     public class URLConnectionReader {
