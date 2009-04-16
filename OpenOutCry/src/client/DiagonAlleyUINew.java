@@ -1716,26 +1716,46 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                               while(frame.isVisible()) {
                                   try{
                                       Thread.sleep(1000);
-                                      frame.priceLabel1.setText(String.valueOf(Main.getAverageSellingPrice(er, 0)));
-                                      frame.priceLabel2.setText(String.valueOf(Main.getAverageSellingPrice(er, 1)));
-                                      frame.priceLabel3.setText(String.valueOf(Main.getAverageSellingPrice(er, 2)));
-                                      frame.priceLabel4.setText(String.valueOf(Main.getAverageSellingPrice(er, 3)));
-                                      frame.priceLabel5.setText(String.valueOf(Main.getAverageSellingPrice(er, 4)));
-                                      frame.priceLabel6.setText(String.valueOf(Main.getAverageSellingPrice(er, 5)));
-                                      frame.priceLabel7.setText(String.valueOf(Main.getAverageSellingPrice(er, 6)));
-                                      frame.priceLabel8.setText(String.valueOf(Main.getAverageSellingPrice(er, 7)));
-                                      frame.priceLabel9.setText(String.valueOf(Main.getAverageSellingPrice(er, 8)));
-                                      frame.priceLabel10.setText(String.valueOf(Main.getAverageSellingPrice(er, 9)));
-                                      frame.priceLabel11.setText(String.valueOf(Main.getAverageSellingPrice(er, 10)));
-                                      frame.priceLabel12.setText(String.valueOf(Main.getAverageSellingPrice(er, 11)));
-                                      frame.priceLabel13.setText(String.valueOf(Main.getAverageSellingPrice(er, 12)));
-                                      frame.priceLabel14.setText(String.valueOf(Main.getAverageSellingPrice(er, 13)));
-                                      frame.priceLabel15.setText(String.valueOf(Main.getAverageSellingPrice(er, 14)));
-                                      frame.priceLabel16.setText(String.valueOf(Main.getAverageSellingPrice(er, 15)));
-                                      frame.priceLabel17.setText(String.valueOf(Main.getAverageSellingPrice(er, 16)));
-                                      frame.priceLabel18.setText(String.valueOf(Main.getAverageSellingPrice(er, 17)));
-                                      frame.priceLabel19.setText(String.valueOf(Main.getAverageSellingPrice(er, 18)));
-                                      frame.priceLabel20.setText(String.valueOf(Main.getAverageSellingPrice(er, 19)));
+                                      if(Main.getAverageSellingPrice(er, 0) != 0)
+                                        frame.priceLabel1.setText(String.valueOf(Main.getAverageSellingPrice(er, 0)));
+                                      if(Main.getAverageSellingPrice(er, 1) != 0)
+                                        frame.priceLabel2.setText(String.valueOf(Main.getAverageSellingPrice(er, 1)));
+                                      if(Main.getAverageSellingPrice(er, 2) != 0)
+                                        frame.priceLabel3.setText(String.valueOf(Main.getAverageSellingPrice(er, 2)));
+                                      if(Main.getAverageSellingPrice(er, 3) != 0)
+                                        frame.priceLabel4.setText(String.valueOf(Main.getAverageSellingPrice(er, 3)));
+                                      if(Main.getAverageSellingPrice(er, 4) != 0)
+                                        frame.priceLabel5.setText(String.valueOf(Main.getAverageSellingPrice(er, 4)));
+                                      if(Main.getAverageSellingPrice(er, 5) != 0)
+                                        frame.priceLabel6.setText(String.valueOf(Main.getAverageSellingPrice(er, 5)));
+                                      if(Main.getAverageSellingPrice(er, 6) != 0)
+                                        frame.priceLabel7.setText(String.valueOf(Main.getAverageSellingPrice(er, 6)));
+                                      if(Main.getAverageSellingPrice(er, 7) != 0)
+                                        frame.priceLabel8.setText(String.valueOf(Main.getAverageSellingPrice(er, 7)));
+                                      if(Main.getAverageSellingPrice(er, 8) != 0)
+                                        frame.priceLabel9.setText(String.valueOf(Main.getAverageSellingPrice(er, 8)));
+                                      if(Main.getAverageSellingPrice(er, 9) != 0)
+                                        frame.priceLabel10.setText(String.valueOf(Main.getAverageSellingPrice(er, 9)));
+                                      if(Main.getAverageSellingPrice(er, 10) != 0)
+                                        frame.priceLabel11.setText(String.valueOf(Main.getAverageSellingPrice(er, 10)));
+                                      if(Main.getAverageSellingPrice(er, 11) != 0)
+                                        frame.priceLabel12.setText(String.valueOf(Main.getAverageSellingPrice(er, 11)));
+                                      if(Main.getAverageSellingPrice(er, 12) != 0)
+                                        frame.priceLabel13.setText(String.valueOf(Main.getAverageSellingPrice(er, 12)));
+                                      if(Main.getAverageSellingPrice(er, 13) != 0)
+                                        frame.priceLabel14.setText(String.valueOf(Main.getAverageSellingPrice(er, 13)));
+                                      if(Main.getAverageSellingPrice(er, 14) != 0)
+                                        frame.priceLabel15.setText(String.valueOf(Main.getAverageSellingPrice(er, 14)));
+                                      if(Main.getAverageSellingPrice(er, 15) != 0)
+                                        frame.priceLabel16.setText(String.valueOf(Main.getAverageSellingPrice(er, 15)));
+                                      if(Main.getAverageSellingPrice(er, 16) != 0)
+                                        frame.priceLabel17.setText(String.valueOf(Main.getAverageSellingPrice(er, 16)));
+                                      if(Main.getAverageSellingPrice(er, 17) != 0)
+                                        frame.priceLabel18.setText(String.valueOf(Main.getAverageSellingPrice(er, 17)));
+                                      if(Main.getAverageSellingPrice(er, 18) != 0)
+                                        frame.priceLabel19.setText(String.valueOf(Main.getAverageSellingPrice(er, 18)));
+                                      if(Main.getAverageSellingPrice(er, 19) != 0)
+                                        frame.priceLabel20.setText(String.valueOf(Main.getAverageSellingPrice(er, 19)));
 
                                       Thread.sleep(1000);
                                       }catch(Exception ie)
