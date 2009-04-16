@@ -46,6 +46,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
     static SwingWorker cilTableWorker = null;
     static SwingWorker dailyProphetWorker = null;
     static SwingWorker bidHistoryWorker = null;
+    static SwingWorker avgPriceWorker = null;
     /** Creates new form DiagonAlleyUI */
     public DiagonAlleyUINew() {
         initComponents();
@@ -149,25 +150,25 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
         mButton20 = new javax.swing.JRadioButton();
         jLabel10 = new javax.swing.JLabel();
         priceLabel1 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
-        jLabel33 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
-        jLabel35 = new javax.swing.JLabel();
-        jLabel36 = new javax.swing.JLabel();
-        jLabel37 = new javax.swing.JLabel();
-        jLabel38 = new javax.swing.JLabel();
-        jLabel39 = new javax.swing.JLabel();
+        priceLabel11 = new javax.swing.JLabel();
+        priceLabel2 = new javax.swing.JLabel();
+        priceLabel3 = new javax.swing.JLabel();
+        priceLabel4 = new javax.swing.JLabel();
+        priceLabel5 = new javax.swing.JLabel();
+        priceLabel6 = new javax.swing.JLabel();
+        priceLabel7 = new javax.swing.JLabel();
+        priceLabel8 = new javax.swing.JLabel();
+        priceLabel9 = new javax.swing.JLabel();
+        priceLabel10 = new javax.swing.JLabel();
+        priceLabel12 = new javax.swing.JLabel();
+        priceLabel13 = new javax.swing.JLabel();
+        priceLabel14 = new javax.swing.JLabel();
+        priceLabel15 = new javax.swing.JLabel();
+        priceLabel16 = new javax.swing.JLabel();
+        priceLabel17 = new javax.swing.JLabel();
+        priceLabel18 = new javax.swing.JLabel();
+        priceLabel19 = new javax.swing.JLabel();
+        priceLabel20 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -748,62 +749,62 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
         priceLabel1.setForeground(new java.awt.Color(204, 0, 0));
         priceLabel1.setText("jLabel15");
 
-        jLabel16.setForeground(new java.awt.Color(204, 0, 0));
-        jLabel16.setText("jLabel16");
+        priceLabel11.setForeground(new java.awt.Color(204, 0, 0));
+        priceLabel11.setText("jLabel16");
 
-        jLabel17.setForeground(new java.awt.Color(204, 0, 0));
-        jLabel17.setText("jLabel17");
+        priceLabel2.setForeground(new java.awt.Color(204, 0, 0));
+        priceLabel2.setText("jLabel17");
 
-        jLabel19.setForeground(new java.awt.Color(204, 0, 0));
-        jLabel19.setText("jLabel19");
+        priceLabel3.setForeground(new java.awt.Color(204, 0, 0));
+        priceLabel3.setText("jLabel19");
 
-        jLabel20.setForeground(new java.awt.Color(204, 0, 0));
-        jLabel20.setText("jLabel20");
+        priceLabel4.setForeground(new java.awt.Color(204, 0, 0));
+        priceLabel4.setText("jLabel20");
 
-        jLabel22.setForeground(new java.awt.Color(204, 0, 0));
-        jLabel22.setText("jLabel22");
+        priceLabel5.setForeground(new java.awt.Color(204, 0, 0));
+        priceLabel5.setText("jLabel22");
 
-        jLabel26.setForeground(new java.awt.Color(204, 0, 0));
-        jLabel26.setText("jLabel26");
+        priceLabel6.setForeground(new java.awt.Color(204, 0, 0));
+        priceLabel6.setText("jLabel26");
 
-        jLabel27.setForeground(new java.awt.Color(204, 0, 0));
-        jLabel27.setText("jLabel27");
+        priceLabel7.setForeground(new java.awt.Color(204, 0, 0));
+        priceLabel7.setText("jLabel27");
 
-        jLabel28.setForeground(new java.awt.Color(204, 0, 0));
-        jLabel28.setText("jLabel28");
+        priceLabel8.setForeground(new java.awt.Color(204, 0, 0));
+        priceLabel8.setText("jLabel28");
 
-        jLabel29.setForeground(new java.awt.Color(204, 0, 0));
-        jLabel29.setText("jLabel29");
+        priceLabel9.setForeground(new java.awt.Color(204, 0, 0));
+        priceLabel9.setText("jLabel29");
 
-        jLabel30.setForeground(new java.awt.Color(204, 0, 0));
-        jLabel30.setText("jLabel30");
+        priceLabel10.setForeground(new java.awt.Color(204, 0, 0));
+        priceLabel10.setText("jLabel30");
 
-        jLabel31.setForeground(new java.awt.Color(204, 0, 0));
-        jLabel31.setText("jLabel31");
+        priceLabel12.setForeground(new java.awt.Color(204, 0, 0));
+        priceLabel12.setText("jLabel31");
 
-        jLabel32.setForeground(new java.awt.Color(204, 0, 0));
-        jLabel32.setText("jLabel32");
+        priceLabel13.setForeground(new java.awt.Color(204, 0, 0));
+        priceLabel13.setText("jLabel32");
 
-        jLabel33.setForeground(new java.awt.Color(204, 0, 0));
-        jLabel33.setText("jLabel33");
+        priceLabel14.setForeground(new java.awt.Color(204, 0, 0));
+        priceLabel14.setText("jLabel33");
 
-        jLabel34.setForeground(new java.awt.Color(204, 0, 0));
-        jLabel34.setText("jLabel34");
+        priceLabel15.setForeground(new java.awt.Color(204, 0, 0));
+        priceLabel15.setText("jLabel34");
 
-        jLabel35.setForeground(new java.awt.Color(204, 0, 0));
-        jLabel35.setText("jLabel35");
+        priceLabel16.setForeground(new java.awt.Color(204, 0, 0));
+        priceLabel16.setText("jLabel35");
 
-        jLabel36.setForeground(new java.awt.Color(204, 0, 0));
-        jLabel36.setText("jLabel36");
+        priceLabel17.setForeground(new java.awt.Color(204, 0, 0));
+        priceLabel17.setText("jLabel36");
 
-        jLabel37.setForeground(new java.awt.Color(204, 0, 0));
-        jLabel37.setText("jLabel37");
+        priceLabel18.setForeground(new java.awt.Color(204, 0, 0));
+        priceLabel18.setText("jLabel37");
 
-        jLabel38.setForeground(new java.awt.Color(204, 0, 0));
-        jLabel38.setText("jLabel38");
+        priceLabel19.setForeground(new java.awt.Color(204, 0, 0));
+        priceLabel19.setText("jLabel38");
 
-        jLabel39.setForeground(new java.awt.Color(204, 0, 0));
-        jLabel39.setText("jLabel39");
+        priceLabel20.setForeground(new java.awt.Color(204, 0, 0));
+        priceLabel20.setText("jLabel39");
 
         jLabel40.setFont(new java.awt.Font("Tahoma", 0, 15));
         jLabel40.setText("Select the item you wish to bid for.");
@@ -835,15 +836,15 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(priceLabel1)
-                            .addComponent(jLabel17)
-                            .addComponent(jLabel19)
-                            .addComponent(jLabel20)
-                            .addComponent(jLabel22)
-                            .addComponent(jLabel26)
-                            .addComponent(jLabel27)
-                            .addComponent(jLabel28)
-                            .addComponent(jLabel29)
-                            .addComponent(jLabel30))
+                            .addComponent(priceLabel2)
+                            .addComponent(priceLabel3)
+                            .addComponent(priceLabel4)
+                            .addComponent(priceLabel5)
+                            .addComponent(priceLabel6)
+                            .addComponent(priceLabel7)
+                            .addComponent(priceLabel8)
+                            .addComponent(priceLabel9)
+                            .addComponent(priceLabel10))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(mButton11)
@@ -858,16 +859,16 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                             .addComponent(mButton20))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel16)
-                            .addComponent(jLabel31)
-                            .addComponent(jLabel32)
-                            .addComponent(jLabel33)
-                            .addComponent(jLabel34)
-                            .addComponent(jLabel35)
-                            .addComponent(jLabel36)
-                            .addComponent(jLabel37)
-                            .addComponent(jLabel38)
-                            .addComponent(jLabel39))))
+                            .addComponent(priceLabel11)
+                            .addComponent(priceLabel12)
+                            .addComponent(priceLabel13)
+                            .addComponent(priceLabel14)
+                            .addComponent(priceLabel15)
+                            .addComponent(priceLabel16)
+                            .addComponent(priceLabel17)
+                            .addComponent(priceLabel18)
+                            .addComponent(priceLabel19)
+                            .addComponent(priceLabel20))))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
@@ -881,43 +882,43 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(mButton11)
-                            .addComponent(jLabel16))
+                            .addComponent(priceLabel11))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(mButton12)
-                            .addComponent(jLabel31))
+                            .addComponent(priceLabel12))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(mButton13)
-                            .addComponent(jLabel32))
+                            .addComponent(priceLabel13))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(mButton14)
-                            .addComponent(jLabel33))
+                            .addComponent(priceLabel14))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(mButton15)
-                            .addComponent(jLabel34))
+                            .addComponent(priceLabel15))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(mButton16)
-                            .addComponent(jLabel35))
+                            .addComponent(priceLabel16))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(mButton17)
-                            .addComponent(jLabel36))
+                            .addComponent(priceLabel17))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(mButton18)
-                            .addComponent(jLabel37))
+                            .addComponent(priceLabel18))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(mButton19)
-                            .addComponent(jLabel38))
+                            .addComponent(priceLabel19))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(mButton20)
-                            .addComponent(jLabel39)))
+                            .addComponent(priceLabel20)))
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(mButton1)
@@ -925,39 +926,39 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(mButton2)
-                            .addComponent(jLabel17))
+                            .addComponent(priceLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(mButton3)
-                            .addComponent(jLabel19))
+                            .addComponent(priceLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(mButton4)
-                            .addComponent(jLabel20))
+                            .addComponent(priceLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(mButton5)
-                            .addComponent(jLabel22))
+                            .addComponent(priceLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(mButton6)
-                            .addComponent(jLabel26))
+                            .addComponent(priceLabel6))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(mButton7)
-                            .addComponent(jLabel27))
+                            .addComponent(priceLabel7))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(mButton8)
-                            .addComponent(jLabel28))
+                            .addComponent(priceLabel8))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(mButton9)
-                            .addComponent(jLabel29))
+                            .addComponent(priceLabel9))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(mButton10)
-                            .addComponent(jLabel30))))
+                            .addComponent(priceLabel10))))
                 .addGap(228, 228, 228))
         );
 
@@ -991,7 +992,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(191, Short.MAX_VALUE))
         );
 
         jPanel16.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "STEP 1", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 17))); // NOI18N
@@ -1137,7 +1138,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                             .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1253,31 +1254,30 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                 }
             }
         }
-
+        else if (this.newBidButton.isSelected()){
         // Place the bid
-        if(isBid)
-        {
-            if(Main.placeBid(er.getID(), magicalItemNumber, price, quantity, msec)) {
-                System.out.println("Bid placed successfully");
-                this.statusMessageLabel.setText("Your bid has been submitted.");
-                //if(scoreWorker != null) scoreWorker.execute();
-            } else {
-                System.out.println("Bid could not be placed");
-                this.statusMessageLabel.setText("Bid couldn't be placed. Retry with valid inputs.");
+            if(isBid)
+            {
+                if(Main.placeBid(er.getID(), magicalItemNumber, price, quantity, msec)) {
+                    System.out.println("Bid placed successfully");
+                    this.statusMessageLabel.setText("Your bid has been submitted.");
+                } else {
+                    System.out.println("Bid could not be placed");
+                    this.statusMessageLabel.setText("Bid couldn't be placed. Retry with valid inputs.");
+                }
+            }
+            // Place Trade
+            else if(!isBid) {
+                //System.out.println("Placing trade for "+magicalItemNumber + " " +price + " "+ quantity + " " + msec);
+                if(Main.placeTrade(er.getID(), magicalItemNumber, price, quantity, msec)) {
+                    System.out.println("Transaction successful !");
+                    this.statusMessageLabel.setText("Your bid has been submitted.");
+                } else {
+                    System.out.println("Transaction unsuccessful. Retry with valid inputs.");
+                    this.statusMessageLabel.setText("Bid couldn't be placed. Follow STEP 1, STEP 2 and STEP 3.");
+                }
             }
         }
-        // Place Trade
-        else if(!isBid) {
-            if(Main.placeTrade(er.getID(), magicalItemNumber, price, quantity, msec)) {
-                System.out.println("Transaction successful !");
-                this.statusMessageLabel.setText("Your bid has been submitted.");
-                //if(scoreWorker != null) scoreWorker.execute();
-            } else {
-                System.out.println("Transaction unsuccessful. Retry with valid inputs.");
-                this.statusMessageLabel.setText("Bid couldn't be placed. Follow STEP 1, STEP 2 and STEP 3.");
-            }
-        }
-
         // Set all textboxes to NULL
         this.priceField.setText(null);
         this.quantityField.setText(null);
@@ -1540,7 +1540,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                                 String inputLine;
 
                                 while ((inputLine = in.readLine()) != null) {
-                                    System.out.println(inputLine);
+                                    //System.out.println(inputLine);
                                     //frame.dailyProphet.setText(frame.dailyProphet.getText() + "\n" +inputLine);
                                     completeText = inputLine + "\n" + completeText;
                                 }
@@ -1617,7 +1617,44 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                       };
                       frame.bidHistoryWorker.execute();
 
+                      // Populating the Average Selling Price for Magical Items
+                      avgPriceWorker = new SwingWorker<Void, Void>() {
+                          @Override
+                          public Void doInBackground() {
+                              while(frame.isVisible()) {
+                                  try{
+                                      Thread.sleep(1000);
+                                      frame.priceLabel1.setText(String.valueOf(Main.getAverageSellingPrice(er, 0)));
+                                      frame.priceLabel2.setText(String.valueOf(Main.getAverageSellingPrice(er, 1)));
+                                      frame.priceLabel3.setText(String.valueOf(Main.getAverageSellingPrice(er, 2)));
+                                      frame.priceLabel4.setText(String.valueOf(Main.getAverageSellingPrice(er, 3)));
+                                      frame.priceLabel5.setText(String.valueOf(Main.getAverageSellingPrice(er, 4)));
+                                      frame.priceLabel6.setText(String.valueOf(Main.getAverageSellingPrice(er, 5)));
+                                      frame.priceLabel7.setText(String.valueOf(Main.getAverageSellingPrice(er, 6)));
+                                      frame.priceLabel8.setText(String.valueOf(Main.getAverageSellingPrice(er, 7)));
+                                      frame.priceLabel9.setText(String.valueOf(Main.getAverageSellingPrice(er, 8)));
+                                      frame.priceLabel10.setText(String.valueOf(Main.getAverageSellingPrice(er, 9)));
+                                      frame.priceLabel11.setText(String.valueOf(Main.getAverageSellingPrice(er, 10)));
+                                      frame.priceLabel12.setText(String.valueOf(Main.getAverageSellingPrice(er, 11)));
+                                      frame.priceLabel13.setText(String.valueOf(Main.getAverageSellingPrice(er, 12)));
+                                      frame.priceLabel14.setText(String.valueOf(Main.getAverageSellingPrice(er, 13)));
+                                      frame.priceLabel15.setText(String.valueOf(Main.getAverageSellingPrice(er, 14)));
+                                      frame.priceLabel16.setText(String.valueOf(Main.getAverageSellingPrice(er, 15)));
+                                      frame.priceLabel17.setText(String.valueOf(Main.getAverageSellingPrice(er, 16)));
+                                      frame.priceLabel18.setText(String.valueOf(Main.getAverageSellingPrice(er, 17)));
+                                      frame.priceLabel19.setText(String.valueOf(Main.getAverageSellingPrice(er, 18)));
+                                      frame.priceLabel20.setText(String.valueOf(Main.getAverageSellingPrice(er, 19)));
 
+                                      Thread.sleep(1000);
+                                      }catch(Exception ie)
+                                      {
+                                          ie.printStackTrace();
+                                      }
+                                  }
+                                  return null;
+                                  }
+                              };
+                              avgPriceWorker.execute();
             }
         });
 
@@ -1644,32 +1681,13 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
-    private javax.swing.JLabel jLabel37;
-    private javax.swing.JLabel jLabel38;
-    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
@@ -1726,6 +1744,25 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
     private javax.swing.JRadioButton newBidButton;
     private javax.swing.JFormattedTextField priceField;
     private javax.swing.JLabel priceLabel1;
+    private javax.swing.JLabel priceLabel10;
+    private javax.swing.JLabel priceLabel11;
+    private javax.swing.JLabel priceLabel12;
+    private javax.swing.JLabel priceLabel13;
+    private javax.swing.JLabel priceLabel14;
+    private javax.swing.JLabel priceLabel15;
+    private javax.swing.JLabel priceLabel16;
+    private javax.swing.JLabel priceLabel17;
+    private javax.swing.JLabel priceLabel18;
+    private javax.swing.JLabel priceLabel19;
+    private javax.swing.JLabel priceLabel2;
+    private javax.swing.JLabel priceLabel20;
+    private javax.swing.JLabel priceLabel3;
+    private javax.swing.JLabel priceLabel4;
+    private javax.swing.JLabel priceLabel5;
+    private javax.swing.JLabel priceLabel6;
+    private javax.swing.JLabel priceLabel7;
+    private javax.swing.JLabel priceLabel8;
+    private javax.swing.JLabel priceLabel9;
     private javax.swing.JFormattedTextField quantityField;
     private javax.swing.JLabel score;
     private javax.swing.JRadioButton sellButton;
