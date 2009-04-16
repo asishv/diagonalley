@@ -158,6 +158,11 @@ public class Executor extends Thread implements ExecutorRemote{
                     Integer resInt=new Integer(e.getQuantity(itemNumber));
                     r.result=resInt;
                     break;
+                case 6:
+                    EventLogger.debug("Executor: Operation = GET AVERAGE SELLING PRICE");
+                    resInt=new Integer(Main.getAverageSellingPrice(itemNumber));                    
+                    r.result=resInt;
+                    break;
             }
             condition[itemNumber][1].signal();
         }finally{
