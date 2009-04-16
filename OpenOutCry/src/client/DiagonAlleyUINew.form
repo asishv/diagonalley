@@ -1643,6 +1643,7 @@
             <Property name="text" type="java.lang.String" value="Cancel existing bid"/>
           </Properties>
           <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelButtonActionPerformed"/>
             <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="cancelButtonPropertyChange"/>
           </Events>
         </Component>
