@@ -276,8 +276,6 @@ public class Main {
                 for(int i=0; i<h.size(); i++)
                     out[i]=h.get(i);
             }
-            else
-                System.out.println("No bids!");
         } catch (Exception e) {
             System.out.println("Error getting bid history: " + e.toString());
             e.printStackTrace();
@@ -298,8 +296,6 @@ public class Main {
                 for(int i=0; i<h.size(); i++)
                     out[i]=h.get(i);
             }
-            else
-                System.out.println("No trades!");
         } catch (Exception e) {
             System.out.println("Error getting trade history: " + e.toString());
             e.printStackTrace();
