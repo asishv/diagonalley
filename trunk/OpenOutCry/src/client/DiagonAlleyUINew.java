@@ -1254,7 +1254,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                 }
             }
         }
-        else if (this.newBidButton.isSelected()){
+        else {
         // Place the bid
             if(isBid)
             {
