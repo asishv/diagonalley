@@ -79,7 +79,7 @@ public class MagicalItem{
                                     dasa.e.goalMetOrNot=true;
                                 dasa.e.score+=(cost-cil.sellingPriceTarget)*daba.quantity; //Update score for seller
                                 EventLogger.debug("Buyer Score: "+daba.e.score+" Seller Score: "+dasa.e.score);
-                                EventLogger.writeln("Sold "+daba.quantity+" of "+cil.magicalItem.magicalItemInfo.getName()+" for "+cost);
+                                EventLogger.writeln("Sold "+daba.quantity+" of "+cil.magicalItem.magicalItemInfo.getName()+" for $"+cost);
                                 daba.quantity=0; //Update the bid quantity
                                 dasa.modify();
                                 daba.modify();
@@ -113,7 +113,7 @@ public class MagicalItem{
                                     dasa.e.goalMetOrNot=true;
                                 dasa.e.score+=(cost-cil.sellingPriceTarget)*dasa.quantity; //Update score for seller
                                 EventLogger.debug("Buyer Score: "+daba.e.score+" Seller Score: "+dasa.e.score);
-                                EventLogger.writeln("Sold "+dasa.quantity+" of "+cil.magicalItem.magicalItemInfo.getName()+" for "+cost);
+                                EventLogger.writeln("Sold "+dasa.quantity+" of "+cil.magicalItem.magicalItemInfo.getName()+" for $"+cost);
                                 dasa.quantity=0; //Update the sale quantity
                                 dasa.modify();
                                 daba.modify();
