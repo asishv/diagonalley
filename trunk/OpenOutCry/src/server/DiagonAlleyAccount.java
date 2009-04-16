@@ -30,6 +30,7 @@ public class DiagonAlleyAccount{
     public History[] getHistory()
     {
         History h[]=new History[history.size()];
+        DailyProphet.EventLogger.writeln("History: "+history.size());
         for(int i=0; i<history.size(); i++)
         {
             h[i]=history.get(i);
