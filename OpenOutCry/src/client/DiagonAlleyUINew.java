@@ -1331,7 +1331,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
         this.priceField.setText(null);
         this.quantityField.setText(null);
         this.timeField.setText(null);
-        this.submitButton.setVisible(false);
+        //this.submitButton.setVisible(false);
 
 }//GEN-LAST:event_submitButtonActionPerformed
 
