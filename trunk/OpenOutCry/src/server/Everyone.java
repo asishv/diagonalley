@@ -56,7 +56,6 @@ public class Everyone{
     
     public ArrayList<History> getTradeHistory(int itemNumber)
     {
-        DailyProphet.EventLogger.writeln("Operation: TRADE Item Number:"+itemNumber);
         CurrentInventoryList cil=currentInventoryList.get(itemNumber);
         History sellHistory[]=cil.diagonAlleySellerAccount.getAllHistory();
         ArrayList<History> h=new ArrayList();
@@ -68,7 +67,6 @@ public class Everyone{
     
     public ArrayList<History> getBidHistory(int itemNumber)
     {
-        DailyProphet.EventLogger.writeln("Operation: BID Item Number:"+itemNumber);
         FutureInventoryList fil=futureInventoryList.get(itemNumber);
         History buyHistory[]=fil.diagonAlleyBuyerAccount.getAllHistory();
         ArrayList<History> h=new ArrayList();
