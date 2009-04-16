@@ -134,7 +134,7 @@ public class Everyone{
             return false;
         }        
         Calendar time=new GregorianCalendar();
-        time.setTimeInMillis(fil.diagonAlleyBuyerAccount.time.getTimeInMillis()+msec);
+        time.setTimeInMillis(time.getTimeInMillis()+msec);
         fil.diagonAlleyBuyerAccount.add(price, quantity, time);
         fil.quantity-=quantity;
         fil.quantityLocked+=quantity;
