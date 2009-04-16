@@ -93,6 +93,8 @@ public class Everyone{
     {
         CurrentInventoryList cil = this.currentInventoryList.get(magicalItemNumber);
         cil.diagonAlleySellerAccount.getHistory(id);
+        if(cil.diagonAlleySellerAccount.time==null)
+            return false;
         int oldQuantity = cil.diagonAlleySellerAccount.quantity;
         if(quantity > cil.quantity + oldQuantity) {
             EventLogger.debug("Trade cannot be placed because the quantity is more than the user holds.");
@@ -151,6 +153,8 @@ public class Everyone{
     {
         FutureInventoryList fil=futureInventoryList.get(magicalItemNumber);
         fil.diagonAlleyBuyerAccount.getHistory(id);
+        if(fil.diagonAlleyBuyerAccount.time==null)
+            return false;
         if(fil.buyingTargetPrice!=0&&price>fil.buyingTargetPrice)
         {
             EventLogger.debug("Trade cannot be placed because the buying price is more than the target price.");

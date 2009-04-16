@@ -384,7 +384,7 @@ public class Main {
                          int itemNumber = Integer.parseInt(br.readLine());
                          System.out.println("You have "+getQuantity(er, itemNumber)+" of item no. "+itemNumber);
                          break;
-                case 7:
+                case 8:
                          System.out.println("Enter the bid number:");
                          int bidid = Integer.parseInt(br.readLine());
                             System.out.println("Place Trade: Enter Magical Item, price, quantity & time for bid to last(ms)");
@@ -398,7 +398,7 @@ public class Main {
                                 System.out.println("Trade could not be placed");
                             }
                             break;
-                case 8:
+                case 7:
                          System.out.println("Enter the bid number:");
                          bidid = Integer.parseInt(br.readLine());
                             System.out.println("Place Trade: Enter Magical Item, price, quantity & time for bid to last(ms)");
