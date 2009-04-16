@@ -1236,6 +1236,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
             System.out.println("Please complete Step 2. Choose if you want to buy or sell an item.");
             this.statusMessageLabel.setText("Please complete Step 2. Do you wish to buy or sell an item?");
         }
+        if(goodUntilEndButton.isSelected()) msec = 1440 * 60 * 1000;
 
         // Cancel an existing bid
         if(this.cancelButton.isSelected()) {
@@ -1287,6 +1288,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                           bidId = Integer.parseInt(text);
                           this.statusMessageLabel.setText("Status message ..");
                   }
+                  System.out.println("Item Number:"+magicalItemNumber+"Price"+price+"Quantity:"+quantity+"Time:"+msec);
                 if(Main.modifyBid(this.bidId, er.getID(), magicalItemNumber, price, quantity, msec)) {
                     System.out.println("Bid modified successfully");
                     this.statusMessageLabel.setText("Modify Bid: "+ bidId +" has been submitted.");
@@ -1304,7 +1306,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                           bidId = Integer.parseInt(text);
                           this.statusMessageLabel.setText("Status message ..");
                   }
-
+                System.out.println("Item Number:"+magicalItemNumber+"Price"+price+"Quantity:"+quantity+"Time:"+msec);
                 if(Main.modifyTrade(this.bidId, er.getID(), magicalItemNumber, price, quantity, msec)) {
                     System.out.println("Bid modified successfully");
                     this.statusMessageLabel.setText("Modify bid: " + bidId + " has been submitted.");
@@ -1322,6 +1324,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
             System.out.println("New bid!");
             if(isBid)
             {
+                System.out.println("Item Number:"+magicalItemNumber+"Price"+price+"Quantity:"+quantity+"Time:"+msec);
                 if(Main.placeBid(er.getID(), magicalItemNumber, price, quantity, msec)) {
                     System.out.println("Bid placed successfully");
                     this.statusMessageLabel.setText("Your bid has been submitted.");
@@ -1332,6 +1335,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
             }
             // Place Trade
             else if(!isBid) {
+                System.out.println("Item Number:"+magicalItemNumber+"Price"+price+"Quantity:"+quantity+"Time:"+msec);
                 //System.out.println("Placing trade for "+magicalItemNumber + " " +price + " "+ quantity + " " + msec);
                 if(Main.placeTrade(er.getID(), magicalItemNumber, price, quantity, msec)) {
                     System.out.println("Transaction successful !");
@@ -1390,8 +1394,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                 String text=timeField.getText();
                 if(!text.equals("")) {
                     try {
-                        if(goodUntilEndButton.isSelected()) msec = 1440 * 60 * 1000;
-                        else msec = Integer.parseInt(text)*60*1000;
+                        msec = Integer.parseInt(text)*60*1000;
                         if(msec == 0) msec = 1440 * 60 * 1000;
                         this.statusMessageLabel.setText("Status message ..");
                     } catch (Exception e) {this.statusMessageLabel.setText("Invalid input. Enter numbers only !");}
@@ -1687,6 +1690,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                                     for(int i=0;i<20;i++) {
                                         history = Main.getAllBids(er,i);
                                         if(history != null) {
+                                            System.out.println("Hurray!");
                                             for(int j=0;j<history.length;j++) {
                                                 magicalItemName.add(magicalItemInfoName[i].getName());
                                                 price.add(history[j].price);
@@ -1698,6 +1702,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                                     for(int i=0;i<20;i++) {
                                         history = Main.getAllTrades(er, i);
                                         if(history != null) {
+                                            System.out.println("Hurray!");
                                             for(int j=0;j<history.length;j++) {
                                                 magicalItemName.add(magicalItemInfoName[i].getName());
                                                 price.add(history[j].price);
