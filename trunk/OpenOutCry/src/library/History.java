@@ -5,13 +5,15 @@
 
 package library;
 
+import java.io.Serializable;
+import java.rmi.Remote;
 import java.util.Calendar;
 
 /**
  *
  * @author Asish
  */
-public class History
+public class History implements Remote, Serializable
 {
     public int price;
     public int quantity;
