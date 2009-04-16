@@ -327,7 +327,22 @@ private void jToggleButton12ActionPerformed(java.awt.event.ActionEvent evt) {//G
     picture=4;
 }//GEN-LAST:event_jToggleButton12ActionPerformed
 
-
+public static void main(String args[])
+{
+        //SUBSTANCE SKIN ENABLE
+        javax.swing.JFrame.setDefaultLookAndFeelDecorated(true);
+        try {
+            System.out.println("Using substance!"); 
+            javax.swing.UIManager.setLookAndFeel(new SubstanceBusinessBlackSteelLookAndFeel());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new RegistrationPage().setVisible(true);
+            }
+        });
+}
     
     /**
     * @param args the command line arguments
