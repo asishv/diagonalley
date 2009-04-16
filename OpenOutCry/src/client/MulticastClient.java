@@ -32,7 +32,7 @@ public class MulticastClient {
             socket.receive(packet);
 
             received = new String(packet.getData(), 0, packet.getLength());
-            System.out.println(received);
+            System.err.println(received);
 	}
 	socket.leaveGroup(address);
 	socket.close();
