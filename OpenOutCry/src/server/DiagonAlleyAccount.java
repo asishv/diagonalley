@@ -41,6 +41,7 @@ public class DiagonAlleyAccount{
     public void add(int price, int quantity, Calendar time)
     {
         History h=new History(price, quantity, time);
+        DailyProphet.EventLogger.writeln("Adding....");
         history.add(h);
     }
     
@@ -67,6 +68,7 @@ public class DiagonAlleyAccount{
             h=history.get(i);
             if(h.time.before(d) && h.quantity==0)
             {
+                DailyProphet.EventLogger.writeln("Removing....");
                 history.remove(i);
             }
             else
@@ -94,6 +96,7 @@ public class DiagonAlleyAccount{
             h=history.get(i);
             if(h.time.before(d) && h.quantity==0)
             {
+                DailyProphet.EventLogger.writeln("Removing....");
                 history.remove(i);
             }
             else
