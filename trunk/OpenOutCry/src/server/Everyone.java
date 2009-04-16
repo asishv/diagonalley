@@ -44,42 +44,12 @@ public class Everyone{
         return score;
     }
     
-    public int getQuantityLocked(int itemNumber)
-    {
-//        if(isWizard())
-//        {
-            ArrayList<History> h=getTradeHistory(itemNumber);
-            int qtyActuallyLocked=0;
-            for(int i=0; i<h.size(); i++)
-                qtyActuallyLocked+=(h.get(i)).quantity;
-            return qtyActuallyLocked;
-//        }
-//        return 0;
-    }
-    
-    public int getFutureQuantityLocked(int itemNumber)
-    {
-//        if(isWizard())
-//        {
-            ArrayList<History> h=getBidHistory(itemNumber);
-            int qtyActuallyLocked=0;
-            for(int i=0; i<h.size(); i++)
-                qtyActuallyLocked+=(h.get(i)).quantity;
-            return qtyActuallyLocked;
-//        }
-//        return 0;
-    }
-    
     public int getQuantity(int itemNumber)
     {
 //        if(isWizard())
 //        {
             CurrentInventoryList cil=currentInventoryList.get(itemNumber);
-            ArrayList<History> h=getTradeHistory(itemNumber);
-            int qtyActuallyLocked=0;
-            for(int i=0; i<h.size(); i++)
-                qtyActuallyLocked+=(h.get(i)).quantity;
-            return cil.quantity-qtyActuallyLocked;
+            return cil.quantity;
 //        }
 //        return 0;
     }
@@ -136,11 +106,6 @@ public class Everyone{
         EventLogger.writeln(this.name+" wants to sell "+quantity+" nos of "+cil.magicalItem.magicalItemInfo.getName()+" @$"+price);
         cil.magicalItem.executeTrade();
         cil.diagonAlleySellerAccount.getMinimum();
-        if(cil.quantityLocked > getQuantityLocked(magicalItemNumber))
-        {
-            cil.quantity+=cil.quantityLocked-getQuantityLocked(magicalItemNumber);
-            cil.quantityLocked=getQuantityLocked(magicalItemNumber);
-        }
         cil.magicalItem.minimumSellingPrice = cil.diagonAlleySellerAccount.price;
         return true;
     }
@@ -183,11 +148,6 @@ public class Everyone{
             EventLogger.writeln(this.name+" has cancelled previously placed sell bid");
         cil.magicalItem.executeTrade();
         cil.diagonAlleySellerAccount.getMinimum();
-        if(cil.quantityLocked > getQuantityLocked(magicalItemNumber))
-        {
-            cil.quantity+=cil.quantityLocked-getQuantityLocked(magicalItemNumber);
-            cil.quantityLocked=getQuantityLocked(magicalItemNumber);
-        }
         cil.magicalItem.minimumSellingPrice = cil.diagonAlleySellerAccount.price;
         return true;
     }
@@ -213,11 +173,6 @@ public class Everyone{
         EventLogger.writeln(this.name+" wants to buy "+quantity+" nos of "+fil.magicalItem.magicalItemInfo.getName()+" @$"+price);
         fil.magicalItem.executeTrade();
         fil.diagonAlleyBuyerAccount.getMaximum();
-        if(fil.quantityLocked > getFutureQuantityLocked(magicalItemNumber))
-        {
-            fil.quantity+=fil.quantityLocked-getFutureQuantityLocked(magicalItemNumber);
-            fil.quantityLocked=getFutureQuantityLocked(magicalItemNumber);
-        }
         return true;
     }
     
