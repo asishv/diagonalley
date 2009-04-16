@@ -166,13 +166,13 @@ public class Executor extends Thread implements ExecutorRemote{
                     r.result=resInt;
                     break;
                 case 7:
-                    EventLogger.debug("Executor: Operation = GET BID HISTORY");
+                    EventLogger.writeln("Executor: Operation = GET BID HISTORY");
                     e=Main.getUser(r.userID);
                     ArrayList<History> h=e.getBidHistory(itemNumber);
                     r.result=h;
                     break;
                 case 8:
-                    EventLogger.debug("Executor: Operation = GET TRADE HISTORY");
+                    EventLogger.writeln("Executor: Operation = GET TRADE HISTORY");
                     e=Main.getUser(r.userID);
                     h=e.getTradeHistory(itemNumber);
                     r.result=h;
