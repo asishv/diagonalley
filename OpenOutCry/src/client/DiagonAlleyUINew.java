@@ -1251,12 +1251,12 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                           this.statusMessageLabel.setText("Status message ..");
                   }
                   if(Main.modifyBid(this.bidId, er.getID(), magicalItemNumber, price, quantity, msec)) {
-                      System.out.println("Bid modified successfully");
-                      this.statusMessageLabel.setText("Modify Bid: "+ bidId +" has been submitted.");
+                      System.out.println("Bid cancelled successfully");
+                      this.statusMessageLabel.setText("Bid: "+ bidId +" has been cancelled.");
                   }
                   else {
-                      System.out.println("Modify Bid could not be submitted");
-                      this.statusMessageLabel.setText("Modify Bid couldn't be submitted. Retry with valid inputs.");
+                      System.out.println("Bid could not be cancelled");
+                      this.statusMessageLabel.setText("Bid couldn't be cancelled. Retry !");
                   }
               } catch (Exception e) {this.statusMessageLabel.setText("Invalid input. Enter numbers only !");}
           }
@@ -1281,7 +1281,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
 
         }
         // Modify bid
-        if(this.modifyBidButton.isSelected()) {
+        else if(this.modifyBidButton.isSelected()) {
             if(isBid) {
                 if(Main.modifyBid(this.bidId, er.getID(), magicalItemNumber, price, quantity, msec)) {
                     System.out.println("Bid modified successfully");
@@ -1303,7 +1303,7 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
                 }
             }
         }
-        else {
+        else if(this.newBidButton.isSelected()){
         // Place the bid
             if(isBid)
             {
