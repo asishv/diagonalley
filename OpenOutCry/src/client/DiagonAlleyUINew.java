@@ -1450,14 +1450,21 @@ public class DiagonAlleyUINew extends javax.swing.JFrame {
             System.out.println("Substance Raven Graphite failed to initialize");
         }
         if(args.length != 0 ) userName = args[0];
+                if(args.length == 4)
+        {
+            Main.hostName=args[2];
+            Main.port=Integer.parseInt(args[3]);
+        }
         final String arguments[] = args;
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 final DiagonAlleyUINew frame = newInstance();
                 MagicalItemInfo[] magicalItemInfo = null;
                 
-                Main.hostName = "sand.cise.ufl.edu"; // WARNING: HARDCODED !!!!
-                Main.port = 3600; // WARNING: HARDCODED !!!!
+                if(Main.hostName == null)
+                    Main.hostName = "sand.cise.ufl.edu";
+                if(Main.port == 0)
+                    Main.port = 3600;
                 frame.setVisible(true);
 
                 // Register User
