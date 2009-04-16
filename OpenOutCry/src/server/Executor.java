@@ -6,11 +6,13 @@
 package server;
 import DailyProphet.EventLogger;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import library.BidTradeArgs;
 import library.ExecutorRemote;
+import library.History;
 import library.UserStats;
 
 
@@ -162,6 +164,18 @@ public class Executor extends Thread implements ExecutorRemote{
                     EventLogger.debug("Executor: Operation = GET AVERAGE SELLING PRICE");
                     resInt=new Integer(Main.getAverageSellingPrice(itemNumber));                    
                     r.result=resInt;
+                    break;
+                case 7:
+                    EventLogger.debug("Executor: Operation = GET BID HISTORY");
+                    e=Main.getUser(r.userID);
+                    ArrayList<History> h=e.getBidHistory(itemNumber);
+                    r.result=h;
+                    break;
+                case 8:
+                    EventLogger.debug("Executor: Operation = GET TRADE HISTORY");
+                    e=Main.getUser(r.userID);
+                    h=e.getTradeHistory(itemNumber);
+                    r.result=h;
                     break;
             }
             condition[itemNumber][1].signal();

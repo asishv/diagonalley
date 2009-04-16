@@ -107,7 +107,7 @@ public class EventLogger implements Serializable{
                 obj=new EventLogger();
             }
             try{
-                obj.add(msg+"\r\n");
+                obj.add(msg+"\n");
             }catch (ClosedLogException cle)
             {
                 cle.printStackTrace();
