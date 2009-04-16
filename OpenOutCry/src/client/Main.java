@@ -269,7 +269,7 @@ public class Main {
         History out[]=null;
         try {
             ExecutorRemote ex = (ExecutorRemote) Naming.lookup("rmi://"+hostName+":"+port+"/Executor");
-            h=(ArrayList<History>)ex.invoke(er.getID(), er.getItemNumber(), 7, er);
+            h=(ArrayList<History>)ex.invoke(er.getID(), itemNumber, 7, er);
             if(h.size()>0)
             {
                 out=new History[h.size()];
@@ -291,7 +291,7 @@ public class Main {
         History out[]=null;
         try {
             ExecutorRemote ex = (ExecutorRemote) Naming.lookup("rmi://"+hostName+":"+port+"/Executor");
-            h=(ArrayList<History>)ex.invoke(er.getID(), er.getItemNumber(), 8, er);
+            h=(ArrayList<History>)ex.invoke(er.getID(), itemNumber, 8, er);
             if(h.size()>0)
             {
                 out=new History[h.size()];

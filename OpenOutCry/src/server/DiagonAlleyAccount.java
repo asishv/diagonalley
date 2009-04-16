@@ -30,7 +30,6 @@ public class DiagonAlleyAccount{
     public History[] getAllHistory()
     {
         History h[]=new History[history.size()];
-        DailyProphet.EventLogger.writeln("History: "+history.size());
         for(int i=0; i<history.size(); i++)
         {
             h[i]=history.get(i);
@@ -42,7 +41,6 @@ public class DiagonAlleyAccount{
     {
         History h=new History(price, quantity, time);
         history.add(h);
-        DailyProphet.EventLogger.writeln("After adding History Size: "+history.size());
     }
     
     public void getHistory(int id)
@@ -68,7 +66,6 @@ public class DiagonAlleyAccount{
             h=history.get(i);
             if(h.time.before(d) && h.quantity==0)
             {
-                DailyProphet.EventLogger.writeln("Removing....");
                 history.remove(i);
             }
             else
@@ -96,7 +93,6 @@ public class DiagonAlleyAccount{
             h=history.get(i);
             if(h.time.before(d) && h.quantity==0)
             {
-                DailyProphet.EventLogger.writeln("Removing....");
                 history.remove(i);
             }
             else
