@@ -121,6 +121,7 @@ public class RegistrationPage extends javax.swing.JFrame {
 
         jLabel3.setText("Select picture:");
 
+        jToggleButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/client/harry.png"))); // NOI18N
         jToggleButton8.setText("X");
         jToggleButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,6 +129,7 @@ public class RegistrationPage extends javax.swing.JFrame {
             }
         });
 
+        jToggleButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/client/Ron.png"))); // NOI18N
         jToggleButton9.setText("X");
         jToggleButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,6 +137,7 @@ public class RegistrationPage extends javax.swing.JFrame {
             }
         });
 
+        jToggleButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/client/hermione.png"))); // NOI18N
         jToggleButton10.setText("X");
         jToggleButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,6 +145,7 @@ public class RegistrationPage extends javax.swing.JFrame {
             }
         });
 
+        jToggleButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/client/Gandalf.png"))); // NOI18N
         jToggleButton11.setText("X");
         jToggleButton11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,6 +153,7 @@ public class RegistrationPage extends javax.swing.JFrame {
             }
         });
 
+        jToggleButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/client/Draco.png"))); // NOI18N
         jToggleButton12.setText("X");
         jToggleButton12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
