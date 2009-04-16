@@ -64,7 +64,7 @@ public class DiagonAlleyAccount{
         for(int i=0; i<history.size(); i++)
         {
             h=history.get(i);
-            if(h.time.before(d) && h.quantity==0)
+            if(h.time==null && h.time.before(d) && h.quantity==0)
             {
                 history.remove(i);
             }
@@ -91,7 +91,7 @@ public class DiagonAlleyAccount{
         for(int i=0; i<history.size(); i++)
         {
             h=history.get(i);
-            if(h.time.before(d) && h.quantity==0)
+            if(h.time==null && h.time.before(d) && h.quantity==0)
             {
                 history.remove(i);
             }
