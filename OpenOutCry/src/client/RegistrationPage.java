@@ -20,7 +20,8 @@ import org.jvnet.substance.skin.SubstanceBusinessBlackSteelLookAndFeel;
  * @author karthik
  */
 public class RegistrationPage extends javax.swing.JFrame {
-
+    static String hostName;
+    static String port;
     int picture=0;
     /** Creates new form RegistrationPage */
     public RegistrationPage() {
@@ -264,9 +265,21 @@ public class RegistrationPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
-    String args[]=new String[2];
-    args[0]=this.userName.getText();
-    args[1]=String.valueOf(this.picture);
+    String args[];
+    if(hostName==null)
+    {
+        args=new String[2];
+        args[0]=this.userName.getText();
+        args[1]=String.valueOf(this.picture);
+    }
+    else
+    {
+       args=new String[4];
+       args[0]=this.userName.getText();
+       args[1]=String.valueOf(this.picture);
+       args[2]=hostName;
+       args[3]=""+port;
+    }
     if(!args[0].isEmpty())
     {
         this.setVisible(false);
@@ -356,6 +369,10 @@ private void jToggleButton12ActionPerformed(java.awt.event.ActionEvent evt) {//G
 public static void main(String args[])
 {
         //SUBSTANCE SKIN ENABLE
+        if(args.length>0)
+            hostName=args[0];
+        if(args.length>1)
+            port=args[1];
         javax.swing.JFrame.setDefaultLookAndFeelDecorated(true);
         try {
             System.out.println("Using substance!"); 
