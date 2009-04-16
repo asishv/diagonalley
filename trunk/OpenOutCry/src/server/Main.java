@@ -36,6 +36,7 @@ public class Main extends Thread implements MainRemote{
      static Executor ex;
      static Main obj;
      static Registry registry;
+     static int timeout=10*60;
      
      MagicalItem getMagicalItem(int magicalItemNumber)
      {
@@ -302,10 +303,12 @@ public class Main extends Thread implements MainRemote{
     public void run()
     {
         int i;
+        int count=0;
         try{
-           while(true)
+           while(count<timeout)
            {
                 Thread.sleep(1000);
+                count++;
                 if(everyone.size()==0)
                     continue;
                 for(i=0; i<everyone.size(); i++)
@@ -316,19 +319,20 @@ public class Main extends Thread implements MainRemote{
                 }
                 if(i==everyone.size())
                 {
-                    ex.close();
-                    announceWinners();
-                    try{
-                        Thread.sleep(5000);
-                        registry.unbind("Main");
-                        registry.unbind("Executor");
-                    }catch(Exception e)
-                    {
-                        e.printStackTrace();
-                    }
-                    System.exit(0);
+                    break;
                 }
            }
+            ex.close();
+            announceWinners();
+            try{
+                Thread.sleep(5000);
+                registry.unbind("Main");
+                registry.unbind("Executor");
+            }catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+            System.exit(0);
         }
         catch(InterruptedException ie)
         {
@@ -366,6 +370,8 @@ public class Main extends Thread implements MainRemote{
                     System.err.println("Port: "+args[0]);
                     registry = LocateRegistry.getRegistry(Integer.parseInt(args[0]));
                     break;
+                case 3:
+                    timeout=Integer.parseInt(args[2]);
                 case 2:
                     System.err.println("Hostname:"+args[0]+" Port:"+args[1]);
                     registry = LocateRegistry.getRegistry(args[0], Integer.parseInt(args[0]));
