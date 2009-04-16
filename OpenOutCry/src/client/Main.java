@@ -128,7 +128,45 @@ public class Main {
         }
         return false;
     }
+    
+    static boolean modifyBid(int userID, int magicalItemNumber, int price, int quantity, long msec) 
+    {
+        //TODO: Place bid on the market
+        // RMI Call to server. Provide Magical Item , price and Qty
+        // Validate Magical Item , price and Qty before making server call
+        Boolean result;
+        try {
+            ExecutorRemote ex = (ExecutorRemote) Naming.lookup("rmi://"+hostName+":"+port+"/Executor");
+            BidTradeArgs bid=new BidTradeArgs(price, quantity, msec);
+            result=(Boolean)ex.invoke(userID, magicalItemNumber, 4, bid);
+            return result.booleanValue();
+        }catch (Exception e) {
+            System.out.println("Error: Reading from cmd line - " + e.toString());
+                                e.printStackTrace();
+        }
+        return false;
+    }
 
+        /**
+    * WizardSellers place a trade on the market.
+    */
+    static boolean modifyTrade(int userID, int magicalItemNumber, int price, int quantity, long m) {
+        //TODO: Sellers place a trade on the market
+        // RMI Call to server. Provide Magical Item , price and Qty
+        // Validate Magical Item , price and Qty before making call
+        Boolean result;
+        try {
+            ExecutorRemote ex = (ExecutorRemote) Naming.lookup("rmi://"+hostName+":"+port+"/Executor");
+            BidTradeArgs trade=new BidTradeArgs(price, quantity, m);
+            result=(Boolean)ex.invoke(userID, magicalItemNumber, 1, trade);
+            return result.booleanValue();
+        }catch (Exception e) {
+            System.out.println("Error: Reading from cmd line - " + e.toString());
+                                e.printStackTrace();
+        }
+        return false;
+    }
+    
     /**
     * Obtain current score to be displayed
     */
@@ -177,9 +215,23 @@ public class Main {
             System.out.println("Error getting quantity for item "+itemNumber +" "+ e.toString());
             e.printStackTrace();
         }
-        return -1;
-        
+        return 0;        
     }
+    
+    static int getAverageSellingPrice(EveryoneRef er, int itemNumber)
+    {
+       Integer result;
+        try {
+            ExecutorRemote ex = (ExecutorRemote) Naming.lookup("rmi://"+hostName+":"+port+"/Executor");
+            result=(Integer)ex.invoke(er.getID(), itemNumber, 6, er);
+            return result.intValue();
+        } catch (Exception e) {
+            System.out.println("Error getting quantity for item "+itemNumber +" "+ e.toString());
+            e.printStackTrace();
+        }
+        return 0;        
+    }
+
 
     static int targetCost(EveryoneRef er) {
         //TODO: Obtain my current goal from server
