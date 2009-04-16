@@ -26,12 +26,12 @@ import library.MainRemote;
  */
 public class Main extends Thread implements MainRemote{
      Date startTime;
-     MagicalItem[] magicalItems;
+     public static MagicalItem[] magicalItems;
      public static final int MAX_COMMODITY = ExecutorRemote.MAX_COMMODITY;
      public static ArrayList<Everyone> everyone;
-     ArrayList<WizardSeller> wizards;
-     ArrayList<ApprenticeBuyer> apprentices;
-     ArrayList<MagicalItemInfo> magicalItemInfo;
+     public static ArrayList<WizardSeller> wizards;
+     public static ArrayList<ApprenticeBuyer> apprentices;
+     public static ArrayList<MagicalItemInfo> magicalItemInfo;
      volatile int numberOfUsers=0;
      static Executor ex;
      static Main obj;
@@ -58,6 +58,12 @@ public class Main extends Thread implements MainRemote{
             return everyone.get(id);
          return null;
      }
+     
+    public static int getAverageSellingPrice(int itemNumber)
+    {
+            MagicalItem m=magicalItems[itemNumber];
+            return m.averageSellingPrice;
+    }
 
      /**
      * Creates the Diagon Alley Wizards Sellers.
