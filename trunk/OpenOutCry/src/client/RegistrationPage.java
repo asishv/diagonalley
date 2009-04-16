@@ -264,8 +264,9 @@ public class RegistrationPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
-    String args[]=new String[1];
+    String args[]=new String[2];
     args[0]=this.userName.getText();
+    args[1]=String.valueOf(this.picture);
     if(!args[0].isEmpty())
     {
         this.setVisible(false);
