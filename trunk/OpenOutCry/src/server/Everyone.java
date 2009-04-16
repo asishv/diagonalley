@@ -103,7 +103,7 @@ public class Everyone{
         Calendar time=new GregorianCalendar();
         time.setTimeInMillis(time.getTimeInMillis()+m);
         cil.diagonAlleySellerAccount.add(price, quantity, time);
-        EventLogger.writeln(this.name+" is trying to sell "+quantity+" nos of "+cil.magicalItem.magicalItemInfo.getName()+" @$"+price);
+        EventLogger.writeln(this.name+" wants to sell "+quantity+" nos of "+cil.magicalItem.magicalItemInfo.getName()+" @$"+price);
         cil.magicalItem.executeTrade();
         cil.diagonAlleySellerAccount.getMinimum();
         cil.magicalItem.minimumSellingPrice = cil.diagonAlleySellerAccount.price;
@@ -137,9 +137,15 @@ public class Everyone{
 
         cil.diagonAlleySellerAccount.price = price;
         cil.diagonAlleySellerAccount.quantity = quantity;
-        cil.diagonAlleySellerAccount.time.setTimeInMillis(cil.diagonAlleySellerAccount.time.getTimeInMillis()+m);
+        if(quantity != 0)
+            cil.diagonAlleySellerAccount.time.setTimeInMillis(cil.diagonAlleySellerAccount.time.getTimeInMillis()+m);
+        else
+            cil.diagonAlleySellerAccount.time=null;
         cil.diagonAlleySellerAccount.modify(id);
-        EventLogger.writeln(this.name+" is trying to sell "+quantity+" nos of "+cil.magicalItem.magicalItemInfo.getName()+" @$"+price);
+        if(quantity!=0)
+            EventLogger.writeln(this.name+" has modifed his sell bid. Now bid consists of "+quantity+" nos of "+cil.magicalItem.magicalItemInfo.getName()+" @$"+price);
+        else
+            EventLogger.writeln(this.name+" has cancelled previously placed sell bid");
         cil.magicalItem.executeTrade();
         cil.diagonAlleySellerAccount.getMinimum();
         cil.magicalItem.minimumSellingPrice = cil.diagonAlleySellerAccount.price;
@@ -164,7 +170,7 @@ public class Everyone{
         fil.diagonAlleyBuyerAccount.add(price, quantity, time);
         fil.quantity-=quantity;
         fil.quantityLocked+=quantity;
-        EventLogger.writeln(this.name+" is trying to buy "+quantity+" nos of "+fil.magicalItem.magicalItemInfo.getName()+" @$"+price);
+        EventLogger.writeln(this.name+" wants to buy "+quantity+" nos of "+fil.magicalItem.magicalItemInfo.getName()+" @$"+price);
         fil.magicalItem.executeTrade();
         fil.diagonAlleyBuyerAccount.getMaximum();
         return true;
@@ -186,11 +192,17 @@ public class Everyone{
         }
         fil.diagonAlleyBuyerAccount.price=price;
         fil.diagonAlleyBuyerAccount.quantity=quantity;
-        fil.diagonAlleyBuyerAccount.time.setTimeInMillis(fil.diagonAlleyBuyerAccount.time.getTimeInMillis()+msec);
+        if(quantity !=0)
+            fil.diagonAlleyBuyerAccount.time.setTimeInMillis(fil.diagonAlleyBuyerAccount.time.getTimeInMillis()+msec);
+        else
+            fil.diagonAlleyBuyerAccount.time=null;
         fil.diagonAlleyBuyerAccount.modify(id);
         fil.quantity-=quantity+fil.diagonAlleyBuyerAccount.quantity;
         fil.quantityLocked+=quantity-fil.diagonAlleyBuyerAccount.quantity;
-        EventLogger.writeln(this.name+" is trying to buy "+quantity+" nos of "+fil.magicalItem.magicalItemInfo.getName()+" @$"+price);
+        if(quantity!=0)
+            EventLogger.writeln(this.name+" has modified his buy bid. The new bid consists of "+quantity+" nos of "+fil.magicalItem.magicalItemInfo.getName()+" @$"+price);
+        else
+            EventLogger.writeln(this.name+" has cancelled previously placed buy bid");
         fil.magicalItem.executeTrade(); 
         fil.diagonAlleyBuyerAccount.getMaximum();
         return true;
