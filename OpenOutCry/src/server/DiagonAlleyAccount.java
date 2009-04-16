@@ -27,7 +27,7 @@ public class DiagonAlleyAccount{
         history=new ArrayList();
     }
     
-    public History[] getHistory()
+    public History[] getAllHistory()
     {
         History h[]=new History[history.size()];
         DailyProphet.EventLogger.writeln("History: "+history.size());
@@ -41,8 +41,8 @@ public class DiagonAlleyAccount{
     public void add(int price, int quantity, Calendar time)
     {
         History h=new History(price, quantity, time);
-        DailyProphet.EventLogger.writeln("Adding....");
         history.add(h);
+        DailyProphet.EventLogger.writeln("After adding History Size: "+history.size());
     }
     
     public void getHistory(int id)

@@ -57,7 +57,7 @@ public class Everyone{
     public ArrayList<History> getTradeHistory(int itemNumber)
     {
         CurrentInventoryList cil=currentInventoryList.get(itemNumber);
-        History sellHistory[]=cil.diagonAlleySellerAccount.getHistory();
+        History sellHistory[]=cil.diagonAlleySellerAccount.getAllHistory();
         ArrayList<History> h=new ArrayList();
         int i=0;
         for(i=0; i<sellHistory.length; i++)
@@ -68,7 +68,7 @@ public class Everyone{
     public ArrayList<History> getBidHistory(int itemNumber)
     {
         FutureInventoryList fil=futureInventoryList.get(itemNumber);
-        History buyHistory[]=fil.diagonAlleyBuyerAccount.getHistory();
+        History buyHistory[]=fil.diagonAlleyBuyerAccount.getAllHistory();
         ArrayList<History> h=new ArrayList();
         int j=0;
         for(j=0; j<buyHistory.length; j++)
