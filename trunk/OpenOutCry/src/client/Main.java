@@ -8,6 +8,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.rmi.Naming;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Random;
 import library.BidTradeArgs;
 import library.MagicalItemInfo;
@@ -30,25 +32,33 @@ class RandomUser extends Thread
     public void run()
     {
         EveryoneRef er=Main.registerUser(host, port);
-        while(!isInterrupted())
+        long startTime, endTime, totalTime=0;
+        int count=0;
+        while(!isInterrupted() && count < 10000)
         {
+            Date d=new Date();
+            startTime = Calendar.getInstance().getTimeInMillis();
             Main.currentScore(er);
+            endTime = Calendar.getInstance().getTimeInMillis();
+            count++;
+            totalTime+=endTime-startTime;
             Random random1 = new Random();
-            int op=random1.nextInt(2);
             int item=random1.nextInt(20);
             int price=random1.nextInt(1000);
             int quantity=random1.nextInt(1000);
             int msec=random1.nextInt(10000);
-            switch(op)
-            {
-                case 0:                    
-                    Main.placeBid(er.getID(), item, price, quantity, msec);
-                    break;
-                case 1:
-                    Main.placeTrade(er.getID(), item, price, quantity, op);
-                    break;
+            startTime = Calendar.getInstance().getTimeInMillis();
+            Main.placeBid(er.getID(), item, price, quantity, msec);
+            endTime = Calendar.getInstance().getTimeInMillis();
+            count++;
+            totalTime+=endTime-startTime;
+            try{
+                Thread.sleep(100);
+            }catch(Exception e)
+            {                
             }
         }
+        System.out.println("Average Time = "+totalTime/count);
     }
 }
 
@@ -451,8 +461,10 @@ public class Main {
                          break;
                    
                 case 10:
-                        RandomUser ru[]=new RandomUser[100];
-                        for(int k=0; k<100; k++)
+                        System.out.println("Enter number of users:");
+                        int usercount = Integer.parseInt(br.readLine());
+                        RandomUser ru[]=new RandomUser[usercount];
+                        for(int k=0; k<usercount; k++)
                         {
                             ru[k]=new RandomUser(hostName, port);
                             ru[k].start();
