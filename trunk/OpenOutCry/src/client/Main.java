@@ -34,7 +34,7 @@ class RandomUser extends Thread
         EveryoneRef er=Main.registerUser(host, port);
         long startTime, endTime, totalTime=0;
         int count=0;
-        while(!isInterrupted() && count < 10000)
+        while(!isInterrupted() && count < 1000)
         {
             Date d=new Date();
             startTime = Calendar.getInstance().getTimeInMillis();
@@ -52,11 +52,11 @@ class RandomUser extends Thread
             endTime = Calendar.getInstance().getTimeInMillis();
             count++;
             totalTime+=endTime-startTime;
-            try{
+/*            try{
                 Thread.sleep(100);
             }catch(Exception e)
             {                
-            }
+            }*/
         }
         System.out.println("Average Time = "+totalTime/count);
     }
